@@ -6,9 +6,8 @@ on:
       - main
 
 jobs:
-  deploy:
+  notify:
     runs-on: ubuntu-latest
     steps:
-      - name: Notificar Hostinger via webhook
-        run: |
-          curl -s "https://aeronsolutions.com.br/webhook.php?token=aeron_deploy_2026" || true
+      - name: Notificar Hostinger
+        run: curl -s "https://aeronsolutions.com.br/webhook.php?token=aeron_deploy_2026" || true
