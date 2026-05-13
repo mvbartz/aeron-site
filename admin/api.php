@@ -207,6 +207,7 @@ if ($action === 'delete') {
         echo json_encode(['ok' => false, 'msg' => 'Erro ao salvar.']); exit;
     }
     echo json_encode(['ok' => true, 'msg' => 'Item removido.']);
+    syncToGitHub($new, 'Admin: remover portfólio');
     exit;
 }
 
