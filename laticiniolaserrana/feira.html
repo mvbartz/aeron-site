@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Serrana – Cadastro Exclusivo de Feira</title>
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="description" content="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --verde: #2d5a45; --verde-escuro: #1a3a2a; --dourado: #c9a84c;
+  --dourado-claro: #e8c97a; --dourado-escuro: #9a7830;
+  --creme: #f7f0e3; --creme-escuro: #ede0c8;
+  --texto: #2a1f14; --branco: #ffffff;
+  --erro: #b83232; --ok: #2d7a45;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Jost', sans-serif; background: var(--creme); color: var(--texto); min-height: 100vh; overflow-x: hidden; }
+h1,h2,h3 { font-family: 'Cormorant Garamond', serif; }
+img { display: block; max-width: 100%; }
+
+.page-header { background: var(--verde-escuro); padding: 16px 24px; display: flex; align-items: center; justify-content: center; border-bottom: 2px solid rgba(201,168,76,.22); }
+.page-header img { height: 40px; width: auto; filter: brightness(0) invert(1); }
+
+.hero-strip { background: var(--verde-escuro); position: relative; overflow: hidden; padding: 52px 24px 44px; text-align: center; }
+.hero-strip::before { content: 'FEIRA'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-family: 'Cormorant Garamond', serif; font-size: clamp(5rem,28vw,16rem); font-weight: 700; color: rgba(255,255,255,.028); white-space: nowrap; pointer-events: none; }
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(201,168,76,.15); border: 1px solid rgba(201,168,76,.4); color: var(--dourado-claro); padding: 6px 16px; font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; border-radius: 2px; margin-bottom: 22px; }
+.hero-badge::before { content: '✦'; font-size: .5rem; }
+.hero-title { font-size: clamp(1.75rem,6vw,2.9rem); font-weight: 400; color: var(--branco); line-height: 1.18; margin-bottom: 14px; max-width: 580px; margin-left: auto; margin-right: auto; }
+.hero-title em { font-style: italic; color: var(--dourado-claro); }
+.hero-sub { font-size: clamp(.88rem,2.5vw,1.03rem); color: rgba(255,255,255,.72); font-weight: 300; line-height: 1.7; max-width: 440px; margin: 0 auto; }
+.hero-ornament { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 26px; opacity: .3; }
+.hero-ornament-line { width: 48px; height: 1px; background: var(--dourado); }
+.hero-ornament-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--dourado); }
+
+.main-card { max-width: 520px; margin: -28px auto 0; padding: 0 16px 40px; position: relative; z-index: 2; }
+.card-inner { background: var(--branco); border-radius: 3px; box-shadow: 0 20px 60px rgba(0,0,0,.12), 0 4px 12px rgba(0,0,0,.06); overflow: hidden; }
+.card-top-bar { height: 4px; background: linear-gradient(90deg, var(--verde-escuro), var(--dourado), var(--verde-escuro)); }
+.card-body { padding: 36px 32px 32px; }
+
+.form-heading { font-size: 1.55rem; font-weight: 500; color: var(--verde-escuro); margin-bottom: 6px; }
+.form-heading em { font-style: italic; color: var(--dourado-escuro); }
+.form-desc { font-size: .84rem; color: #6a5840; line-height: 1.65; margin-bottom: 26px; padding-bottom: 22px; border-bottom: 1px solid var(--creme-escuro); }
+.form-group { margin-bottom: 18px; }
+.form-label { display: block; font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--dourado-escuro); font-weight: 500; margin-bottom: 7px; }
+.form-label .req { color: var(--verde); margin-left: 2px; }
+.form-label .opt { color: #aaa; font-size: .64rem; letter-spacing: .06em; text-transform: none; font-weight: 400; margin-left: 4px; }
+.form-input { width: 100%; padding: 13px 16px; font-family: 'Jost', sans-serif; font-size: .95rem; color: var(--texto); background: var(--creme); border: 1.5px solid var(--creme-escuro); border-radius: 2px; outline: none; transition: border-color .25s, box-shadow .25s, background .25s; -webkit-appearance: none; appearance: none; }
+.form-input::placeholder { color: #b0a090; }
+.form-input:focus { border-color: var(--verde); background: var(--branco); box-shadow: 0 0 0 3px rgba(45,90,69,.1); }
+.form-input.error { border-color: var(--erro); background: #fff9f9; box-shadow: 0 0 0 3px rgba(184,50,50,.08); }
+.form-input.ok { border-color: var(--ok); background: var(--branco); }
+.field-error { display: none; font-size: .74rem; color: var(--erro); margin-top: 5px; align-items: center; gap: 5px; }
+.field-error.show { display: flex; }
+.field-error::before { content: '⚠'; font-size: .65rem; }
+
+.btn-submit { width: 100%; padding: 16px 24px; background: var(--verde-escuro); color: var(--branco); border: 2px solid var(--verde-escuro); border-radius: 2px; font-family: 'Jost', sans-serif; font-size: .82rem; font-weight: 500; letter-spacing: .15em; text-transform: uppercase; cursor: pointer; transition: all .3s; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 24px; }
+.btn-submit:hover:not(:disabled) { background: var(--dourado); border-color: var(--dourado); color: var(--verde-escuro); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,0,0,.14); }
+.btn-submit:disabled { opacity: .65; cursor: not-allowed; transform: none; }
+.spinner { display: none; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,.3); border-top-color: currentColor; border-radius: 50%; animation: spin .7s linear infinite; }
+.btn-submit.loading .spinner { display: block; }
+.btn-submit.loading .btn-label { opacity: .75; }
+.btn-submit.loading .btn-star { display: none; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.form-err-msg { display: none; background: #fdf1f1; border: 1px solid rgba(184,50,50,.22); border-left: 3px solid var(--erro); padding: 12px 16px; border-radius: 2px; font-size: .82rem; color: var(--erro); margin-top: 14px; line-height: 1.5; }
+.form-err-msg.show { display: block; }
+.privacy-note { font-size: .7rem; color: #9a8a78; text-align: center; margin-top: 14px; line-height: 1.65; }
+
+.dif-strip { background: var(--verde-escuro); padding: 22px 16px; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; }
+.dif-item { display: flex; align-items: center; gap: 7px; padding: 6px 18px; color: rgba(255,255,255,.6); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; border-right: 1px solid rgba(255,255,255,.1); }
+.dif-item:last-child { border-right: none; }
+
+#successScreen { display: none; }
+.success-card { max-width: 520px; margin: 0 auto; padding: 0 16px 48px; }
+.success-inner { background: var(--branco); border-radius: 3px; box-shadow: 0 20px 60px rgba(0,0,0,.12); overflow: hidden; text-align: center; }
+.success-top { background: var(--verde-escuro); padding: 40px 28px 32px; position: relative; }
+.success-top::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center top, rgba(201,168,76,.1), transparent 70%); }
+.success-check { font-size: 3.2rem; margin-bottom: 14px; display: block; animation: popIn .5s cubic-bezier(.22,1,.36,1) both; position: relative; z-index: 1; }
+@keyframes popIn { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.success-kicker { font-size: .66rem; letter-spacing: .22em; text-transform: uppercase; color: var(--dourado); margin-bottom: 10px; display: flex; align-items: center; justify-content: center; gap: 10px; position: relative; z-index: 1; }
+.success-kicker::before, .success-kicker::after { content: ''; display: block; width: 20px; height: 1px; background: var(--dourado); opacity: .5; }
+.success-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.55rem,5vw,2.1rem); font-weight: 500; color: var(--branco); line-height: 1.2; margin-bottom: 10px; position: relative; z-index: 1; }
+.success-sub { font-size: .87rem; color: rgba(255,255,255,.64); line-height: 1.78; font-weight: 300; position: relative; z-index: 1; }
+.success-sub strong { color: var(--dourado-claro); font-weight: 500; }
+.success-body { padding: 32px 28px 36px; }
+
+.cupom-label { font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; color: var(--dourado-escuro); margin-bottom: 10px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+.cupom-label::before, .cupom-label::after { content: ''; display: block; flex: 1; height: 1px; background: var(--creme-escuro); }
+
+/* CUPOM: mude CUPOM_CODE no <script> E o texto em #cupomCode no HTML */
+.cupom-btn { display: flex; align-items: center; justify-content: space-between; background: var(--creme); border: 2px dashed var(--dourado); border-radius: 4px; padding: 16px 20px; cursor: pointer; transition: all .25s; width: 100%; margin-bottom: 8px; }
+.cupom-btn:hover { background: rgba(201,168,76,.08); border-style: solid; }
+.cupom-btn:active { transform: scale(.98); }
+.cupom-code { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 700; color: var(--verde-escuro); letter-spacing: .12em; }
+.cupom-copy { display: flex; align-items: center; gap: 5px; font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--dourado-escuro); font-weight: 500; flex-shrink: 0; }
+.cupom-copy svg { width: 15px; height: 15px; }
+.cupom-feedback { display: none; font-size: .76rem; color: var(--ok); text-align: center; margin-bottom: 6px; font-weight: 500; align-items: center; justify-content: center; gap: 5px; }
+.cupom-feedback.show { display: flex; }
+.cupom-feedback::before { content: '✓'; }
+.cupom-aviso { font-size: .77rem; color: #8a7560; text-align: center; margin-bottom: 22px; line-height: 1.6; }
+.success-divider { height: 1px; background: var(--creme-escuro); margin: 22px 0; }
+.success-cta-text { font-size: .88rem; color: #6a5840; line-height: 1.75; margin-bottom: 18px; }
+.btn-loja { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 16px 24px; background: var(--dourado); color: var(--verde-escuro); border: 2px solid var(--dourado); border-radius: 2px; font-family: 'Jost', sans-serif; font-size: .82rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; transition: all .3s; }
+.btn-loja:hover { background: var(--dourado-claro); border-color: var(--dourado-claro); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.13); }
+
+.page-footer { background: #0f1a12; padding: 28px 24px; text-align: center; }
+.page-footer img { height: 34px; width: auto; filter: brightness(0) invert(1) opacity(.45); margin: 0 auto 10px; }
+.page-footer p { font-size: .7rem; color: rgba(255,255,255,.26); line-height: 1.65; }
+
+.fade-in { animation: fadeUp .5s ease both; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 420px) {
+  .card-body { padding: 26px 18px 22px; }
+  .success-body { padding: 22px 18px 26px; }
+  .success-top { padding: 30px 18px 22px; }
+  .cupom-code { font-size: 1.65rem; }
+  .dif-item { padding: 6px 10px; font-size: .66rem; }
+  .hero-strip { padding: 42px 18px 34px; }
+  .main-card, .success-card { padding: 0 12px 36px; }
+}
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <img src="logo-la-serrana.png" alt="La Serrana Laticínio">
+</header>
+
+<div class="hero-strip">
+  <div class="hero-badge">Oferta exclusiva para visitantes da feira</div>
+  <h1 class="hero-title">Bem-vindo ao formulário de<br>contato rápido da <em>La Serrana.</em></h1>
+  <p class="hero-sub">Cadastre-se e ganhe um benefício exclusivo para sua primeira compra online.</p>
+  <div class="hero-ornament">
+    <div class="hero-ornament-line"></div>
+    <div class="hero-ornament-dot"></div>
+    <div class="hero-ornament-line"></div>
+  </div>
+</div>
+
+<div id="formScreen">
+  <div class="main-card">
+    <div class="card-inner fade-in">
+      <div class="card-top-bar"></div>
+      <div class="card-body">
+        <h2 class="form-heading">Seus <em>dados</em></h2>
+        <p class="form-desc">Preencha abaixo para liberar seu cupom exclusivo de feira. Leva menos de um minuto.</p>
+        <form id="leadForm" novalidate autocomplete="on">
+          <div class="form-group">
+            <label class="form-label" for="inputNome">Nome Completo <span class="req">*</span></label>
+            <input type="text" id="inputNome" name="nome" class="form-input" placeholder="Ex: Maria da Silva" autocomplete="name" inputmode="text" required aria-required="true" aria-describedby="erroNome">
+            <div class="field-error" id="erroNome" role="alert">Informe seu nome completo (nome e sobrenome).</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inputWpp">WhatsApp com DDD <span class="req">*</span></label>
+            <input type="tel" id="inputWpp" name="whatsapp" class="form-input" placeholder="(51) 99999-8888" autocomplete="tel" inputmode="numeric" maxlength="15" required aria-required="true" aria-describedby="erroWpp">
+            <div class="field-error" id="erroWpp" role="alert">Número inválido. Use DDD + 9 dígitos. Ex: (51) 99999-8888</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inputEmail">E-mail <span class="opt">(opcional)</span></label>
+            <input type="email" id="inputEmail" name="email" class="form-input" placeholder="seuemail@exemplo.com" autocomplete="email" inputmode="email" aria-describedby="erroEmail">
+            <div class="field-error" id="erroEmail" role="alert">Informe um e-mail válido.</div>
+          </div>
+          <button type="submit" class="btn-submit" id="btnSubmit">
+            <div class="spinner" aria-hidden="true"></div>
+            <span class="btn-star">✦</span>
+            <span class="btn-label">Realizar Cadastro</span>
+          </button>
+          <div class="form-err-msg" id="formErrMsg" role="alert">Não foi possível enviar. Verifique sua conexão e tente novamente.</div>
+        </form>
+        <p class="privacy-note">Seus dados são confidenciais e não serão compartilhados com terceiros.<br>Ao se cadastrar, você concorda em receber novidades da La Serrana.</p>
+      </div>
+    </div>
+  </div>
+  <div class="dif-strip">
+    <div class="dif-item">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><circle cx="6.5" cy="6.5" r="5.5" stroke="#c9a84c" stroke-width="1.1"/><path d="M4 6.5l1.8 1.8 3-3" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      100% Leite de Ovelha
+    </div>
+    <div class="dif-item">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M6.5 1l1.1 3.5H11l-2.8 2 1.1 3.4-2.8-2-2.8 2 1.1-3.4L2 4.5h3.4L6.5 1z" stroke="#c9a84c" stroke-width="1" stroke-linejoin="round"/></svg>
+      Super Ouro 2026
+    </div>
+    <div class="dif-item">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M6.5 2c0 0-3.5 3-3.5 5.2a3.5 3.5 0 007 0C10 5 6.5 2 6.5 2z" stroke="#c9a84c" stroke-width="1.1"/></svg>
+      Produção Artesanal
+    </div>
+  </div>
+</div>
+
+<div id="successScreen">
+  <div class="success-card">
+    <div class="success-inner fade-in">
+      <div class="success-top">
+        <span class="success-check">🏆</span>
+        <div class="success-kicker">Parabéns!</div>
+        <h2 class="success-title">Cadastro realizado<br>com sucesso</h2>
+        <p class="success-sub">Obrigado por visitar a <strong>La Serrana</strong>.<br>Seu benefício exclusivo de feira já está liberado:</p>
+      </div>
+      <div class="success-body">
+        <div class="cupom-label">Seu cupom exclusivo</div>
+        <button class="cupom-btn" id="cupomBtn" type="button" aria-label="Copiar cupom FEIRA10">
+          <span class="cupom-code" id="cupomCode">FEIRA10</span>
+          <span class="cupom-copy" aria-hidden="true">
+            <svg viewBox="0 0 15 15" fill="none"><rect x="4.5" y="4.5" width="8" height="9" rx="1" stroke="#9a7830" stroke-width="1.2"/><path d="M2.5 10V2.5a1 1 0 011-1H10" stroke="#9a7830" stroke-width="1.2" stroke-linecap="round"/></svg>
+            Copiar
+          </span>
+        </button>
+        <div class="cupom-feedback" id="cupomFeedback">Cupom copiado com sucesso!</div>
+        <p class="cupom-aviso">⚠️ Válido por 7 dias após o encerramento da feira</p>
+        <div class="success-divider"></div>
+        <p class="success-cta-text">Use seu cupom na loja online e aproveite os sabores artesanais da serra diretamente na sua casa.</p>
+        <a href="https://laticiniolaserrana.lojavirtualnuvem.com.br/?utm_source=feira" target="_blank" rel="noopener" class="btn-loja">
+          🛒&nbsp; Quero Experimentar os Produtos
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="dif-strip">
+    <div class="dif-item"><svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><circle cx="6.5" cy="6.5" r="5.5" stroke="#c9a84c" stroke-width="1.1"/><path d="M4 6.5l1.8 1.8 3-3" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>100% Leite de Ovelha</div>
+    <div class="dif-item"><svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M6.5 1l1.1 3.5H11l-2.8 2 1.1 3.4-2.8-2-2.8 2 1.1-3.4L2 4.5h3.4L6.5 1z" stroke="#c9a84c" stroke-width="1" stroke-linejoin="round"/></svg>Super Ouro 2026</div>
+    <div class="dif-item"><svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M6.5 2c0 0-3.5 3-3.5 5.2a3.5 3.5 0 007 0C10 5 6.5 2 6.5 2z" stroke="#c9a84c" stroke-width="1.1"/></svg>Produção Artesanal</div>
+  </div>
+</div>
+
+<footer class="page-footer">
+  <img src="logo-la-serrana.png" alt="La Serrana Laticínio">
+  <p>Laticínio La Serrana · Barros Cassal, RS<br>(51) 98196-2280 · @laticiniolaserrana</p>
+</footer>
+
+<script>
+/*
+=================================================================
+  CONFIGURAÇÃO – LEIA ANTES DE PUBLICAR
+=================================================================
+
+  GOOGLE SHEETS (gratuito, sem backend):
+  ───────────────────────────────────────
+  1. Abra sua planilha Google Sheets (ou crie uma nova).
+     Adicione cabeçalhos: Data | Nome | WhatsApp | E-mail
+
+  2. Extensões > Apps Script > cole este código:
+
+     const SHEET_ID = 'ID_DA_SUA_PLANILHA';
+     function doPost(e) {
+       const s = SpreadsheetApp.openById(SHEET_ID).getActiveSheet();
+       const d = JSON.parse(e.postData.contents);
+       s.appendRow([d.data, d.nome, d.whatsapp, d.email || '']);
+       return ContentService
+         .createTextOutput(JSON.stringify({status:'ok'}))
+         .setMimeType(ContentService.MimeType.JSON);
+     }
+
+  3. Salve > Implantar > Nova implantação:
+     - Tipo: App da Web
+     - Executar como: Eu
+     - Acesso: Qualquer pessoa
+  4. Copie a URL gerada e cole em APPS_SCRIPT_URL abaixo.
+
+  CUPOM:
+  ───────
+  Mude CUPOM_CODE abaixo E o texto em <span id="cupomCode">.
+=================================================================
+*/
+
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwj3_h1DbMHD6Yoznb8ev9SZJinuQ0I-rxO5VgC47xJEie9lCYhNPVI6XLFmpLqUv6x/exec';
+const CUPOM_CODE      = 'FEIRA10';
+
+/* Máscara WhatsApp */
+const wppEl = document.getElementById('inputWpp');
+wppEl.addEventListener('input', function () {
+  let v = this.value.replace(/\D/g, '').slice(0, 11);
+  if (!v) { this.value = ''; return; }
+  if (v.length <= 2)      this.value = '(' + v;
+  else if (v.length <= 7) this.value = '(' + v.slice(0,2) + ') ' + v.slice(2);
+  else                    this.value = '(' + v.slice(0,2) + ') ' + v.slice(2,7) + '-' + v.slice(7);
+});
+wppEl.addEventListener('keydown', function (e) {
+  const ok = ['Backspace','Delete','Tab','ArrowLeft','ArrowRight','ArrowUp','ArrowDown'];
+  if (ok.includes(e.key)) return;
+  if ((e.ctrlKey||e.metaKey) && 'acvx'.includes(e.key.toLowerCase())) return;
+  if (!/\d/.test(e.key)) e.preventDefault();
+});
+
+/* Validadores */
+const validNome  = v => v.trim().length >= 3 && v.trim().includes(' ');
+const validWpp   = v => { const n=v.replace(/\D/g,''); if(n.length<10||n.length>11) return false; const d=+n.slice(0,2); if(d<11||d>99) return false; if(n.length===11&&n[2]!=='9') return false; return true; };
+const validEmail = v => v==='' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+
+function check(id, errId, fn) {
+  const inp=document.getElementById(id), err=document.getElementById(errId), ok=fn(inp.value);
+  inp.classList.toggle('error',!ok); inp.classList.toggle('ok',ok); err.classList.toggle('show',!ok);
+  return ok;
+}
+
+document.getElementById('inputNome').addEventListener('blur',  () => check('inputNome',  'erroNome',  validNome));
+wppEl.addEventListener('blur',                                  () => check('inputWpp',   'erroWpp',   validWpp));
+document.getElementById('inputEmail').addEventListener('blur', () => check('inputEmail', 'erroEmail', validEmail));
+
+/* Envio */
+document.getElementById('leadForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const ok = check('inputNome','erroNome',validNome) & check('inputWpp','erroWpp',validWpp) & check('inputEmail','erroEmail',validEmail);
+  if (!ok) return;
+
+  const btn=document.getElementById('btnSubmit'), errMsg=document.getElementById('formErrMsg');
+  btn.disabled=true; btn.classList.add('loading'); errMsg.classList.remove('show');
+
+  const payload = {
+    nome:     document.getElementById('inputNome').value.trim(),
+    whatsapp: wppEl.value.trim(),
+    email:    document.getElementById('inputEmail').value.trim(),
+    data:     new Date().toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'})
+  };
+
+  try {
+
+  await fetch(APPS_SCRIPT_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(payload)
+  });
+
+  document.getElementById('formScreen').style.display = 'none';
+  document.getElementById('successScreen').style.display = 'block';
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+
+} catch(err) {
+
+  console.error(err);
+
+  errMsg.classList.add('show');
+
+  btn.disabled = false;
+  btn.classList.remove('loading');
+}
+});
+
+/* Copiar cupom */
+document.getElementById('cupomBtn').addEventListener('click', async function() {
+  try { await navigator.clipboard.writeText(CUPOM_CODE); }
+  catch { const t=document.createElement('textarea'); t.value=CUPOM_CODE; t.style.cssText='position:fixed;opacity:0'; document.body.appendChild(t); t.select(); document.execCommand('copy'); document.body.removeChild(t); }
+  const fb=document.getElementById('cupomFeedback');
+  fb.classList.add('show'); this.style.borderStyle='solid'; this.style.background='rgba(45,122,69,.07)';
+  setTimeout(() => { fb.classList.remove('show'); this.style.borderStyle='dashed'; this.style.background=''; }, 3000);
+});
+</script>
+</body>
+</html>

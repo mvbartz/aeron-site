@@ -1,0 +1,14 @@
+name: Deploy para Hostinger
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notificar Hostinger via webhook
+        run: |
+          curl -s "https://aeronsolutions.com.br/webhook.php?token=aeron_deploy_2026" || true

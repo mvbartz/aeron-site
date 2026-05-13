@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laticínio La Serrana – Queijos e Doce de Leite Artesanais da Serra Gaúcha</title>
+<meta name="description" content="Laticínio La Serrana: queijos e doce de leite artesanais feitos com leite 100% de ovelhas Lacaune em Barros Cassal, RS. Super Ouro no Mundial do Queijo do Brasil 2026.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://laticiniolaserrana.com.br/#business",
+      "name": "Laticínio La Serrana",
+      "description": "Laticínio artesanal especializado em queijos e doce de leite feitos com 100% leite de ovelhas Lacaune criadas na própria propriedade na Serra Gaúcha.",
+      "url": "https://laticiniolaserrana.com.br",
+      "telephone": "+55-51-98196-2280",
+      "image": "https://laticiniolaserrana.com.br/logo-la-serrana.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Barros Cassal",
+        "addressLocality": "Barros Cassal",
+        "addressRegion": "RS",
+        "addressCountry": "BR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -29.139,
+        "longitude": -52.583
+      },
+      "sameAs": ["https://www.instagram.com/laticiniolaserrana/"],
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+        "opens": "08:00",
+        "closes": "18:00"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Produtos La Serrana",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "Doce de Leite La Serrana",
+              "description": "Doce de leite artesanal feito com 100% leite de ovelhas Lacaune. Super Ouro no 4º Mundial do Queijo do Brasil 2026.",
+              "brand": {"@type": "Brand", "name": "La Serrana"},
+              "award": ["Super Ouro – 4º Mundial do Queijo do Brasil 2026", "Super Ouro – 3º Concurso de Queijos e Doces Artesanais RS 2025", "Bronze – Prêmio Queijo Brasil 2025"],
+              "image": "https://laticiniolaserrana.com.br/doce-de-leite-pote.jpeg"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "Queijo Alvorada La Serrana",
+              "description": "Queijo artesanal maturado de leite de ovelha Lacaune.",
+              "brand": {"@type": "Brand", "name": "La Serrana"},
+              "image": "https://laticiniolaserrana.com.br/queijo-alvorada.jpeg"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "Queijo Sentinela La Serrana",
+              "description": "Queijo artesanal maturado de leite de ovelha com personalidade marcante.",
+              "brand": {"@type": "Brand", "name": "La Serrana"}
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Início","item":"https://laticiniolaserrana.com.br"},
+        {"@type":"ListItem","position":2,"name":"Doce de Leite","item":"https://laticiniolaserrana.com.br/#doce"},
+        {"@type":"ListItem","position":3,"name":"Produtos","item":"https://laticiniolaserrana.com.br/#produtos"},
+        {"@type":"ListItem","position":4,"name":"Prêmios","item":"https://laticiniolaserrana.com.br/#premios"}
+      ]
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --verde: #2d5a45;
+  --verde-escuro: #1a3a2a;
+  --verde-medio: #2e5c42;
+  --verde-claro: #3d7a5f;
+  --dourado: #c9a84c;
+  --dourado-claro: #e8c97a;
+  --dourado-escuro: #9a7830;
+  --creme: #f7f0e3;
+  --creme-escuro: #ede0c8;
+  --texto: #2a1f14;
+  --branco: #ffffff;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Jost', sans-serif; background: var(--creme); color: var(--texto); overflow-x: hidden; }
+h1,h2,h3,h4 { font-family: 'Cormorant Garamond', serif; }
+img { display: block; max-width: 100%; }
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  padding: 18px 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: background .4s, box-shadow .4s;
+}
+nav.scrolled {
+  background: rgba(26,58,42,.97);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 2px 30px rgba(0,0,0,.3);
+}
+.nav-logo {
+  text-decoration: none; display: flex; align-items: center;
+}
+.nav-logo img {
+  height: 44px; width: auto;
+  filter: brightness(0) invert(1);
+  transition: filter .3s;
+}
+nav.scrolled .nav-logo img { filter: brightness(0) invert(1); }
+.nav-logo:hover img { filter: brightness(0) invert(1) drop-shadow(0 0 6px rgba(201,168,76,.6)); }
+.nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+.nav-links a {
+  color: rgba(255,255,255,.82); text-decoration: none;
+  font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; transition: color .3s;
+}
+.nav-links a:hover { color: var(--dourado-claro); }
+.nav-cta {
+  background: var(--dourado) !important; color: var(--verde-escuro) !important;
+  padding: 9px 20px !important; border-radius: 2px; font-weight: 500 !important;
+}
+.nav-cta:hover { background: var(--dourado-claro) !important; }
+.nav-hamburger {
+  display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px;
+}
+.nav-hamburger span {
+  display: block; width: 24px; height: 2px; background: var(--branco);
+  transition: all .3s; border-radius: 2px;
+}
+.nav-mobile {
+  display: none; position: fixed; inset: 0; z-index: 199;
+  background: var(--verde-escuro); padding: 100px 32px 40px;
+  flex-direction: column; gap: 0;
+}
+.nav-mobile.open { display: flex; }
+.nav-mobile-logo {
+  position: absolute; top: 22px; left: 28px;
+}
+.nav-mobile-logo img {
+  height: 38px; width: auto;
+  filter: brightness(0) invert(1) opacity(.85);
+}
+.nav-mobile.open { display: flex; }
+.nav-mobile a {
+  color: rgba(255,255,255,.85); text-decoration: none; font-size: 1.6rem;
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.08);
+  transition: color .3s;
+}
+.nav-mobile a:hover { color: var(--dourado-claro); }
+.nav-mobile-close {
+  position: absolute; top: 24px; right: 28px;
+  color: rgba(255,255,255,.6); font-size: 2rem; cursor: pointer;
+  background: none; border: none; font-family: inherit;
+}
+
+/* ─── HERO ─── */
+.hero {
+  position: relative; height: 100vh; min-height: 600px;
+  display: flex; align-items: center; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('fazenda-por-do-sol.jpeg');
+  background-size: cover; background-position: center 42%;
+  transform: scale(1.06);
+  animation: heroZoom 14s ease-out forwards;
+}
+@keyframes heroZoom { from{transform:scale(1.06)} to{transform:scale(1)} }
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    130deg,
+    rgba(20,46,32,.88) 0%,
+    rgba(20,46,32,.56) 50%,
+    rgba(0,0,0,.22) 100%
+  );
+}
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 720px; padding: 0 60px;
+  animation: fadeUp .9s ease .3s both;
+}
+@keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(201,168,76,.16); border: 1px solid rgba(201,168,76,.45);
+  color: var(--dourado-claro); padding: 6px 16px;
+  font-size: .7rem; letter-spacing: .18em; text-transform: uppercase;
+  margin-bottom: 24px; border-radius: 2px;
+}
+.hero-badge::before { content: '✦'; font-size: .55rem; }
+.badge-break { white-space: nowrap; }
+.hero h1 {
+  font-size: clamp(2.8rem,6.5vw,5.2rem); font-weight: 300;
+  color: var(--branco); line-height: 1.06; margin-bottom: 18px;
+}
+.hero h1 em { font-style: italic; color: var(--dourado-claro); }
+.hero-sub {
+  font-size: clamp(.95rem,1.8vw,1.15rem); color: rgba(255,255,255,.8);
+  font-weight: 300; line-height: 1.75; max-width: 500px;
+  margin-bottom: 40px; letter-spacing: .02em;
+}
+.hero-btns { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--dourado); color: var(--verde-escuro);
+  padding: 15px 32px; font-family: 'Jost',sans-serif;
+  font-size: .82rem; font-weight: 500; letter-spacing: .11em;
+  text-transform: uppercase; text-decoration: none; border-radius: 2px;
+  transition: all .3s; border: 2px solid var(--dourado);
+}
+.btn-primary:hover {
+  background: transparent; color: var(--dourado-claro);
+  border-color: var(--dourado-claro); transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(201,168,76,.3);
+}
+.btn-primary svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: rgba(255,255,255,.68); font-size: .8rem; letter-spacing: .1em;
+  text-transform: uppercase; text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,.28); padding-bottom: 2px;
+  transition: color .3s, border-color .3s;
+}
+.btn-ghost:hover { color: var(--dourado-claro); border-color: var(--dourado-claro); }
+.hero-scroll {
+  position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+  z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 8px;
+  color: rgba(255,255,255,.45); font-size: .65rem; letter-spacing: .2em; text-transform: uppercase;
+}
+.hero-scroll-line {
+  width: 1px; height: 44px;
+  background: linear-gradient(to bottom, rgba(255,255,255,.45), transparent);
+  animation: scrollPulse 2.2s ease-in-out infinite;
+}
+@keyframes scrollPulse { 0%,100%{opacity:.4} 50%{opacity:1} }
+
+/* ─── SELOS BAR ─── */
+.selos-bar {
+  background: var(--verde-escuro);
+  padding: 18px 40px;
+  display: flex; align-items: center; justify-content: center;
+  gap: 48px; flex-wrap: wrap;
+}
+.selo-item {
+  display: flex; align-items: center; gap: 8px;
+  color: rgba(255,255,255,.68); font-size: .74rem;
+  letter-spacing: .12em; text-transform: uppercase; white-space: nowrap;
+}
+.selo-item strong { color: var(--dourado-claro); font-weight: 500; }
+.selo-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--dourado); opacity: .4; flex-shrink: 0; }
+
+/* ─── SEÇÃO BASE ─── */
+section { padding: 96px 48px; }
+.container { max-width: 1160px; margin: 0 auto; }
+.section-label {
+  font-size: .7rem; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--dourado-escuro); margin-bottom: 14px;
+  display: flex; align-items: center; gap: 12px;
+}
+.section-label::before { content: ''; display: block; width: 28px; height: 1px; background: var(--dourado); }
+.section-title {
+  font-size: clamp(2rem,4vw,3.3rem); font-weight: 400;
+  line-height: 1.14; color: var(--verde-escuro); margin-bottom: 22px;
+}
+.section-title em { font-style: italic; color: var(--dourado-escuro); }
+
+/* ─── INTRO LATICÍNIO ─── */
+.intro-section { background: var(--branco); }
+.intro-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 72px; align-items: center;
+}
+.intro-img-stack { position: relative; }
+.intro-img-stack::before {
+  content: ''; position: absolute;
+  top: -18px; left: -18px; right: 18px; bottom: 18px;
+  border: 1px solid rgba(201,168,76,.3); border-radius: 2px;
+}
+.intro-main-img {
+  position: relative; z-index: 1; width: 100%;
+  aspect-ratio: 4/5; object-fit: cover; object-position: center;
+  border-radius: 2px; box-shadow: 0 24px 70px rgba(0,0,0,.13);
+}
+.intro-badge-img {
+  position: absolute; bottom: -14px; right: -14px; z-index: 2;
+  background: var(--verde-escuro); color: var(--dourado-claro);
+  font-family: 'Cormorant Garamond',serif; font-size: .95rem; font-style: italic;
+  padding: 11px 22px; box-shadow: 0 8px 22px rgba(0,0,0,.2);
+}
+.intro-text p {
+  font-size: 1.03rem; line-height: 1.9; color: #4a3b2a;
+  margin-bottom: 22px; font-weight: 300;
+}
+.intro-numeros {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1px; background: var(--creme-escuro); margin-top: 36px;
+}
+.numero-item {
+  background: var(--branco); padding: 22px 16px; text-align: center;
+}
+.numero-valor {
+  font-family: 'Cormorant Garamond',serif; font-size: 2.4rem;
+  font-weight: 600; color: var(--verde-escuro); line-height: 1;
+}
+.numero-valor span { color: var(--dourado); }
+.numero-label {
+  font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+  color: #7a6550; margin-top: 4px;
+}
+
+/* ─── DESTAQUE DOCE ─── */
+.doce-section {
+  background: var(--creme);
+  position: relative; overflow: hidden;
+}
+.doce-section::before {
+  content: 'DOCE'; position: absolute;
+  bottom: -20px; right: -20px;
+  font-family: 'Cormorant Garamond',serif; font-size: 18rem;
+  font-weight: 700; color: rgba(201,168,76,.05);
+  line-height: 1; pointer-events: none; white-space: nowrap;
+}
+.doce-grid {
+  display: grid; grid-template-columns: 7fr 5fr;
+  gap: 72px; align-items: center;
+}
+.doce-text p {
+  font-size: 1.03rem; line-height: 1.9; color: #4a3b2a;
+  margin-bottom: 20px; font-weight: 300;
+}
+.doce-atributos {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 12px; margin: 28px 0 36px;
+}
+.atributo {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 14px 16px; background: var(--branco);
+  border-left: 3px solid var(--dourado); border-radius: 0 4px 4px 0;
+}
+.atributo-icon { flex-shrink: 0; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; }
+.atributo-icon svg { width: 26px; height: 26px; }
+.atributo-label { font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; color: var(--dourado-escuro); margin-bottom: 2px; font-weight: 500; }
+.atributo-desc { font-size: .85rem; color: #5a4a35; line-height: 1.5; }
+.doce-img-wrap { position: relative; }
+.doce-img-wrap::after {
+  content: ''; position: absolute;
+  bottom: -16px; left: -16px; right: 16px; top: 16px;
+  border: 1px solid rgba(201,168,76,.25); border-radius: 2px; z-index: 0;
+}
+.doce-img {
+  position: relative; z-index: 1; width: 100%;
+  aspect-ratio: 3/4; object-fit: cover; object-position: center 20%;
+  border-radius: 2px; box-shadow: 0 28px 72px rgba(0,0,0,.14);
+}
+.doce-premio-badge {
+  position: absolute; top: 24px; left: -20px; z-index: 3;
+  background: var(--dourado); color: var(--verde-escuro);
+  padding: 10px 18px; border-radius: 2px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.22);
+  text-align: center; max-width: 180px;
+}
+.doce-premio-badge strong {
+  display: block; font-family: 'Cormorant Garamond',serif;
+  font-size: 1rem; font-weight: 700; line-height: 1.2;
+}
+.doce-premio-badge small {
+  display: block; font-size: .65rem; letter-spacing: .1em;
+  text-transform: uppercase; margin-top: 2px; opacity: .8;
+}
+
+/* ─── DIFERENCIAIS ─── */
+.diferenciais-section {
+  background: var(--verde-escuro); position: relative; overflow: hidden;
+}
+.diferenciais-section::before {
+  content: 'LA SERRANA'; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  font-family: 'Cormorant Garamond',serif;
+  font-size: clamp(4rem, 15vw, 13rem);
+  font-weight: 700; color: rgba(255,255,255,.025);
+  white-space: nowrap; pointer-events: none;
+  letter-spacing: .05em;
+}
+.diferenciais-section .section-title { color: var(--branco); }
+.diferenciais-section .section-label { color: var(--dourado); }
+.diferenciais-section .section-label::before { background: var(--dourado); }
+.diferenciais-header {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 56px; align-items: end; margin-bottom: 64px;
+}
+.diferenciais-intro { color: rgba(255,255,255,.62); font-size: 1rem; line-height: 1.8; font-weight: 300; }
+.diferenciais-grid {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 1px; background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.07);
+}
+.diferencial-card {
+  padding: 38px 24px; background: rgba(255,255,255,.03);
+  transition: background .3s; text-align: center;
+}
+.diferencial-card:hover { background: rgba(201,168,76,.09); }
+.diferencial-icon { margin-bottom: 18px; display: flex; justify-content: center; align-items: center; height: 52px; }
+.diferencial-icon svg { width: 44px; height: 44px; }
+.diferencial-title { font-family: 'Cormorant Garamond',serif; font-size: 1.2rem; font-weight: 500; color: var(--dourado-claro); margin-bottom: 10px; }
+.diferencial-desc { font-size: .83rem; color: rgba(255,255,255,.52); line-height: 1.7; }
+
+/* ─── PRODUTOS ─── */
+.produtos-section { background: var(--branco); }
+.produtos-intro {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 48px; align-items: end; margin-bottom: 56px;
+}
+.produtos-intro-text { font-size: 1.03rem; line-height: 1.9; color: #4a3b2a; font-weight: 300; }
+.produtos-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 2px; background: var(--creme-escuro);
+}
+.produto-card { background: var(--branco); overflow: hidden; transition: transform .3s, box-shadow .3s; }
+.produto-card:hover { transform: translateY(-4px); box-shadow: 0 18px 48px rgba(0,0,0,.1); position: relative; z-index: 1; }
+.produto-card-img-wrap { overflow: hidden; height: 280px; }
+.produto-card-img { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform .5s; }
+.produto-card:hover .produto-card-img { transform: scale(1.05); }
+.produto-card-body { padding: 26px; }
+.produto-card-label { font-size: .67rem; letter-spacing: .18em; text-transform: uppercase; color: var(--dourado-escuro); margin-bottom: 7px; font-weight: 500; }
+.produto-card-title { font-family: 'Cormorant Garamond',serif; font-size: 1.45rem; color: var(--verde-escuro); margin-bottom: 8px; font-weight: 500; }
+.produto-card-desc { font-size: .86rem; color: #6a5840; line-height: 1.7; }
+.produto-card-destaque {
+  grid-column: span 1;
+  border: 2px solid var(--dourado);
+  position: relative;
+}
+.produto-card-destaque::before {
+  content: '★ DESTAQUE'; position: absolute; top: 12px; right: 12px;
+  background: var(--dourado); color: var(--verde-escuro);
+  font-size: .6rem; letter-spacing: .15em; font-weight: 600;
+  padding: 4px 10px; border-radius: 2px; z-index: 2;
+}
+
+/* ─── HISTÓRIA ─── */
+.historia-section { background: var(--creme); }
+.historia-grid {
+  display: grid; grid-template-columns: 5fr 7fr;
+  gap: 72px; align-items: center;
+}
+.historia-imgs { position: relative; height: 560px; }
+.historia-img-1 {
+  position: absolute; top: 0; left: 0;
+  width: 70%; height: 72%;
+  object-fit: cover; object-position: center;
+  border-radius: 2px; box-shadow: 0 18px 52px rgba(0,0,0,.14);
+}
+.historia-img-2 {
+  position: absolute; bottom: 0; right: 0;
+  width: 62%; height: 58%;
+  object-fit: cover; object-position: center 30%;
+  border-radius: 2px; box-shadow: 0 18px 52px rgba(0,0,0,.14);
+  border: 5px solid var(--branco);
+}
+.historia-year {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  background: var(--dourado); color: var(--verde-escuro);
+  font-family: 'Cormorant Garamond',serif; font-size: 1.7rem; font-weight: 700;
+  padding: 16px 20px; text-align: center; line-height: 1.1;
+  box-shadow: 0 8px 26px rgba(0,0,0,.2); z-index: 2;
+}
+.historia-year small {
+  display: block; font-size: .6rem; letter-spacing: .15em; text-transform: uppercase;
+  font-family: 'Jost',sans-serif; font-weight: 500; margin-bottom: 3px;
+}
+.historia-text p { font-size: 1.03rem; line-height: 1.9; color: #4a3b2a; margin-bottom: 20px; font-weight: 300; }
+.historia-quote {
+  margin: 30px 0; padding: 24px 32px;
+  border-left: 3px solid var(--dourado); background: var(--branco);
+}
+.historia-quote p {
+  font-family: 'Cormorant Garamond',serif; font-size: 1.45rem;
+  font-style: italic; color: var(--verde-escuro); line-height: 1.5; margin: 0 !important;
+}
+.historia-quote cite {
+  display: block; margin-top: 10px; font-size: .75rem; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--dourado-escuro); font-style: normal;
+}
+
+/* ─── PREMIAÇÕES ─── */
+.premios-section { background: var(--verde-escuro); }
+.premios-section .section-title { color: var(--branco); }
+.premios-section .section-label { color: var(--dourado); }
+.premios-section .section-label::before { background: var(--dourado); }
+.premios-layout {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 56px; align-items: start; margin-top: 52px;
+}
+.premios-lista { display: flex; flex-direction: column; gap: 2px; }
+.premio-item {
+  display: flex; align-items: flex-start; gap: 20px;
+  padding: 28px 24px; background: rgba(255,255,255,.04);
+  border-left: 2px solid rgba(201,168,76,.25);
+  transition: background .3s, border-color .3s;
+}
+.premio-item:hover { background: rgba(201,168,76,.08); border-color: var(--dourado); }
+.premio-item.destaque-mundial {
+  background: rgba(201,168,76,.12);
+  border-left: 3px solid var(--dourado);
+}
+.premio-medal { flex-shrink: 0; display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; }
+.premio-medal svg { width: 44px; height: 44px; }
+.premio-info { flex: 1; }
+.premio-title {
+  font-family: 'Cormorant Garamond',serif; font-size: 1.35rem;
+  font-weight: 600; color: var(--branco); margin-bottom: 4px;
+}
+.premio-item.destaque-mundial .premio-title { color: var(--dourado-claro); }
+.premio-event { font-size: .83rem; color: rgba(255,255,255,.55); line-height: 1.6; margin-bottom: 6px; }
+.premio-year {
+  display: inline-block; background: rgba(201,168,76,.15); color: var(--dourado);
+  font-size: .68rem; letter-spacing: .14em; text-transform: uppercase;
+  padding: 3px 10px; border-radius: 2px; font-weight: 500;
+}
+.premios-img-col { display: flex; flex-direction: column; gap: 14px; }
+.premios-img-wrap {
+  position: relative; overflow: hidden; border-radius: 2px; flex: 1;
+}
+.premios-img {
+  width: 100%; aspect-ratio: 4/3; object-fit: cover; object-position: center 30%;
+  transition: transform .6s;
+}
+.premios-img-wrap:hover .premios-img { transform: scale(1.04); }
+.premios-img-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(26,58,42,.82) 0%, transparent 55%);
+  display: flex; align-items: flex-end; padding: 28px;
+}
+.premios-img-text {
+  font-family: 'Cormorant Garamond',serif; font-size: 1.5rem;
+  font-style: italic; color: var(--branco); line-height: 1.3;
+}
+.premios-selos {
+  display: flex; gap: 8px; flex-wrap: wrap;
+}
+.premios-selo {
+  background: rgba(255,255,255,.05); border: 1px solid rgba(201,168,76,.25);
+  color: rgba(255,255,255,.6); font-size: .7rem; letter-spacing: .12em;
+  text-transform: uppercase; padding: 7px 14px; border-radius: 2px;
+}
+
+/* ─── EXPERIÊNCIA ─── */
+.experiencia-section {
+  background: var(--creme-escuro); position: relative; overflow: hidden;
+}
+.experiencia-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 72px; align-items: center;
+}
+.experiencia-img {
+  width: 100%; aspect-ratio: 1/1; object-fit: cover; object-position: center 20%;
+  border-radius: 2px; box-shadow: 0 22px 60px rgba(0,0,0,.12);
+}
+.experiencia-text p { font-size: 1.03rem; line-height: 1.9; color: #4a3b2a; margin-bottom: 24px; font-weight: 300; }
+.sugestoes { display: flex; flex-direction: column; gap: 12px; margin-bottom: 36px; }
+.sugestao {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 18px; background: var(--branco);
+  border: 1px solid rgba(201,168,76,.2); border-radius: 2px;
+}
+.sugestao-icon { width: 32px; height: 32px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+.sugestao-icon svg { width: 26px; height: 26px; }
+.sugestao-text { font-size: .92rem; color: #4a3b2a; }
+.sugestao-text strong { display: block; color: var(--verde-escuro); font-family: 'Cormorant Garamond',serif; font-size: 1.05rem; font-style: italic; margin-bottom: 1px; }
+
+/* ─── DEPOIMENTO ─── */
+.depoimento-section {
+  background: var(--verde-escuro); padding: 96px 48px;
+  position: relative; overflow: hidden;
+}
+.depoimento-section::before {
+  content: '"'; position: absolute; top: -60px; left: 20px;
+  font-family: 'Cormorant Garamond',serif; font-size: 28rem;
+  color: rgba(201,168,76,.05); line-height: 1; pointer-events: none;
+}
+.depoimento-inner { max-width: 820px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+.depoimento-texto {
+  font-family: 'Cormorant Garamond',serif;
+  font-size: clamp(1.4rem,2.8vw,2rem); font-style: italic;
+  color: var(--branco); line-height: 1.65; margin-bottom: 36px; font-weight: 300;
+}
+.depoimento-autor { display: flex; align-items: center; justify-content: center; gap: 14px; }
+.depoimento-line { width: 36px; height: 1px; background: var(--dourado); }
+.depoimento-nome { font-family: 'Cormorant Garamond',serif; font-size: 1.05rem; font-weight: 600; color: var(--branco); }
+.depoimento-cargo { font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--dourado); }
+
+/* ─── CTA FINAL ─── */
+.cta-section {
+  background: var(--creme); text-align: center;
+  position: relative; overflow: hidden; padding: 110px 48px;
+}
+.cta-section::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: url('ovelhas-campo.jpeg');
+  background-size: cover; background-position: center 40%;
+  opacity: .06;
+}
+.cta-inner { position: relative; z-index: 1; max-width: 660px; margin: 0 auto; }
+.cta-ornament { color: var(--dourado); font-size: 1.1rem; letter-spacing: .3em; margin-bottom: 24px; display: block; opacity: .55; }
+.cta-title { font-family: 'Cormorant Garamond',serif; font-size: clamp(2.2rem,4.5vw,3.8rem); font-weight: 300; color: var(--verde-escuro); line-height: 1.15; margin-bottom: 18px; }
+.cta-title em { font-style: italic; color: var(--dourado-escuro); }
+.cta-sub { color: #6a5840; font-size: .98rem; line-height: 1.8; margin-bottom: 44px; font-weight: 300; }
+.btn-cta-final {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: var(--verde-escuro); color: var(--branco);
+  padding: 18px 44px; font-family: 'Jost',sans-serif;
+  font-size: .88rem; font-weight: 500; letter-spacing: .11em;
+  text-transform: uppercase; text-decoration: none; border-radius: 2px;
+  transition: all .3s; border: 2px solid var(--verde-escuro);
+}
+.btn-cta-final:hover { background: var(--dourado); border-color: var(--dourado); color: var(--verde-escuro); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,.15); }
+.btn-cta-final svg { width: 18px; height: 18px; fill: currentColor; }
+
+/* ─── FOOTER ─── */
+footer { background: #0f1a12; padding: 56px 48px 28px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 52px; max-width: 1160px; margin: 0 auto 44px; }
+.footer-brand { margin-bottom: 4px; line-height: 1; }
+.footer-brand img { height: 54px; width: auto; filter: brightness(0) invert(1) opacity(.88); }
+.footer-tagline { font-size: .83rem; font-style: italic; color: rgba(255,255,255,.35); margin-bottom: 22px; font-family: 'Cormorant Garamond',serif; }
+.footer-contact a { display: flex; align-items: center; gap: 9px; color: rgba(255,255,255,.55); text-decoration: none; font-size: .85rem; margin-bottom: 9px; transition: color .3s; }
+.footer-contact a:hover { color: var(--dourado-claro); }
+.footer-heading { font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; color: var(--dourado); margin-bottom: 18px; font-weight: 500; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { color: rgba(255,255,255,.48); text-decoration: none; font-size: .85rem; transition: color .3s; }
+.footer-links a:hover { color: var(--dourado-claro); }
+.footer-bottom {
+  max-width: 1160px; margin: 0 auto; padding-top: 22px;
+  border-top: 1px solid rgba(255,255,255,.06);
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+  font-size: .75rem; color: rgba(255,255,255,.35);
+}
+.footer-selos { display: flex; gap: 8px; flex-wrap: wrap; }
+.footer-selo { background: rgba(255,255,255,.05); border: 1px solid rgba(201,168,76,.18); color: var(--dourado); font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; }
+
+/* ─── WPP FLOAT ─── */
+.wpp-float {
+  position: fixed; bottom: 28px; right: 28px; z-index: 999;
+  width: 58px; height: 58px; background: #25D366; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 28px rgba(37,211,102,.4); text-decoration: none;
+  transition: transform .3s, box-shadow .3s;
+  animation: wppPulse 3s ease-in-out infinite;
+}
+.wpp-float:hover { transform: scale(1.1); box-shadow: 0 12px 38px rgba(37,211,102,.55); }
+.wpp-float svg { width: 28px; height: 28px; fill: white; }
+@keyframes wppPulse { 0%,100%{box-shadow:0 8px 28px rgba(37,211,102,.4)} 50%{box-shadow:0 8px 46px rgba(37,211,102,.62)} }
+.wpp-tooltip {
+  position: absolute; right: 68px; white-space: nowrap;
+  background: var(--verde-escuro); color: var(--branco);
+  font-size: .75rem; padding: 7px 13px; border-radius: 4px;
+  opacity: 0; pointer-events: none; transition: opacity .3s;
+}
+.wpp-float:hover .wpp-tooltip { opacity: 1; }
+
+/* ─── POPUP PREMIAÇÃO ─── */
+.popup-overlay {
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(15,26,18,.7); backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+  opacity: 0; pointer-events: none;
+  transition: opacity .4s ease;
+}
+.popup-overlay.visible { opacity: 1; pointer-events: all; }
+.popup-box {
+  background: var(--verde-escuro);
+  border: 1px solid rgba(201,168,76,.35);
+  max-width: 480px; width: 100%;
+  padding: 48px 44px;
+  border-radius: 4px;
+  position: relative;
+  text-align: center;
+  transform: translateY(24px) scale(.97);
+  transition: transform .4s ease;
+  box-shadow: 0 32px 80px rgba(0,0,0,.5);
+}
+.popup-overlay.visible .popup-box { transform: translateY(0) scale(1); }
+.popup-close {
+  position: absolute; top: 16px; right: 18px;
+  background: none; border: none; cursor: pointer;
+  color: rgba(255,255,255,.4); font-size: 1.4rem; line-height: 1;
+  transition: color .2s;
+}
+.popup-close:hover { color: var(--dourado-claro); }
+.popup-medal {
+  font-size: 3.2rem; margin-bottom: 16px; display: block;
+  animation: medalBounce 1s ease .6s both;
+}
+@keyframes medalBounce {
+  0%   { transform: scale(0) rotate(-15deg); opacity: 0; }
+  60%  { transform: scale(1.15) rotate(4deg); opacity: 1; }
+  80%  { transform: scale(.95) rotate(-2deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+.popup-kicker {
+  font-size: .7rem; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--dourado); margin-bottom: 10px;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.popup-kicker::before, .popup-kicker::after {
+  content: ''; display: block; width: 24px; height: 1px; background: var(--dourado); opacity: .5;
+}
+.popup-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.7rem, 5vw, 2.4rem); font-weight: 400;
+  color: var(--branco); line-height: 1.2; margin-bottom: 14px;
+}
+.popup-title em { font-style: italic; color: var(--dourado-claro); }
+.popup-desc {
+  font-size: .88rem; color: rgba(255,255,255,.6);
+  line-height: 1.75; margin-bottom: 28px; font-weight: 300;
+}
+.popup-desc strong { color: var(--dourado-claro); font-weight: 500; }
+.popup-cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--dourado); color: var(--verde-escuro);
+  padding: 13px 28px; font-family: 'Jost', sans-serif;
+  font-size: .8rem; font-weight: 500; letter-spacing: .1em;
+  text-transform: uppercase; text-decoration: none; border-radius: 2px;
+  transition: all .3s;
+}
+.popup-cta:hover { background: var(--dourado-claro); transform: translateY(-2px); }
+.popup-cta svg { width: 16px; height: 16px; fill: currentColor; }
+.popup-skip {
+  display: block; margin-top: 14px; font-size: .75rem;
+  color: rgba(255,255,255,.28); cursor: pointer; background: none; border: none;
+  transition: color .2s; font-family: 'Jost', sans-serif;
+}
+.popup-skip:hover { color: rgba(255,255,255,.55); }
+
+/* ─── REVEAL ─── */
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.d1{transition-delay:.1s} .d2{transition-delay:.2s} .d3{transition-delay:.3s} .d4{transition-delay:.4s}
+
+/* ─── RESPONSIVO ─── */
+@media (max-width: 1024px) {
+  nav { padding: 16px 28px; }
+  section { padding: 80px 28px; }
+  .hero-content { padding: 0 28px; }
+  .intro-grid, .doce-grid, .historia-grid,
+  .experiencia-grid, .premios-layout { grid-template-columns: 1fr; gap: 44px; }
+  .diferenciais-header { grid-template-columns: 1fr; gap: 20px; }
+  .diferenciais-grid { grid-template-columns: repeat(2,1fr); }
+  .produtos-intro { grid-template-columns: 1fr; gap: 24px; }
+  .produtos-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+  .historia-imgs { height: 420px; }
+  .doce-grid { grid-template-columns: 1fr; }
+  .doce-grid .doce-text { order: 2; }
+  .doce-grid .doce-img-wrap { order: 1; }
+  .doce-img { aspect-ratio: 4/3; object-position: center 25%; }
+  .doce-premio-badge { top: 16px; left: 16px; }
+  .intro-numeros { grid-template-columns: repeat(3,1fr); }
+  .premios-layout { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .selos-bar { gap: 18px; padding: 16px 20px; }
+}
+@media (max-width: 640px) {
+  section { padding: 64px 20px; }
+  nav { padding: 14px 20px; }
+  .hero-content { padding: 0 20px; }
+  .hero h1 { font-size: clamp(2.2rem,8vw,3rem); }
+  .hero-sub { font-size: .92rem; }
+  .btn-ghost { display: none; }
+  .badge-break { display: block; white-space: normal; }
+  .atributos, .doce-atributos { grid-template-columns: 1fr; }
+  .diferenciais-grid { grid-template-columns: 1fr; }
+  .produtos-grid { grid-template-columns: 1fr; }
+  .doce-img { aspect-ratio: 4/3; object-position: center 20%; }
+  .historia-imgs { height: 300px; }
+  .historia-year { font-size: 1.3rem; padding: 12px 16px; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .footer-selos { justify-content: center; }
+  .intro-numeros { grid-template-columns: 1fr; }
+  .premios-img { aspect-ratio: 16/9; }
+  .experiencia-grid { grid-template-columns: 1fr; }
+  .experiencia-img { aspect-ratio: 4/3; }
+  .cta-section { padding: 72px 20px; }
+  .depoimento-section { padding: 72px 20px; }
+  .wpp-float { bottom: 20px; right: 20px; width: 52px; height: 52px; }
+  .selos-bar { gap: 10px; }
+  .selo-dot { display: none; }
+  .popup-box { padding: 36px 24px; }
+}
+
+/* ─── POPUP PREMIAÇÃO ─── */
+.popup-overlay {
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(15,26,18,.75); backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+  opacity: 0; pointer-events: none;
+  transition: opacity .4s ease;
+}
+.popup-overlay.visible { opacity: 1; pointer-events: all; }
+.popup-box {
+  background: var(--verde-escuro);
+  border: 1px solid rgba(201,168,76,.4);
+  max-width: 460px; width: 100%;
+  padding: 48px 44px; border-radius: 3px;
+  position: relative; text-align: center;
+  transform: translateY(28px) scale(.97);
+  transition: transform .45s cubic-bezier(.22,1,.36,1);
+  box-shadow: 0 40px 100px rgba(0,0,0,.55);
+}
+.popup-overlay.visible .popup-box { transform: translateY(0) scale(1); }
+.popup-close {
+  position: absolute; top: 14px; right: 18px;
+  background: none; border: none; cursor: pointer;
+  color: rgba(255,255,255,.35); font-size: 1.5rem; line-height: 1;
+  transition: color .2s; font-family: inherit;
+}
+.popup-close:hover { color: var(--dourado-claro); }
+.popup-medal {
+  font-size: 3.4rem; margin-bottom: 14px; display: block;
+  animation: medalBounce 1s ease .5s both;
+}
+@keyframes medalBounce {
+  0%   { transform: scale(0) rotate(-20deg); opacity: 0; }
+  60%  { transform: scale(1.18) rotate(5deg); opacity: 1; }
+  80%  { transform: scale(.94) rotate(-2deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+.popup-kicker {
+  font-size: .68rem; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--dourado); margin-bottom: 12px;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+}
+.popup-kicker::before, .popup-kicker::after {
+  content: ''; display: block; width: 22px; height: 1px;
+  background: var(--dourado); opacity: .5;
+}
+.popup-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.65rem, 5vw, 2.3rem); font-weight: 400;
+  color: var(--branco); line-height: 1.2; margin-bottom: 14px;
+}
+.popup-title em { font-style: italic; color: var(--dourado-claro); }
+.popup-desc {
+  font-size: .87rem; color: rgba(255,255,255,.58);
+  line-height: 1.8; margin-bottom: 28px; font-weight: 300;
+}
+.popup-desc strong { color: var(--dourado-claro); font-weight: 500; }
+.popup-cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--dourado); color: var(--verde-escuro);
+  padding: 13px 28px; font-family: 'Jost', sans-serif;
+  font-size: .8rem; font-weight: 500; letter-spacing: .1em;
+  text-transform: uppercase; text-decoration: none; border-radius: 2px;
+  transition: all .3s;
+}
+.popup-cta:hover { background: var(--dourado-claro); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.25); }
+.popup-cta svg { width: 16px; height: 16px; fill: currentColor; }
+.popup-skip {
+  display: block; margin-top: 14px; font-size: .74rem;
+  color: rgba(255,255,255,.25); cursor: pointer;
+  background: none; border: none; font-family: 'Jost', sans-serif;
+  transition: color .2s;
+}
+.popup-skip:hover { color: rgba(255,255,255,.5); }
+
+/* ─── CONTADOR ANIMADO ─── */
+.numero-valor.counting { color: var(--dourado-claro); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <img src="logo-la-serrana.png" alt="La Serrana Laticínio" height="44">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#laticinios">O Laticínio</a></li>
+    <li><a href="#doce">Doce de Leite</a></li>
+    <li><a href="#produtos">Produtos</a></li>
+    <li><a href="#premios">Prêmios</a></li>
+    <li><a href="#historia">História</a></li>
+    <li><a href="https://wa.me/5551981962280?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20La%20Serrana" target="_blank" class="nav-cta">WhatsApp</a></li>
+  </ul>
+  <div class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<nav class="nav-mobile" id="navMobile">
+  <div class="nav-mobile-logo">
+    <img src="logo-la-serrana.png" alt="La Serrana" height="38">
+  </div>
+  <button class="nav-mobile-close" id="navClose">✕</button>
+  <a href="#laticinios" class="nav-mob-link">O Laticínio</a>
+  <a href="#doce" class="nav-mob-link">Doce de Leite</a>
+  <a href="#produtos" class="nav-mob-link">Produtos</a>
+  <a href="#premios" class="nav-mob-link">Prêmios</a>
+  <a href="#historia" class="nav-mob-link">História</a>
+  <a href="https://wa.me/5551981962280?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20La%20Serrana" target="_blank" class="nav-mob-link" style="color:var(--dourado-claro);">WhatsApp ↗</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">La Serrana<span class="badge-break"> · Barros Cassal, RS</span></div>
+    <h1>Amor traduzido<br>em <em>sabor.</em></h1>
+    <p class="hero-sub">Queijos e Doce de Leite artesanal feito com 100% leite de ovelhas Lacaune, criadas em nossa propriedade na Serra Gaúcha.</p>
+    <div class="hero-btns">
+      <a href="https://wa.me/5551981962280?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20La%20Serrana" target="_blank" class="btn-primary">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.114.546 4.098 1.503 5.824L.057 24l6.347-1.432A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.884 9.884 0 01-5.031-1.378l-.361-.214-3.741.981.999-3.648-.235-.374A9.867 9.867 0 012.106 12C2.106 6.58 6.58 2.106 12 2.106S21.894 6.58 21.894 12 17.42 21.894 12 21.894z"/></svg>
+        Fale conosco
+      </a>
+      <a href="#laticinios" class="btn-ghost">Conheça o laticínio ↓</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><div class="hero-scroll-line"></div><span>Rolar</span></div>
+</section>
+
+<!-- SELOS BAR -->
+<div class="selos-bar">
+  <div class="selo-item"><strong>🥇 Super Ouro</strong> Mundial Queijo Brasil 2026</div>
+  <div class="selo-dot"></div>
+  <div class="selo-item"><strong>🥇 Super Ouro</strong> Concurso RS 2025</div>
+  <div class="selo-dot"></div>
+  <div class="selo-item"><strong>🥉 Bronze</strong> Prêmio Queijo Brasil 2025</div>
+  <div class="selo-dot"></div>
+  <div class="selo-item"><strong>✦ Selo Arte &nbsp;·&nbsp; Sabor Gaúcho</strong></div>
+  <div class="selo-dot"></div>
+  <div class="selo-item"><strong>100% Leite de Ovelha</strong> · Rastreável</div>
+</div>
+
+<!-- INTRO LATICÍNIO -->
+<section class="intro-section" id="laticinios">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-img-stack reveal">
+        <img src="ovelhas-serrana.jpeg" alt="Rebanho La Serrana" class="intro-main-img">
+        <div class="intro-badge-img">Da terra à mesa</div>
+      </div>
+      <div class="reveal d2">
+        <div class="section-label">O Laticínio</div>
+        <h2 class="section-title">Uma laticínio que nasce<br>do <em>rebanho próprio.</em></h2>
+        <p>O Laticínio La Serrana é um dos projetos mais singulares do cenário queijeiro gaúcho. Diferente da maioria, não compramos leite de terceiros, cada produto que fazemos começa na pastagem, com as nossas ovelhas da raça Lacaune pastando livremente na Serra.</p>
+        <p>Essa rastreabilidade completa, do pasto ao pote, garante uma qualidade de matéria-prima que simplesmente não é possível replicar em escala industrial. O leite de ovelha tem alto teor de gordura e proteínas, conferindo aos nossos produtos sabor, textura e complexidade únicos.</p>
+        <div class="intro-numeros">
+          <div class="numero-item">
+            <div class="numero-valor">100<span>%</span></div>
+            <div class="numero-label">Leite próprio de ovelha</div>
+          </div>
+          <div class="numero-item">
+            <div class="numero-valor">2018<span></span></div>
+            <div class="numero-label">Ano de fundação</div>
+          </div>
+          <div class="numero-item">
+            <div class="numero-valor">4<span>+</span></div>
+            <div class="numero-label">Prêmios conquistados</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESTAQUE DOCE DE LEITE -->
+<section class="doce-section" id="doce">
+  <div class="container">
+    <div class="doce-grid">
+      <div class="doce-text reveal">
+        <div class="section-label">Destaque da Casa</div>
+        <h2 class="section-title">O Doce de Leite<br>mais premiado <em>da Serra.</em></h2>
+        <p>O Doce de Leite La Serrana é a nossa estrela, e os juízes concordam. Com Super Ouro no 4º Mundial do Queijo do Brasil 2026, Super Ouro no Concurso Estadual RS e Bronze no Prêmio Queijo Brasil, este doce já provou que é genuinamente único.</p>
+        <p>Elaborado com leite 100% das nossas ovelhas Lacaune, produzido em pequenos lotes, com cozimento lento e artesanal. O resultado é uma textura cremosa, cor dourada e um sabor intenso que você não vai encontrar em nenhuma outra prateleira.</p>
+        <div class="doce-atributos">
+          <div class="atributo">
+            <span class="atributo-icon">
+              <svg viewBox="0 0 28 28" fill="none"><path d="M9 7h10l1.5 14a1 1 0 01-1 1H8.5a1 1 0 01-1-1L9 7z" stroke="#c9a84c" stroke-width="1.4" stroke-linejoin="round"/><path d="M7.5 7h13" stroke="#c9a84c" stroke-width="1.4" stroke-linecap="round"/><path d="M11 7V5.5C11 4.67 11.67 4 12.5 4h3C16.33 4 17 4.67 17 5.5V7" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round"/><path d="M10 12.5c1.3 1 2.7 1 4 0s2.7-1 4 0" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round"/><path d="M10.5 16.5c1 .8 2.3.8 3.5 0s2.5-.8 3.5 0" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round"/></svg>
+            </span>
+            <div><div class="atributo-label">Textura</div><div class="atributo-desc">Cremosa e aveludada</div></div>
+          </div>
+          <div class="atributo">
+            <span class="atributo-icon">
+              <svg viewBox="0 0 28 28" fill="none"><polygon points="14,4 22,10 19,22 9,22 6,10" stroke="#c9a84c" stroke-width="1.4" stroke-linejoin="round"/><polygon points="14,4 22,10 14,13 6,10" stroke="#c9a84c" stroke-width="1.1" stroke-linejoin="round" fill="rgba(201,168,76,0.08)"/><line x1="6" y1="10" x2="22" y2="10" stroke="#c9a84c" stroke-width="1.1"/><line x1="14" y1="13" x2="9" y2="22" stroke="#c9a84c" stroke-width="1" opacity="0.6"/><line x1="14" y1="13" x2="19" y2="22" stroke="#c9a84c" stroke-width="1" opacity="0.6"/></svg>
+            </span>
+            <div><div class="atributo-label">Coloração</div><div class="atributo-desc">Dourada e natural</div></div>
+          </div>
+          <div class="atributo">
+            <span class="atributo-icon">
+              <svg viewBox="0 0 28 28" fill="none"><ellipse cx="13" cy="13" rx="6" ry="5" stroke="#c9a84c" stroke-width="1.4"/><circle cx="7.5" cy="10.5" r="2.2" stroke="#c9a84c" stroke-width="1.2"/><circle cx="8" cy="8" r="1.8" stroke="#c9a84c" stroke-width="1.2"/><circle cx="11" cy="7" r="1.8" stroke="#c9a84c" stroke-width="1.2"/><circle cx="15" cy="7" r="1.8" stroke="#c9a84c" stroke-width="1.2"/><circle cx="18.5" cy="8.5" r="2" stroke="#c9a84c" stroke-width="1.2"/><ellipse cx="20" cy="13" rx="2.5" ry="2" stroke="#c9a84c" stroke-width="1.3"/><line x1="9" y1="18" x2="8.5" y2="23" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round"/><line x1="12" y1="18" x2="11.5" y2="23" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round"/><line x1="15" y1="18" x2="15.5" y2="23" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round"/><line x1="17.5" y1="17.5" x2="18" y2="23" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round"/></svg>
+            </span>
+            <div><div class="atributo-label">Origem</div><div class="atributo-desc">100% leite de ovelha Lacaune</div></div>
+          </div>
+          <div class="atributo">
+            <span class="atributo-icon">
+              <svg viewBox="0 0 28 28" fill="none"><path d="M9 4h10v9a5 5 0 01-10 0V4z" stroke="#c9a84c" stroke-width="1.4" stroke-linejoin="round"/><path d="M9 7H6a3 3 0 000 6h3" stroke="#c9a84c" stroke-width="1.3"/><path d="M19 7h3a3 3 0 010 6h-3" stroke="#c9a84c" stroke-width="1.3"/><line x1="14" y1="18" x2="14" y2="21" stroke="#c9a84c" stroke-width="1.4" stroke-linecap="round"/><path d="M10 21h8" stroke="#c9a84c" stroke-width="1.4" stroke-linecap="round"/><path d="M11.5 10.5l1.5 1 2.5-3" stroke="#e8c97a" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <div><div class="atributo-label">Premiado</div><div class="atributo-desc">Super Ouro Mundial 2026</div></div>
+          </div>
+        </div>
+        <a href="https://wa.me/5551981962280?text=Olá!%20Quero%20encomendar%20o%20Doce%20de%20Leite%20La%20Serrana!" target="_blank" class="btn-primary" style="background:var(--verde-escuro);border-color:var(--verde-escuro);color:var(--branco);">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.114.546 4.098 1.503 5.824L.057 24l6.347-1.432A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.884 9.884 0 01-5.031-1.378l-.361-.214-3.741.981.999-3.648-.235-.374A9.867 9.867 0 012.106 12C2.106 6.58 6.58 2.106 12 2.106S21.894 6.58 21.894 12 17.42 21.894 12 21.894z"/></svg>
+          Encomendar agora
+        </a>
+      </div>
+      <div class="doce-img-wrap reveal d2">
+        <div class="doce-premio-badge">
+          <strong>🥇 Super Ouro</strong>
+          <small>4º Mundial Queijo Brasil 2026</small>
+        </div>
+        <img src="doce-de-leite-pote.jpeg" alt="Doce de Leite La Serrana" class="doce-img">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section class="diferenciais-section">
+  <div class="container">
+    <div class="diferenciais-header">
+      <div>
+        <div class="section-label">Nosso diferencial</div>
+        <h2 class="section-title">O que nos torna<br><em>verdadeiramente únicos.</em></h2>
+      </div>
+      <p class="diferenciais-intro">Poucos laticínios no Brasil reúnem rebanho próprio, rastreabilidade total, produção artesanal e premiações internacionais. O La Serrana é um deles, e cada produto carrega essa história.</p>
+    </div>
+    <div class="diferenciais-grid">
+      <div class="diferencial-card reveal">
+        <div class="diferencial-icon">
+          <svg viewBox="0 0 48 48" fill="none"><ellipse cx="22" cy="22" rx="10" ry="9" stroke="#c9a84c" stroke-width="1.8"/><circle cx="13" cy="18" r="3.5" stroke="#c9a84c" stroke-width="1.5"/><circle cx="13.5" cy="13" r="3" stroke="#c9a84c" stroke-width="1.5"/><circle cx="19" cy="11" r="3" stroke="#c9a84c" stroke-width="1.5"/><circle cx="25" cy="11" r="3" stroke="#c9a84c" stroke-width="1.5"/><circle cx="30.5" cy="13.5" r="3.2" stroke="#c9a84c" stroke-width="1.5"/><ellipse cx="34" cy="22" rx="4" ry="3.2" stroke="#c9a84c" stroke-width="1.6"/><line x1="16" y1="31" x2="15" y2="40" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/><line x1="20" y1="31" x2="19.5" y2="40" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/><line x1="25" y1="31" x2="25.5" y2="40" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/><line x1="29" y1="30.5" x2="30" y2="40" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <div class="diferencial-title">Rebanho Próprio</div>
+        <p class="diferencial-desc">Ovelhas Lacaune criadas na propriedade. Conhecemos cada animal. Rastreabilidade do pasto ao produto final.</p>
+      </div>
+      <div class="diferencial-card reveal d1">
+        <div class="diferencial-icon">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M4 38L18 12l8 14 4-6 14 18H4z" stroke="#c9a84c" stroke-width="1.8" stroke-linejoin="round" fill="rgba(201,168,76,0.06)"/><path d="M18 12l-3 5h6l-3-5z" fill="rgba(201,168,76,0.18)" stroke="#e8c97a" stroke-width="1" stroke-linejoin="round"/><circle cx="37" cy="10" r="3.5" stroke="#c9a84c" stroke-width="1.4"/><line x1="37" y1="4" x2="37" y2="2.5" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round"/><line x1="43" y1="10" x2="44.5" y2="10" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round"/><line x1="29.5" y1="10" x2="31" y2="10" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round"/><line x1="41.2" y1="5.8" x2="42.3" y2="4.7" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="diferencial-title">Serra Gaúcha</div>
+        <p class="diferencial-desc">Barros Cassal, no coração da Serra. O terroir gaúcho imprime personalidade única em cada queijo e doce.</p>
+      </div>
+      <div class="diferencial-card reveal d2">
+        <div class="diferencial-icon">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M10 32h28l-2 6H12l-2-6z" stroke="#c9a84c" stroke-width="1.6" stroke-linejoin="round" fill="rgba(201,168,76,0.07)"/><path d="M12 32V24c0-1.1.9-2 2-2h20c1.1 0 2 .9 2 2v8" stroke="#c9a84c" stroke-width="1.6"/><line x1="8" y1="32" x2="40" y2="32" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/><line x1="6" y1="28" x2="10" y2="28" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/><line x1="38" y1="28" x2="42" y2="28" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/><path d="M24 22c0 0-5-4-3-10 0 0 2 3 3 3 0 0-1-5 4-8 0 0 0 5 2 6 0 0 1-2 0-4 0 0 4 3 3 8 0 0 1-1 1-3 0 0 2 3 0 7" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="diferencial-title">Produção Artesanal</div>
+        <p class="diferencial-desc">Pequenos lotes, cozimento lento e controlado. Sem atalhos industriais. Cada peça é feita com atenção e cuidado.</p>
+      </div>
+      <div class="diferencial-card reveal d3">
+        <div class="diferencial-icon">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M24 8 C24 8 12 22 12 30 a12 12 0 0 0 24 0 C36 22 24 8 24 8z" stroke="#c9a84c" stroke-width="1.7" stroke-linejoin="round" fill="rgba(201,168,76,0.07)"/><path d="M19 28 C19 28 18 24 21 21" stroke="#e8c97a" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/><path d="M24 25.5l1.2 2.5 2.7.4-2 1.9.5 2.7L24 31.8l-2.4 1.2.5-2.7-2-1.9 2.7-.4 1.2-2.5z" fill="rgba(201,168,76,0.3)" stroke="#c9a84c" stroke-width="0.9" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="diferencial-title">Sabor Incopiável</div>
+        <p class="diferencial-desc">O leite de ovelha tem perfil sensorial único, mais rico e complexo. Impossível de replicar com outro tipo de leite.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUTOS -->
+<section class="produtos-section" id="produtos">
+  <div class="container">
+    <div class="produtos-intro">
+      <div>
+        <div class="section-label">Nossa Linha</div>
+        <h2 class="section-title">Queijos e doce<br><em>de leite de ovelha.</em></h2>
+      </div>
+      <p class="produtos-intro-text">Cada produto La Serrana nasce do mesmo leite: rico, fresco e próprio. Dos queijos maturados ao doce premiado, a nossa linha é pequena, selecionada e feita com propósito.</p>
+    </div>
+    <div class="produtos-grid">
+      <div class="produto-card produto-card-destaque reveal">
+        <div class="produto-card-img-wrap">
+          <img src="doce-de-leite-pote.jpeg" alt="Doce de Leite La Serrana" class="produto-card-img">
+        </div>
+        <div class="produto-card-body">
+          <div class="produto-card-label">🥇 Super Ouro Mundial 2026</div>
+          <div class="produto-card-title">Doce de Leite Artesanal</div>
+          <p class="produto-card-desc">O mais premiado da nossa linha. Feito com leite 100% de ovelhas Lacaune, textura cremosa e cor dourada natural. 260g por pote.</p>
+        </div>
+      </div>
+      <div class="produto-card reveal d1">
+        <div class="produto-card-img-wrap">
+          <img src="queijo-alvorada.jpeg" alt="Queijo Alvorada" class="produto-card-img">
+        </div>
+        <div class="produto-card-body">
+          <div class="produto-card-label">Queijo Artesanal Maturado</div>
+          <div class="produto-card-title">Alvorada</div>
+          <p class="produto-card-desc">Queijo de leite de ovelha maturado com sabor delicado e textura firme. Cada peça respeita o tempo natural de maturação.</p>
+        </div>
+      </div>
+      <div class="produto-card reveal d2">
+        <div class="produto-card-img-wrap">
+          <img src="equipe-produtos.jpeg" alt="Queijo Sentinela" class="produto-card-img">
+        </div>
+        <div class="produto-card-body">
+          <div class="produto-card-label">Queijo Artesanal Maturado</div>
+          <div class="produto-card-title">Sentinela</div>
+          <p class="produto-card-desc">Personalidade marcante e aroma complexo. Produzido com dedicação artesanal que celebra o melhor do leite serrano.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HISTÓRIA -->
+<section class="historia-section" id="historia">
+  <div class="container">
+    <div class="historia-grid">
+      <div class="historia-imgs reveal">
+        <img src="rebanho-propriedade.jpeg" alt="Rebanho La Serrana" class="historia-img-1">
+        <img src="ovelha-menina.jpeg" alt="La Serrana" class="historia-img-2">
+        <div class="historia-year"><small>Desde</small>2018</div>
+      </div>
+      <div class="reveal d2">
+        <div class="section-label">Nossa História</div>
+        <h2 class="section-title">Um sonho que<br>virou <em>sabor.</em></h2>
+        <p class="historia-text" style="font-size:1.03rem;line-height:1.9;color:#4a3b2a;margin-bottom:20px;font-weight:300;">Nossa história começou com um desejo corajoso: sair da cidade e ir para o interior, buscar uma vida mais tranquila para criar os filhos. Fazer esse caminho inverso foi muito mais desafiador do que imaginávamos, mas a certeza do sonho sempre falou mais alto.</p>
+        <p class="historia-text" style="font-size:1.03rem;line-height:1.9;color:#4a3b2a;margin-bottom:20px;font-weight:300;">Em 2018 nasceu a Cabanha La Serrana, com o plantel de ovelhas Lacaune. Com o tempo, Denise usou sua formação em Nutrição para criar produtos com propósito, e nasceu o Laticínio La Serrana: queijos artesanais e o premiado doce de leite, feitos com o leite das nossas próprias ovelhas.</p>
+        <div class="historia-quote">
+          <p>"A certeza do sonho e a força de vontade em tornar tudo realidade é o que nos motiva até hoje."</p>
+          <cite>— Denise Niedermeyer, fundadora e nutricionista</cite>
+        </div>
+        <a href="https://www.instagram.com/laticiniolaserrana/" target="_blank" class="btn-primary" style="background:var(--verde-escuro);border-color:var(--verde-escuro);color:var(--branco);">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          Ver no Instagram
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PREMIAÇÕES -->
+<section class="premios-section" id="premios">
+  <div class="container">
+    <div class="section-label">Reconhecimento</div>
+    <h2 class="section-title">Premiados no RS,<br>no Brasil <em>e no Mundo.</em></h2>
+    <div class="premios-layout">
+      <div class="premios-lista">
+        <!-- MUNDIAL 2026 -->
+        <div class="premio-item destaque-mundial reveal">
+          <div class="premio-medal">
+            <svg viewBox="0 0 44 44" fill="none"><circle cx="22" cy="26" r="14" stroke="#c9a84c" stroke-width="1.8" fill="rgba(201,168,76,0.07)"/><circle cx="22" cy="26" r="10" stroke="#c9a84c" stroke-width="1" stroke-dasharray="2.2 2" opacity="0.4"/><path d="M22 18l1.8 3.8 4.2.6-3 2.9.7 4.2-3.7-2-3.7 2 .7-4.2-3-2.9 4.2-.6L22 18z" stroke="#c9a84c" stroke-width="1.4" stroke-linejoin="round" fill="rgba(201,168,76,0.22)"/><path d="M15 10L18 18" stroke="#c9a84c" stroke-width="2.2" stroke-linecap="round"/><path d="M29 10L26 18" stroke="#c9a84c" stroke-width="2.2" stroke-linecap="round"/><path d="M12 5 L18 14 L15 5z" stroke="#c9a84c" stroke-width="1.3" stroke-linejoin="round" fill="rgba(201,168,76,0.15)"/><path d="M32 5 L26 14 L29 5z" stroke="#c9a84c" stroke-width="1.3" stroke-linejoin="round" fill="rgba(201,168,76,0.15)"/><line x1="22" y1="13" x2="22" y2="11" stroke="#e8c97a" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/></svg>
+          </div>
+          <div class="premio-info">
+            <div class="premio-title">🌟 Super Ouro: Mundial</div>
+            <p class="premio-event">4º Mundial do Queijo do Brasil, o mais importante concurso da América Latina</p>
+            <span class="premio-year">2026 · Doce de Leite</span>
+          </div>
+        </div>
+        <div class="premio-item reveal">
+          <div class="premio-medal">
+            <svg viewBox="0 0 44 44" fill="none"><circle cx="22" cy="28" r="12" stroke="#c9a84c" stroke-width="1.7" fill="rgba(201,168,76,0.06)"/><circle cx="22" cy="28" r="8.5" stroke="#c9a84c" stroke-width="1" stroke-dasharray="2 1.8" opacity="0.38"/><path d="M22 20.5l1.5 3.2 3.5.5-2.5 2.4.6 3.5L22 28.5l-3.1 1.6.6-3.5-2.5-2.4 3.5-.5L22 20.5z" stroke="#c9a84c" stroke-width="1.3" stroke-linejoin="round" fill="rgba(201,168,76,0.18)"/><path d="M15 10L18 18" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/><path d="M29 10L26 18" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/><path d="M12.5 6 L18 14 L15 6z" stroke="#c9a84c" stroke-width="1.2" stroke-linejoin="round" fill="rgba(201,168,76,0.12)"/><path d="M31.5 6 L26 14 L29 6z" stroke="#c9a84c" stroke-width="1.2" stroke-linejoin="round" fill="rgba(201,168,76,0.12)"/></svg>
+          </div>
+          <div class="premio-info">
+            <div class="premio-title">Super Ouro: Estadual</div>
+            <p class="premio-event">3º Concurso de Queijos e Doces Artesanais do Rio Grande do Sul, em Porto Alegre</p>
+            <span class="premio-year">2025 · Doce de Leite</span>
+          </div>
+        </div>
+        <div class="premio-item reveal">
+          <div class="premio-medal">
+            <svg viewBox="0 0 44 44" fill="none"><circle cx="22" cy="28" r="12" stroke="#c9a84c" stroke-width="1.6" fill="rgba(201,168,76,0.05)"/><path d="M22 22 C22 22 26 26 26 29 C26 32 24 34 22 34 C20 34 18 32 18 29 C18 26 22 22 22 22z" stroke="#c9a84c" stroke-width="1.3" fill="rgba(201,168,76,0.1)"/><path d="M15 22 C15 22 20 18.5 22 22 C24 25.5 22 32 22 32 C22 32 16.5 30 15 26.5 C13.5 23 15 22 15 22z" stroke="#c9a84c" stroke-width="1" fill="rgba(201,168,76,0.06)" opacity="0.7"/><path d="M29 22 C29 22 24 18.5 22 22 C20 25.5 22 32 22 32 C22 32 27.5 30 29 26.5 C30.5 23 29 22 29 22z" stroke="#c9a84c" stroke-width="1" fill="rgba(201,168,76,0.06)" opacity="0.7"/><circle cx="22" cy="28" r="3" stroke="#c9a84c" stroke-width="1.3" fill="rgba(201,168,76,0.2)"/><path d="M15 10L18 18" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/><path d="M29 10L26 18" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/><path d="M12.5 6 L18 14 L15 6z" stroke="#c9a84c" stroke-width="1.2" stroke-linejoin="round" fill="rgba(201,168,76,0.1)"/><path d="M31.5 6 L26 14 L29 6z" stroke="#c9a84c" stroke-width="1.2" stroke-linejoin="round" fill="rgba(201,168,76,0.1)"/></svg>
+          </div>
+          <div class="premio-info">
+            <div class="premio-title">Bronze: Nacional</div>
+            <p class="premio-event">Prêmio Queijo Brasil, o maior concurso de queijos do país</p>
+            <span class="premio-year">2025 · Doce de Leite</span>
+          </div>
+        </div>
+        <div class="premio-item reveal">
+          <div class="premio-medal">
+            <svg viewBox="0 0 44 44" fill="none"><rect x="10" y="8" width="24" height="22" rx="2" stroke="#c9a84c" stroke-width="1.6" fill="rgba(201,168,76,0.06)"/><rect x="14" y="12" width="16" height="14" rx="1" stroke="#c9a84c" stroke-width="1" opacity="0.35"/><path d="M18 19 C18 16 20 15 22 17 C24 19 20 21 18 23 L25 23" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 30 L17 34 L27 34 L27 30" stroke="#c9a84c" stroke-width="1.4" stroke-linejoin="round"/><line x1="14" y1="34" x2="30" y2="34" stroke="#c9a84c" stroke-width="1.7" stroke-linecap="round"/></svg>
+          </div>
+          <div class="premio-info">
+            <div class="premio-title">2º Lugar: Expointer</div>
+            <p class="premio-event">13º Concurso da Agroindústria Familiar, a Feira mais importante do RS</p>
+            <span class="premio-year">2025 · Doce de Leite</span>
+          </div>
+        </div>
+      </div>
+      <div class="premios-img-col reveal d2">
+        <div class="premios-img-wrap">
+          <img src="premiacoes-medalhas.jpeg" alt="Medalhas La Serrana" class="premios-img">
+          <div class="premios-img-overlay">
+            <p class="premios-img-text">"Uma joia gastronômica que traduz o terroir serrano em cada colherada."</p>
+          </div>
+        </div>
+        <div class="premios-selos">
+          <span class="premios-selo">✦ Selo Arte</span>
+          <span class="premios-selo">✦ Sabor Gaúcho</span>
+          <span class="premios-selo">✦ Rastreabilidade</span>
+          <span class="premios-selo">✦ Barros Cassal, RS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIÊNCIA -->
+<section class="experiencia-section">
+  <div class="container">
+    <div class="experiencia-grid">
+      <div class="reveal">
+        <img src="doce-premiacao-ovelha.jpeg" alt="Doce de Leite La Serrana" class="experiencia-img">
+      </div>
+      <div class="reveal d2">
+        <div class="section-label">A Ocasião Perfeita</div>
+        <h2 class="section-title">Momentos que<br>pedem o <em>melhor.</em></h2>
+        <p class="experiencia-text" style="font-size:1.03rem;line-height:1.9;color:#4a3b2a;margin-bottom:24px;font-weight:300;">Imagine-se à mesa com quem ama, com produtos que ninguém mais tem. O La Serrana foi feito para esses momentos, quando o ordinário simplesmente não é suficiente.</p>
+        <div class="sugestoes">
+          <div class="sugestao">
+            <span class="sugestao-icon">
+              <svg viewBox="0 0 28 28" fill="none"><path d="M5 20 C5 14 8 8 14 7 C20 8 23 14 23 20" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/><rect x="5" y="20" width="18" height="3" rx="1" stroke="#c9a84c" stroke-width="1.4" fill="rgba(201,168,76,0.1)"/><line x1="9" y1="14" x2="9" y2="17" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="14" y1="11" x2="14" y2="16" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="19" y1="14" x2="19" y2="17" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><path d="M16 19 C16 19 18 17 18 15.5 C18 14.5 17.2 14 16.5 14.5 C16 15 16 17 16 19z" fill="rgba(201,168,76,0.35)" stroke="#c9a84c" stroke-width="0.9"/></svg>
+            </span>
+            <div class="sugestao-text"><strong>Com torradinhas artesanais</strong>A combinação que revela toda a cremosidade</div>
+          </div>
+          <div class="sugestao">
+            <span class="sugestao-icon">
+              <svg viewBox="0 0 28 28" fill="none"><path d="M4 20 L14 6 L24 20 Z" stroke="#c9a84c" stroke-width="1.5" stroke-linejoin="round" fill="rgba(201,168,76,0.08)"/><line x1="4" y1="20" x2="24" y2="20" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="16" r="1.5" stroke="#c9a84c" stroke-width="1.2" fill="rgba(201,168,76,0.15)"/><circle cx="17" cy="14" r="1.2" stroke="#c9a84c" stroke-width="1.1" fill="rgba(201,168,76,0.15)"/></svg>
+            </span>
+            <div class="sugestao-text"><strong>Com nossos queijos</strong>Doce + queijo de ovelha: a combinação perfeita</div>
+          </div>
+          <div class="sugestao">
+            <span class="sugestao-icon">
+              <svg viewBox="0 0 28 28" fill="none"><path d="M6 20 C6 14 9 8 14 8 C19 8 22 14 22 20" stroke="#c9a84c" stroke-width="1.5" fill="rgba(201,168,76,0.07)"/><line x1="14" y1="8" x2="14" y2="5.5" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/><circle cx="14" cy="5" r="1.2" stroke="#c9a84c" stroke-width="1.2" fill="rgba(201,168,76,0.2)"/><line x1="5" y1="20" x2="23" y2="20" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round"/></svg>
+            </span>
+            <div class="sugestao-text"><strong>Em sobremesas especiais</strong>Ingrediente de chef para criar algo memorável</div>
+          </div>
+        </div>
+        <a href="https://wa.me/5551981962280?text=Olá!%20Gostaria%20de%20encomendar%20produtos%20La%20Serrana" target="_blank" class="btn-primary" style="background:var(--verde-escuro);border-color:var(--verde-escuro);color:var(--branco);">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.114.546 4.098 1.503 5.824L.057 24l6.347-1.432A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.884 9.884 0 01-5.031-1.378l-.361-.214-3.741.981.999-3.648-.235-.374A9.867 9.867 0 012.106 12C2.106 6.58 6.58 2.106 12 2.106S21.894 6.58 21.894 12 17.42 21.894 12 21.894z"/></svg>
+          Encomendar produtos
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTO -->
+<section class="depoimento-section">
+  <div class="container">
+    <div class="depoimento-inner reveal">
+      <img src="logo-la-serrana.png" alt="" aria-hidden="true" style="height:48px;width:auto;filter:brightness(0) invert(1) opacity(.18);margin:0 auto 28px;display:block;">
+      <p class="depoimento-texto">"A receita do sucesso dos nossos produtos está na qualidade do leite de ovelhas que produzimos e no cuidado artesanal da fabricação. É um processo lento que transforma dedicação em um resultado muito especial: nosso Amor traduzido em Sabor."</p>
+      <div class="depoimento-autor">
+        <div class="depoimento-line"></div>
+        <div>
+          <div class="depoimento-nome">Denise Niedermeyer</div>
+          <div class="depoimento-cargo">Fundadora · Nutricionista · Laticínio La Serrana</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section">
+  <div class="cta-inner reveal">
+    <span class="cta-ornament">✦ ✦ ✦</span>
+    <h2 class="cta-title">Experimente sabores<br>que você <em>nunca provou antes.</em></h2>
+    <p class="cta-sub">Queijos maturados e doce de leite premiados mundialmente, feitos em pequenos lotes na Serra Gaúcha. Entre em contato e garanta os seus.</p>
+    <a href="https://wa.me/5551981962280?text=Olá%20Denise!%20Vi%20o%20site%20e%20gostaria%20de%20conhecer%20os%20produtos%20La%20Serrana.%20Pode%20me%20passar%20mais%20informações?" target="_blank" class="btn-cta-final">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.114.546 4.098 1.503 5.824L.057 24l6.347-1.432A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.884 9.884 0 01-5.031-1.378l-.361-.214-3.741.981.999-3.648-.235-.374A9.867 9.867 0 012.106 12C2.106 6.58 6.58 2.106 12 2.106S21.894 6.58 21.894 12 17.42 21.894 12 21.894z"/></svg>
+      Quero falar no WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">
+        <img src="logo-la-serrana.png" alt="La Serrana Laticínio">
+      </div>
+      <div class="footer-tagline">"Amor traduzido em sabor."</div>
+      <div class="footer-contact">
+        <a href="https://wa.me/5551981962280" target="_blank">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.114.546 4.098 1.503 5.824L.057 24l6.347-1.432A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.884 9.884 0 01-5.031-1.378l-.361-.214-3.741.981.999-3.648-.235-.374A9.867 9.867 0 012.106 12C2.106 6.58 6.58 2.106 12 2.106S21.894 6.58 21.894 12 17.42 21.894 12 21.894z"/></svg>
+          (51) 98196-2280
+        </a>
+        <a href="https://www.instagram.com/laticiniolaserrana/" target="_blank">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          @laticiniolaserrana
+        </a>
+        <a href="#">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          Barros Cassal, RS
+        </a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-heading">Navegação</div>
+      <ul class="footer-links">
+        <li><a href="#laticinios">O Laticínio</a></li>
+        <li><a href="#doce">Doce de Leite</a></li>
+        <li><a href="#produtos">Produtos</a></li>
+        <li><a href="#premios">Prêmios</a></li>
+        <li><a href="#historia">Nossa História</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Certificações</div>
+      <ul class="footer-links">
+        <li><a href="#">✦ Selo Arte</a></li>
+        <li><a href="#">✦ Sabor Gaúcho</a></li>
+        <li><a href="#">✦ Rastreabilidade Total</a></li>
+        <li><a href="#">✦ Super Ouro Mundial 2026</a></li>
+        <li><a href="#">✦ Super Ouro RS 2025</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Laticínio La Serrana · Barros Cassal, RS · Todos os direitos reservados</span>
+    <div class="footer-selos">
+      <span class="footer-selo">Selo Arte</span>
+      <span class="footer-selo">Sabor Gaúcho</span>
+      <span class="footer-selo">Super Ouro 2026</span>
+    </div>
+  </div>
+</footer>
+
+<!-- WPP FLOAT -->
+<a href="https://wa.me/5551981962280?text=Olá%20Denise!%20Vi%20o%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20La%20Serrana!" target="_blank" class="wpp-float" aria-label="WhatsApp">
+  <div class="wpp-tooltip">Fale conosco!</div>
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.114.546 4.098 1.503 5.824L.057 24l6.347-1.432A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.884 9.884 0 01-5.031-1.378l-.361-.214-3.741.981.999-3.648-.235-.374A9.867 9.867 0 012.106 12C2.106 6.58 6.58 2.106 12 2.106S21.894 6.58 21.894 12 17.42 21.894 12 21.894z"/></svg>
+</a>
+
+<!-- POPUP PREMIAÇÃO MUNDIAL 2026 -->
+<div class="popup-overlay" id="popupOverlay" role="dialog" aria-modal="true" aria-label="Premiação Mundial 2026">
+  <div class="popup-box">
+    <button class="popup-close" id="popupClose" aria-label="Fechar">✕</button>
+    <span class="popup-medal">🥇</span>
+    <div class="popup-kicker">Acabamos de conquistar</div>
+    <h2 class="popup-title">Super Ouro no<br><em>Mundial do Queijo Brasil!</em></h2>
+    <p class="popup-desc">
+      O nosso <strong>Doce de Leite La Serrana</strong> acaba de ser premiado com
+      <strong>Super Ouro no 4º Mundial do Queijo do Brasil 2026</strong> —
+      o maior concurso da América Latina. Um reconhecimento que pertence
+      a cada ovelha do nosso rebanho e a cada colherada com amor.
+    </p>
+    <a href="https://wa.me/5551981962280?text=Olá!%20Vi%20a%20premiação%20no%20Mundial%20do%20Queijo%202026%20e%20quero%20encomendar%20o%20Doce%20de%20Leite%20La%20Serrana!" target="_blank" class="popup-cta">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.114.546 4.098 1.503 5.824L.057 24l6.347-1.432A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.884 9.884 0 01-5.031-1.378l-.361-.214-3.741.981.999-3.648-.235-.374A9.867 9.867 0 012.106 12C2.106 6.58 6.58 2.106 12 2.106S21.894 6.58 21.894 12 17.42 21.894 12 21.894z"/></svg>
+      Quero encomendar!
+    </a>
+    <button class="popup-skip" id="popupSkip">Continuar navegando →</button>
+  </div>
+</div>
+
+<script>
+// ── Nav scroll ──
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ── Mobile menu ──
+const hamburger = document.getElementById('hamburger');
+const navMobile = document.getElementById('navMobile');
+const navClose  = document.getElementById('navClose');
+hamburger.addEventListener('click', () => navMobile.classList.add('open'));
+navClose.addEventListener('click',  () => navMobile.classList.remove('open'));
+document.querySelectorAll('.nav-mob-link').forEach(a => {
+  a.addEventListener('click', () => navMobile.classList.remove('open'));
+});
+
+// ── Reveal on scroll ──
+const reveals = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(el => revealObs.observe(el));
+
+// ── Smooth scroll ──
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const href = a.getAttribute('href');
+    if (href === '#') return;
+    const target = document.querySelector(href);
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+});
+
+// ── POPUP – abre após 2.8s, fecha no X / botão / overlay ──
+const popupOverlay = document.getElementById('popupOverlay');
+const popupClose   = document.getElementById('popupClose');
+const popupSkip    = document.getElementById('popupSkip');
+
+function closePopup() {
+  popupOverlay.classList.remove('visible');
+  document.body.style.overflow = '';
+}
+function openPopup() {
+  popupOverlay.classList.add('visible');
+  document.body.style.overflow = 'hidden';
+}
+
+setTimeout(openPopup, 2800);
+
+popupClose.addEventListener('click', closePopup);
+popupSkip.addEventListener('click',  closePopup);
+popupOverlay.addEventListener('click', e => { if (e.target === popupOverlay) closePopup(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
+
+// ── CONTADOR ANIMADO – anima os números ao entrar na viewport ──
+function animateCounter(el, target, suffix, duration = 1600) {
+  const isYear = target > 1000;
+  const start  = isYear ? target - 6 : 0;
+  let startTime = null;
+
+  el.classList.add('counting');
+
+  function step(timestamp) {
+    if (!startTime) startTime = timestamp;
+    const progress = Math.min((timestamp - startTime) / duration, 1);
+    // Ease-out cubic
+    const ease = 1 - Math.pow(1 - progress, 3);
+    const current = Math.floor(start + (target - start) * ease);
+    el.textContent = current + suffix;
+    if (progress < 1) {
+      requestAnimationFrame(step);
+    } else {
+      el.textContent = target + suffix;
+      el.classList.remove('counting');
+    }
+  }
+  requestAnimationFrame(step);
+}
+
+// Configuração dos contadores: seletor, valor alvo, sufixo
+const counters = [
+  { selector: '.numero-item:nth-child(1) .numero-valor', target: 100, suffix: '%' },
+  { selector: '.numero-item:nth-child(2) .numero-valor', target: 2018, suffix: '' },
+  { selector: '.numero-item:nth-child(3) .numero-valor', target: 4, suffix: '+' },
+];
+
+const counterObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const conf = counters.find(c => e.target.querySelector('.numero-valor') || e.target.classList.contains('numero-item'));
+      if (conf) {
+        const el = e.target.querySelector('.numero-valor');
+        if (el && !el.dataset.animated) {
+          el.dataset.animated = '1';
+          animateCounter(el, conf.target, conf.suffix);
+        }
+      }
+      counterObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.6 });
+
+document.querySelectorAll('.numero-item').forEach((item, i) => {
+  if (counters[i]) {
+    item._counterConf = counters[i];
+    counterObs.observe(item);
+  }
+});
+
+// Observer alternativo por item indexado
+document.querySelectorAll('.numero-item').forEach((item, i) => {
+  const obs = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting && counters[i]) {
+      const el = item.querySelector('.numero-valor');
+      if (el && !el.dataset.animated) {
+        el.dataset.animated = '1';
+        animateCounter(el, counters[i].target, counters[i].suffix);
+      }
+      obs.unobserve(item);
+    }
+  }, { threshold: 0.5 });
+  obs.observe(item);
+});
+</script>
+</body>
+</html>

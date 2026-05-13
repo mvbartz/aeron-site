@@ -1,0 +1,4 @@
+*.bak
+.claude/
+files.zip
+.gh_config

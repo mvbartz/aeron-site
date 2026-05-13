@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tour Virtual 360° em Santa Cruz do Sul | AERON Solutions</title>
+  <meta name="description" content="Tour virtual 360° em Santa Cruz do Sul e RS. Especialistas em tour virtual para imóveis, comércios e Google Street View. Imagens aéreas com drone e vídeos 360°. Solicite orçamento!">
+  <!-- SEO META TAGS -->
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="AERON Solutions">
+  <meta name="keywords" content="tour virtual 360, tour virtual Santa Cruz do Sul, tour 360 Santa Cruz do Sul, tour virtual RS, tour virtual imóveis, tour virtual comércio, Google Street View Santa Cruz do Sul, imagens aéreas drone Santa Cruz do Sul, fotografia 360 graus, vídeo 360, tour virtual imobiliário, tour virtual para empresas, tour virtual Rio Grande do Sul, fotografía aérea RS, drone Santa Cruz do Sul, visita virtual imóvel, tour panorâmico 360">
+  <link rel="canonical" href="https://www.aeronsolutions.com.br/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.aeronsolutions.com.br/">
+  <meta property="og:title" content="Tour Virtual 360° Santa Cruz do Sul | AERON Solutions">
+  <meta property="og:description" content="Transformamos espaços em experiências digitais imersivas com tours virtuais 360°, Google Street View, imagens aéreas e vídeos de alta qualidade para valorizar sua marca.">
+  <meta property="og:image" content="https://www.aeronsolutions.com.br/images/og-image.jpg">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="AERON Solutions">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://www.aeronsolutions.com.br/">
+  <meta name="twitter:title" content="AERON Solutions | Tours Virtuais 360° e Imagens Aéreas">
+  <meta name="twitter:description" content="Tours virtuais 360°, Google Street View, imagens aéreas com drone e vídeos imersivos para empresas e imóveis.">
+  <meta name="twitter:image" content="https://www.aeronsolutions.com.br/images/og-image.jpg">
+
+  <!-- Schema.org LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "AERON Solutions",
+    "alternateName": ["Tour Virtual Santa Cruz do Sul", "AERON Tour Virtual 360"],
+    "description": "Empresa especializada em tours virtuais 360°, Google Street View, imagens aéreas com drone e conteúdo imersivo para negócios e imóveis.",
+    "url": "https://www.aeronsolutions.com.br",
+    "logo": "https://www.aeronsolutions.com.br/images/logo-aeron.png",
+    "image": "https://www.aeronsolutions.com.br/images/og-image.jpg",
+    "telephone": "+55-51-99926-3252",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Santa Cruz do Sul",
+      "addressRegion": "RS",
+      "addressCountry": "BR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "-29.7196",
+      "longitude": "-52.4261"
+    },
+    "openingHours": "Mo-Fr 08:00-18:00",
+    "sameAs": ["https://www.instagram.com/aeronsolutions"],
+    "areaServed": [
+      {"@type": "State", "name": "Rio Grande do Sul"},
+      {"@type": "City", "name": "Santa Cruz do Sul"},
+      {"@type": "City", "name": "Lajeado"},
+      {"@type": "City", "name": "Venâncio Aires"},
+      {"@type": "City", "name": "Cachoeira do Sul"},
+      {"@type": "City", "name": "Rio Pardo"},
+      {"@type": "City", "name": "Candelária"}
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Serviços AERON Solutions",
+      "itemListElement": [
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Tour Virtual Imobiliário 360°"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Tour Virtual para Comércios"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Google Street View"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Imagens Aéreas com Drone"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Vídeos Imersivos 360°"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Galeria de Fotos 360°"}}
+      ]
+    }
+  }
+  </script>
+  <link rel="icon" href="images/logo-aeron.png" type="image/png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * { scrollbar-width: thin; scrollbar-color: rgba(10,102,247,0.3) transparent; }
+    *::-webkit-scrollbar { width: 6px; }
+    *::-webkit-scrollbar-track { background: transparent; }
+    *::-webkit-scrollbar-thumb { background: rgba(10,102,247,0.3); border-radius: 3px; }
+    html, body { scroll-behavior: smooth; overflow-x: hidden; max-width: 100%; }
+    body { width: 100%; }
+    .animate-fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .animate-fade-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .animate-fade-right { opacity: 0; transform: translateX(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .in-view { opacity: 1 !important; transform: none !important; }
+    .nav-scrolled { background: rgba(8,15,30,0.95) !important; backdrop-filter: blur(12px); box-shadow: 0 1px 0 rgba(10,102,247,0.15); }
+    .hero-grid { background-image: linear-gradient(rgba(10,102,247,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(10,102,247,0.6) 1px, transparent 1px); background-size: 60px 60px; }
+    @keyframes pulse-slow { 0%,100%{opacity:1} 50%{opacity:.5} }
+    .pulse-slow { animation: pulse-slow 3s ease-in-out infinite; }
+    .pulse-slow-2 { animation: pulse-slow 3s ease-in-out 1s infinite; }
+    .wa-btn:hover { transform: scale(1.05); box-shadow: 0 6px 30px rgba(37,211,102,0.5) !important; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    /* Mobile fixes */
+    @media (max-width: 640px) {
+      .animate-fade-left  { transform: translateY(20px); }
+      .animate-fade-right { transform: translateY(20px); }
+      img, iframe { max-width: 100% !important; }
+      section, div[id] { max-width: 100vw; overflow-x: hidden; }
+    }
+  </style>
+</head>
+<body class="bg-[#080F1E] min-h-screen overflow-x-hidden">
+
+  <!-- NAV -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-[100] transition-all duration-500 bg-transparent">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <button onclick="scrollToSection('hero')" class="flex items-center group">
+        <img src="images/logo-aeron.png" alt="AERON Solutions" class="h-10 w-auto object-contain group-hover:opacity-80 transition-opacity">
+      </button>
+      <div class="hidden md:flex items-center gap-8">
+        <button onclick="scrollToSection('hero')" class="text-sm text-gray-400 hover:text-[#0A66F7] transition-all duration-300 relative group px-2 py-1 hover:drop-shadow-[0_0_8px_rgba(10,102,247,0.8)]">Início<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#0A66F7] to-[#00D084] group-hover:w-full transition-all duration-300 rounded-full"></span></button>
+        <button onclick="scrollToSection('servicos')" class="text-sm text-gray-400 hover:text-[#0A66F7] transition-all duration-300 relative group px-2 py-1 hover:drop-shadow-[0_0_8px_rgba(10,102,247,0.8)]">Serviços<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#0A66F7] to-[#00D084] group-hover:w-full transition-all duration-300 rounded-full"></span></button>
+        <button onclick="scrollToSection('portfolio')" class="text-sm text-gray-400 hover:text-[#0A66F7] transition-all duration-300 relative group px-2 py-1 hover:drop-shadow-[0_0_8px_rgba(10,102,247,0.8)]">Portfólio<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#0A66F7] to-[#00D084] group-hover:w-full transition-all duration-300 rounded-full"></span></button>
+        <button onclick="scrollToSection('contato')" class="text-sm text-gray-400 hover:text-[#0A66F7] transition-all duration-300 relative group px-2 py-1 hover:drop-shadow-[0_0_8px_rgba(10,102,247,0.8)]">Contato<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#0A66F7] to-[#00D084] group-hover:w-full transition-all duration-300 rounded-full"></span></button>
+        <a href="https://www.instagram.com/aeronsolutions" target="_blank" rel="noopener noreferrer" class="p-2 text-gray-300 hover:text-white hover:scale-110 transition-all duration-300 rounded-lg hover:bg-white/10" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+        </a>
+        <button onclick="scrollToSection('contato')" class="ml-2 px-6 py-2.5 text-sm font-semibold rounded-full bg-gradient-to-r from-[#00D084] to-[#00b870] text-white hover:shadow-[0_0_25px_rgba(0,208,132,0.6)] transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 border border-[#00D084]/40">Fale Conosco</button>
+      </div>
+      <button id="menu-btn" class="md:hidden text-white p-2" onclick="toggleMenu()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-[#080F1E]/95 backdrop-blur px-6 pb-6 space-y-4 border-t border-[#0A66F7]/20">
+      <button onclick="scrollToSection('hero');toggleMenu()" class="block w-full text-left text-sm text-gray-400 py-2 hover:text-[#0A66F7]">Início</button>
+      <button onclick="scrollToSection('servicos');toggleMenu()" class="block w-full text-left text-sm text-gray-400 py-2 hover:text-[#0A66F7]">Serviços</button>
+      <button onclick="scrollToSection('portfolio');toggleMenu()" class="block w-full text-left text-sm text-gray-400 py-2 hover:text-[#0A66F7]">Portfólio</button>
+      <button onclick="scrollToSection('contato');toggleMenu()" class="block w-full text-left text-sm text-gray-400 py-2 hover:text-[#0A66F7]">Contato</button>
+      <button onclick="scrollToSection('contato');toggleMenu()" class="w-full px-6 py-2.5 text-sm font-semibold rounded-full bg-gradient-to-r from-[#00D084] to-[#00b870] text-white">Fale Conosco</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 bg-[#0F172A] pointer-events-none">
+      <div class="absolute inset-0 opacity-10"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1920&q=80" alt="" class="w-full h-full object-cover"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-[#0F172A]/90 via-[#0F172A]/70 to-[#0F172A]"></div>
+    </div>
+    <div class="absolute inset-0 opacity-[0.07] pointer-events-none hero-grid"></div>
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-[#0A66F7]/10 rounded-full blur-[120px] pointer-events-none pulse-slow"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-72 h-72 bg-[#00D084]/8 rounded-full blur-[100px] pointer-events-none pulse-slow-2"></div>
+    <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#0A66F7]/50 bg-[#0A66F7]/10 mb-8 shadow-[0_0_20px_rgba(10,102,247,0.3)]">
+        <div class="w-1.5 h-1.5 rounded-full bg-[#0A66F7] animate-pulse"></div>
+        <span class="text-xs text-[#0A66F7] tracking-widest uppercase font-medium">Tours Virtuais Profissionais</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-6xl font-black text-white leading-[1.15] tracking-tight drop-shadow-[0_0_30px_rgba(255,255,255,0.1)]">
+        Transformamos espaços reais<br>em <span class="text-[#0A66F7] drop-shadow-[0_0_20px_rgba(10,102,247,0.8)]">experiências digitais</span>
+      </h1>
+      <p class="mt-6 text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">Tours virtuais, vídeos 360° e imagens aéreas que elevam sua marca e transformam a maneira como seus clientes conhecem seus espaços.</p>
+      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <button onclick="scrollToSection('contato')" class="px-10 py-4 rounded-full bg-gradient-to-r from-[#00D084] to-[#00b870] text-white font-bold text-base hover:shadow-[0_0_40px_rgba(0,208,132,0.7)] transition-all duration-300 hover:scale-110 hover:-translate-y-1 border border-[#00D084]/50 shadow-[0_0_20px_rgba(0,208,132,0.3)]">Solicitar Orçamento</button>
+        <button onclick="scrollToSection('servicos')" class="flex items-center gap-2 px-10 py-4 rounded-full bg-[#0A66F7] hover:bg-[#094FCC] text-white font-bold text-base transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-[0_0_35px_rgba(10,102,247,0.7)] shadow-[0_0_15px_rgba(10,102,247,0.3)] border border-[#0A66F7]/50 group">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-125 transition-transform"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+          Ver Serviços
+        </button>
+      </div>
+      <div class="mt-20 grid grid-cols-3 gap-8 max-w-lg mx-auto">
+        <div class="text-center"><p class="text-2xl sm:text-3xl font-bold text-[#0A66F7] drop-shadow-[0_0_15px_rgba(10,102,247,0.8)]">360°</p><p class="text-xs text-gray-500 mt-1 tracking-wider uppercase">Imersão Total</p></div>
+        <div class="text-center"><p class="text-2xl sm:text-3xl font-bold text-[#0A66F7] drop-shadow-[0_0_15px_rgba(10,102,247,0.8)]">24/7</p><p class="text-xs text-gray-500 mt-1 tracking-wider uppercase">Disponível</p></div>
+        <div class="text-center"><p class="text-2xl sm:text-3xl font-bold text-[#0A66F7] drop-shadow-[0_0_15px_rgba(10,102,247,0.8)]">4K</p><p class="text-xs text-gray-500 mt-1 tracking-wider uppercase">Qualidade</p></div>
+      </div>
+    </div>
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2">
+      <button onclick="scrollToSection('servicos')" class="flex flex-col items-center gap-2 text-gray-400 hover:text-[#0A66F7] transition-colors">
+        <span class="text-[10px] tracking-[0.3em] uppercase">Explorar</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="animate-bounce"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section id="servicos" class="relative py-28 px-6 bg-[#080F1E]">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-20 animate-fade-up">
+        <span class="text-xs tracking-[0.3em] uppercase text-[#0A66F7] font-medium drop-shadow-[0_0_8px_rgba(10,102,247,0.8)]">Nossos Serviços</span>
+        <h2 class="mt-4 text-3xl sm:text-4xl md:text-5xl font-bold text-white">Soluções que <span class="text-[#0A66F7] drop-shadow-[0_0_20px_rgba(10,102,247,0.8)]">transformam</span></h2>
+        <p class="mt-4 text-gray-400 max-w-xl mx-auto text-lg">Tecnologia de ponta para apresentar espaços de forma imersiva e profissional.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Card 1 -->
+        <a href="servico/tour-imobiliario.html" class="block animate-fade-up group">
+          <div class="relative p-8 rounded-2xl border border-[#0A66F7]/20 bg-[#0D1526] hover:bg-[#0F1A2E] hover:border-[#0A66F7]/60 transition-all duration-300 hover:shadow-[0_0_40px_rgba(10,102,247,0.25)] h-full cursor-pointer">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#0A66F7] to-[#094FCC] flex items-center justify-center mb-6 group-hover:scale-125 group-hover:rotate-6 transition-all duration-300 shadow-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 group-hover:text-[#0A66F7] group-hover:drop-shadow-[0_0_10px_rgba(10,102,247,0.6)] transition-all duration-300">Tour Virtual Imobiliário</h3>
+            <p class="text-gray-400 leading-relaxed text-sm">Apresente imóveis de forma moderna e envolvente. Visitas 24h, mais interessados qualificados e decisões de compra mais rápidas.</p>
+            <div class="mt-6 flex items-center gap-2 text-sm text-[#0A66F7] group-hover:drop-shadow-[0_0_8px_rgba(10,102,247,0.8)] transition-all duration-300">
+              <span>Saiba mais</span><span class="group-hover:translate-x-1 transition-transform">→</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 2 -->
+        <a href="servico/tour-comercial.html" class="block animate-fade-up group" style="transition-delay:0.1s">
+          <div class="relative p-8 rounded-2xl border border-[#0A66F7]/20 bg-[#0D1526] hover:bg-[#0F1A2E] hover:border-[#0A66F7]/60 transition-all duration-300 hover:shadow-[0_0_40px_rgba(10,102,247,0.25)] h-full cursor-pointer">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#0A66F7] to-[#094FCC] flex items-center justify-center mb-6 group-hover:scale-125 group-hover:rotate-6 transition-all duration-300 shadow-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/><path d="M22 7v3a2 2 0 0 1-2 2 2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12a2 2 0 0 1-2-2V7"/></svg>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 group-hover:text-[#0A66F7] group-hover:drop-shadow-[0_0_10px_rgba(10,102,247,0.6)] transition-all duration-300">Tour para Comércios Locais</h3>
+            <p class="text-gray-400 leading-relaxed text-sm">Mostre seu negócio por dentro e conquiste clientes antes da visita. Ideal para lojas, academias, clínicas e restaurantes.</p>
+            <div class="mt-6 flex items-center gap-2 text-sm text-[#0A66F7] group-hover:drop-shadow-[0_0_8px_rgba(10,102,247,0.8)] transition-all duration-300">
+              <span>Saiba mais</span><span class="group-hover:translate-x-1 transition-transform">→</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 3 -->
+        <a href="servico/street-view.html" class="block animate-fade-up group" style="transition-delay:0.2s">
+          <div class="relative p-8 rounded-2xl border border-[#0A66F7]/20 bg-[#0D1526] hover:bg-[#0F1A2E] hover:border-[#0A66F7]/60 transition-all duration-300 hover:shadow-[0_0_40px_rgba(10,102,247,0.25)] h-full cursor-pointer">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#0A66F7] to-[#094FCC] flex items-center justify-center mb-6 group-hover:scale-125 group-hover:rotate-6 transition-all duration-300 shadow-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 group-hover:text-[#0A66F7] group-hover:drop-shadow-[0_0_10px_rgba(10,102,247,0.6)] transition-all duration-300">Street View &amp; Google</h3>
+            <p class="text-gray-400 leading-relaxed text-sm">Integração ao Google para sua empresa aparecer melhor nas buscas com visualização interna em 360°.</p>
+            <div class="mt-6 flex items-center gap-2 text-sm text-[#0A66F7] group-hover:drop-shadow-[0_0_8px_rgba(10,102,247,0.8)] transition-all duration-300">
+              <span>Saiba mais</span><span class="group-hover:translate-x-1 transition-transform">→</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 4 -->
+        <a href="servico/imagens-aereas.html" class="block animate-fade-up group" style="transition-delay:0.3s">
+          <div class="relative p-8 rounded-2xl border border-[#0A66F7]/20 bg-[#0D1526] hover:bg-[#0F1A2E] hover:border-[#0A66F7]/60 transition-all duration-300 hover:shadow-[0_0_40px_rgba(10,102,247,0.25)] h-full cursor-pointer">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#0A66F7] to-[#094FCC] flex items-center justify-center mb-6 group-hover:scale-125 group-hover:rotate-6 transition-all duration-300 shadow-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 group-hover:text-[#0A66F7] group-hover:drop-shadow-[0_0_10px_rgba(10,102,247,0.6)] transition-all duration-300">Imagens Aéreas 360°</h3>
+            <p class="text-gray-400 leading-relaxed text-sm">Visão completa de empreendimentos e grandes áreas com drones profissionais e tratamento especializado.</p>
+            <div class="mt-6 flex items-center gap-2 text-sm text-[#0A66F7] group-hover:drop-shadow-[0_0_8px_rgba(10,102,247,0.8)] transition-all duration-300">
+              <span>Saiba mais</span><span class="group-hover:translate-x-1 transition-transform">→</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 5 -->
+        <a href="servico/videos-360.html" class="block animate-fade-up group" style="transition-delay:0.4s">
+          <div class="relative p-8 rounded-2xl border border-[#0A66F7]/20 bg-[#0D1526] hover:bg-[#0F1A2E] hover:border-[#0A66F7]/60 transition-all duration-300 hover:shadow-[0_0_40px_rgba(10,102,247,0.25)] h-full cursor-pointer">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#0A66F7] to-[#094FCC] flex items-center justify-center mb-6 group-hover:scale-125 group-hover:rotate-6 transition-all duration-300 shadow-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 group-hover:text-[#0A66F7] group-hover:drop-shadow-[0_0_10px_rgba(10,102,247,0.6)] transition-all duration-300">Vídeos Imersivos 360°</h3>
+            <p class="text-gray-400 leading-relaxed text-sm">Conteúdo dinâmico e interativo para redes sociais, sites e apresentações com engajamento superior.</p>
+            <div class="mt-6 flex items-center gap-2 text-sm text-[#0A66F7] group-hover:drop-shadow-[0_0_8px_rgba(10,102,247,0.8)] transition-all duration-300">
+              <span>Saiba mais</span><span class="group-hover:translate-x-1 transition-transform">→</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 6 -->
+        <a href="servico/fotos-360.html" class="block animate-fade-up group" style="transition-delay:0.5s">
+          <div class="relative p-8 rounded-2xl border border-[#0A66F7]/20 bg-[#0D1526] hover:bg-[#0F1A2E] hover:border-[#0A66F7]/60 transition-all duration-300 hover:shadow-[0_0_40px_rgba(10,102,247,0.25)] h-full cursor-pointer">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#0A66F7] to-[#094FCC] flex items-center justify-center mb-6 group-hover:scale-125 group-hover:rotate-6 transition-all duration-300 shadow-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 group-hover:text-[#0A66F7] group-hover:drop-shadow-[0_0_10px_rgba(10,102,247,0.6)] transition-all duration-300">Galeria de Fotos 360°</h3>
+            <p class="text-gray-400 leading-relaxed text-sm">Imagens panorâmicas profissionais para destacar ambientes com realismo e qualidade multiplataforma.</p>
+            <div class="mt-6 flex items-center gap-2 text-sm text-[#0A66F7] group-hover:drop-shadow-[0_0_8px_rgba(10,102,247,0.8)] transition-all duration-300">
+              <span>Saiba mais</span><span class="group-hover:translate-x-1 transition-transform">→</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUÇÕES -->
+  <div id="solucoes">
+    <div id="tour-imobiliario" class="py-20 px-6 bg-[#080F1E] border-t border-[#0A66F7]/10">
+      <div class="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+        <div class="w-full lg:w-1/2 animate-fade-left">
+          <div class="relative rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-[#0A66F7]/30 transition-all duration-500 border-2 border-[#0A66F7]/30 hover:border-[#0A66F7]/60">
+            <iframe src="https://my.matterport.com/show/?m=mGmZhfLmhS3&ss=4&sr=-.37,.37" class="w-full h-72 sm:h-80 lg:h-96" frameborder="0" allowfullscreen allow="xr-spatial-tracking"></iframe>
+          </div>
+        </div>
+        <div class="w-full lg:w-1/2 animate-fade-right">
+          <span class="text-xs tracking-[0.3em] uppercase text-[#0A66F7] font-medium drop-shadow-[0_0_8px_rgba(10,102,247,0.8)]">Imobiliário</span>
+          <h3 class="mt-3 text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight">Apresente imóveis com <span class="text-[#0A66F7] drop-shadow-[0_0_15px_rgba(10,102,247,0.7)]">experiência 360°</span></h3>
+          <p class="mt-4 text-gray-400 leading-relaxed">Permita que seus clientes visitem cada ambiente a qualquer hora e de qualquer lugar, com uma experiência imersiva que valoriza o imóvel e acelera decisões de compra.</p>
+          <div class="mt-8 space-y-4">
+            <div class="flex gap-3 p-3 rounded-xl border border-[#0A66F7]/10 bg-[#0D1526]/60 hover:border-[#0A66F7]/30 hover:bg-[#0D1526] transition-all duration-300 group/b"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#00D084] mt-0.5 flex-shrink-0 drop-shadow-[0_0_6px_rgba(0,208,132,0.6)]"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><div><p class="text-white font-semibold text-sm group-hover/b:text-[#0A66F7] transition-colors">Mais visibilidade e conversões</p><p class="text-gray-400 text-sm mt-0.5">Compradores exploram todos os detalhes sem visita presencial, aumentando o alcance e a taxa de fechamento.</p></div></div>
+            <div class="flex gap-3 p-3 rounded-xl border border-[#0A66F7]/10 bg-[#0D1526]/60 hover:border-[#0A66F7]/30 hover:bg-[#0D1526] transition-all duration-300 group/b"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#00D084] mt-0.5 flex-shrink-0 drop-shadow-[0_0_6px_rgba(0,208,132,0.6)]"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><div><p class="text-white font-semibold text-sm group-hover/b:text-[#0A66F7] transition-colors">Vendas mais rápidas</p><p class="text-gray-400 text-sm mt-0.5">O cliente conhece o imóvel no próprio ritmo, reduz etapas e chega mais preparado para a negociação.</p></div></div>
+            <div class="flex gap-3 p-3 rounded-xl border border-[#0A66F7]/10 bg-[#0D1526]/60 hover:border-[#0A66F7]/30 hover:bg-[#0D1526] transition-all duration-300 group/b"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#00D084] mt-0.5 flex-shrink-0 drop-shadow-[0_0_6px_rgba(0,208,132,0.6)]"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><div><p class="text-white font-semibold text-sm group-hover/b:text-[#0A66F7] transition-colors">Diferencial competitivo</p><p class="text-gray-400 text-sm mt-0.5">Destaque suas listagens com tecnologia profissional, transmitindo credibilidade e inovação.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="tour-comercial" class="py-20 px-6 bg-[#080F1E] border-t border-[#0A66F7]/10">
+      <div class="max-w-6xl mx-auto flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-20">
+        <div class="w-full lg:w-1/2 animate-fade-right">
+          <div class="relative rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-[#0A66F7]/30 transition-all duration-500 border-2 border-[#0A66F7]/30 hover:border-[#0A66F7]/60">
+            <img src="images/comercioslocais.png" alt="Conquiste clientes" class="w-full h-72 sm:h-80 lg:h-96 object-cover hover:scale-110 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0F172A]/60 via-transparent to-transparent"></div>
+          </div>
+        </div>
+        <div class="w-full lg:w-1/2 animate-fade-left">
+          <span class="text-xs tracking-[0.3em] uppercase text-[#0A66F7] font-medium drop-shadow-[0_0_8px_rgba(10,102,247,0.8)]">Comércios Locais</span>
+          <h3 class="mt-3 text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight">Conquiste clientes <span class="text-[#0A66F7] drop-shadow-[0_0_15px_rgba(10,102,247,0.7)]">antes da visita</span></h3>
+          <p class="mt-4 text-gray-400 leading-relaxed">Seus clientes podem conhecer o ambiente, estrutura e diferenciais antes mesmo de chegar até você. Uma vitrine 360° aberta 24 horas.</p>
+          <div class="mt-8 space-y-4">
+            <div class="flex gap-3 p-3 rounded-xl border border-[#0A66F7]/10 bg-[#0D1526]/60 hover:border-[#0A66F7]/30 hover:bg-[#0D1526] transition-all duration-300 group/b"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#00D084] mt-0.5 flex-shrink-0 drop-shadow-[0_0_6px_rgba(0,208,132,0.6)]"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><div><p class="text-white font-semibold text-sm group-hover/b:text-[#0A66F7] transition-colors">Mais clientes pelo digital</p><p class="text-gray-400 text-sm mt-0.5">Aumenta o interesse e a confiança no seu estabelecimento com vitrine virtual permanente.</p></div></div>
+            <div class="flex gap-3 p-3 rounded-xl border border-[#0A66F7]/10 bg-[#0D1526]/60 hover:border-[#0A66F7]/30 hover:bg-[#0D1526] transition-all duration-300 group/b"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#00D084] mt-0.5 flex-shrink-0 drop-shadow-[0_0_6px_rgba(0,208,132,0.6)]"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><div><p class="text-white font-semibold text-sm group-hover/b:text-[#0A66F7] transition-colors">Decisão antes da visita</p><p class="text-gray-400 text-sm mt-0.5">O cliente chega mais seguro, sabendo o que vai encontrar e com maior intenção de compra.</p></div></div>
+            <div class="flex gap-3 p-3 rounded-xl border border-[#0A66F7]/10 bg-[#0D1526]/60 hover:border-[#0A66F7]/30 hover:bg-[#0D1526] transition-all duration-300 group/b"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#00D084] mt-0.5 flex-shrink-0 drop-shadow-[0_0_6px_rgba(0,208,132,0.6)]"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><div><p class="text-white font-semibold text-sm group-hover/b:text-[#0A66F7] transition-colors">Marketing permanente</p><p class="text-gray-400 text-sm mt-0.5">Conteúdo profissional para site, redes sociais e Google, trabalhando para sua empresa todos os dias.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="street-view" class="py-20 px-6 bg-[#080F1E] border-t border-[#0A66F7]/10">
+      <div class="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+        <div class="w-full lg:w-1/2 animate-fade-left">
+          <div class="relative rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-[#0A66F7]/30 transition-all duration-500 border-2 border-[#0A66F7]/30 hover:border-[#0A66F7]/60">
+            <iframe src="https://www.google.com/maps/embed?pb=!4v1777945449499!6m8!1m7!1sCAoSHENJQUJJaEFzYlpFNFpWSENHLVRLa3otUkdHRGk.!2m2!1d-29.74635780330028!2d-52.27654742533362!3f300.91362485329097!4f6.62348471231121!5f0.4000000000000002" style="border:0;" class="w-full h-72 sm:h-80 lg:h-96 block" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+        <div class="w-full lg:w-1/2 animate-fade-right">
+          <span class="text-xs tracking-[0.3em] uppercase text-[#0A66F7] font-medium drop-shadow-[0_0_8px_rgba(10,102,247,0.8)]">Google Street View</span>
+          <h3 class="mt-3 text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight">Apareça melhor no <span class="text-[#0A66F7] drop-shadow-[0_0_15px_rgba(10,102,247,0.7)]">Google</span></h3>
+          <p class="mt-4 text-gray-400 leading-relaxed">Fortaleça sua presença no Google com soluções 360°. Integre seu ambiente ao Perfil da Empresa e destaque-se nas buscas locais.</p>
+          <div class="mt-8 space-y-4">
+            <div class="flex gap-3 p-3 rounded-xl border border-[#0A66F7]/10 bg-[#0D1526]/60 hover:border-[#0A66F7]/30 hover:bg-[#0D1526] transition-all duration-300 group/b"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#00D084] mt-0.5 flex-shrink-0 drop-shadow-[0_0_6px_rgba(0,208,132,0.6)]"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><div><p class="text-white font-semibold text-sm group-hover/b:text-[#0A66F7] transition-colors">Mais visibilidade online</p><p class="text-gray-400 text-sm mt-0.5">Sua empresa aparece com experiência imersiva diretamente no Google Maps e buscas.</p></div></div>
+            <div class="flex gap-3 p-3 rounded-xl border border-[#0A66F7]/10 bg-[#0D1526]/60 hover:border-[#0A66F7]/30 hover:bg-[#0D1526] transition-all duration-300 group/b"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#00D084] mt-0.5 flex-shrink-0 drop-shadow-[0_0_6px_rgba(0,208,132,0.6)]"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><div><p class="text-white font-semibold text-sm group-hover/b:text-[#0A66F7] transition-colors">Mais confiança do público</p><p class="text-gray-400 text-sm mt-0.5">Clientes conhecem o interior do seu negócio antes do primeiro contato.</p></div></div>
+            <div class="flex gap-3 p-3 rounded-xl border border-[#0A66F7]/10 bg-[#0D1526]/60 hover:border-[#0A66F7]/30 hover:bg-[#0D1526] transition-all duration-300 group/b"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#00D084] mt-0.5 flex-shrink-0 drop-shadow-[0_0_6px_rgba(0,208,132,0.6)]"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><div><p class="text-white font-semibold text-sm group-hover/b:text-[#0A66F7] transition-colors">Vantagem sobre concorrentes</p><p class="text-gray-400 text-sm mt-0.5">Diferencial decisivo para quem busca credibilidade e profissionalismo nas buscas locais.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="imagens-aereas" class="py-20 px-6 bg-[#080F1E] border-t border-[#0A66F7]/10">
+      <div class="max-w-6xl mx-auto flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-20">
+        <div class="w-full lg:w-1/2 animate-fade-right">
+          <div class="relative rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-[#0A66F7]/30 transition-all duration-500 border-2 border-[#0A66F7]/30 hover:border-[#0A66F7]/60">
+            <img src="images/imagensaereas.png" alt="Drones" class="w-full h-72 sm:h-80 lg:h-96 object-cover hover:scale-110 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0F172A]/60 via-transparent to-transparent"></div>
+          </div>
+        </div>
+        <div class="w-full lg:w-1/2 animate-fade-left">
+          <span class="text-xs tracking-[0.3em] uppercase text-[#0A66F7] font-medium drop-shadow-[0_0_8px_rgba(10,102,247,0.8)]">Imagens Aéreas</span>
+          <h3 class="mt-3 text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight">Visão completa com <span class="text-[#0A66F7] drop-shadow-[0_0_15px_rgba(10,102,247,0.7)]">drones profissionais</span></h3>
+          <p class="mt-4 text-gray-400 leading-relaxed">Mostre empreendimentos e grandes áreas com impacto profissional. Captação com drones e tratamento especializado.</p>
+          <div class="mt-8 space-y-4">
+            <div class="flex gap-3 p-3 rounded-xl border border-[#0A66F7]/10 bg-[#0D1526]/60 hover:border-[#0A66F7]/30 hover:bg-[#0D1526] transition-all duration-300 group/b"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#00D084] mt-0.5 flex-shrink-0 drop-shadow-[0_0_6px_rgba(0,208,132,0.6)]"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><div><p class="text-white font-semibold text-sm group-hover/b:text-[#0A66F7] transition-colors">Visão completa do espaço</p><p class="text-gray-400 text-sm mt-0.5">Ideal para imóveis, condomínios, obras e áreas comerciais de grande porte.</p></div></div>
+            <div class="flex gap-3 p-3 rounded-xl border border-[#0A66F7]/10 bg-[#0D1526]/60 hover:border-[#0A66F7]/30 hover:bg-[#0D1526] transition-all duration-300 group/b"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#00D084] mt-0.5 flex-shrink-0 drop-shadow-[0_0_6px_rgba(0,208,132,0.6)]"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><div><p class="text-white font-semibold text-sm group-hover/b:text-[#0A66F7] transition-colors">Apresentação de alto padrão</p><p class="text-gray-400 text-sm mt-0.5">Material visual que valoriza qualquer projeto e impressiona investidores.</p></div></div>
+            <div class="flex gap-3 p-3 rounded-xl border border-[#0A66F7]/10 bg-[#0D1526]/60 hover:border-[#0A66F7]/30 hover:bg-[#0D1526] transition-all duration-300 group/b"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#00D084] mt-0.5 flex-shrink-0 drop-shadow-[0_0_6px_rgba(0,208,132,0.6)]"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><div><p class="text-white font-semibold text-sm group-hover/b:text-[#0A66F7] transition-colors">Tecnologia profissional</p><p class="text-gray-400 text-sm mt-0.5">Captação com equipamentos de ponta e pós-produção especializada.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PORTFÓLIO -->
+  <section id="portfolio" class="py-24 px-6 bg-[#060D1F] border-t border-[#0A66F7]/10">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 animate-fade-up">
+        <span class="inline-block px-4 py-1 rounded-full text-xs tracking-widest uppercase font-semibold text-[#0A66F7] bg-[#0A66F7]/10 border border-[#0A66F7]/30 mb-4 shadow-[0_0_15px_rgba(10,102,247,0.25)]">Portfólio</span>
+        <h2 class="text-4xl sm:text-5xl font-black text-white leading-tight">Trabalhos realizados</h2>
+        <p class="mt-4 text-lg text-gray-400 max-w-xl mx-auto">Conheça alguns dos projetos que já transformamos em experiências imersivas.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="animate-fade-up" data-pid="b3e0c9d1"><a href="https://my.matterport.com/show/?m=mGmZhfLmhS3" target="_blank" rel="noopener noreferrer" class="group block rounded-2xl overflow-hidden border border-[#0A66F7]/20 hover:border-[#0A66F7]/60 hover:shadow-[0_0_35px_rgba(10,102,247,0.3)] transition-all duration-300 bg-[#0D1526]"><div class="relative overflow-hidden aspect-video"><img src="https://res.cloudinary.com/dpl04z5so/image/upload/v1773442510/TOUR_VIRTUAL_IMOBILIARIO_zivyuw.png" alt="Residência" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"><div class="absolute inset-0 bg-[#0A66F7]/0 group-hover:bg-[#0A66F7]/50 transition-all duration-300 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all duration-300"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></div></div><div class="px-5 py-4"><p class="font-semibold text-gray-200 group-hover:text-[#0A66F7] transition-all duration-300">Residência</p></div></a></div>
+        <div class="animate-fade-up" data-pid="5a5169b4" style="transition-delay:0.1s"><a href="https://my.matterport.com/show/?m=4nmbNFHygV5" target="_blank" rel="noopener noreferrer" class="group block rounded-2xl overflow-hidden border border-[#0A66F7]/20 hover:border-[#0A66F7]/60 hover:shadow-[0_0_35px_rgba(10,102,247,0.3)] transition-all duration-300 bg-[#0D1526]"><div class="relative overflow-hidden aspect-video"><img src="https://res.cloudinary.com/dpl04z5so/image/upload/v1773442510/TOUR_VIRTUAL_IMOBILIARIO_zivyuw.png" alt="Coworking" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"><div class="absolute inset-0 bg-[#0A66F7]/0 group-hover:bg-[#0A66F7]/50 transition-all duration-300 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all duration-300"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></div></div><div class="px-5 py-4"><p class="font-semibold text-gray-200 group-hover:text-[#0A66F7] transition-all duration-300">Coworking</p></div></a></div>
+        <div class="animate-fade-up" data-pid="8d3fadeb" style="transition-delay:0.2s"><a href="https://maps.app.goo.gl/Ao4vkSr3KvZXwhPJA" target="_blank" rel="noopener noreferrer" class="group block rounded-2xl overflow-hidden border border-[#0A66F7]/20 hover:border-[#0A66F7]/60 hover:shadow-[0_0_35px_rgba(10,102,247,0.3)] transition-all duration-300 bg-[#0D1526]"><div class="relative overflow-hidden aspect-video"><img src="https://res.cloudinary.com/dpl04z5so/image/upload/v1773402317/LOGO_ME_SOLU%C3%87%C3%95ES_kv2iuw.jpg" alt="M&E Soluções" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"><div class="absolute inset-0 bg-[#0A66F7]/0 group-hover:bg-[#0A66F7]/50 transition-all duration-300 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all duration-300"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></div></div><div class="px-5 py-4"><p class="font-semibold text-gray-200 group-hover:text-[#0A66F7] transition-all duration-300">M&amp;E Soluções</p></div></a></div>
+        <div class="animate-fade-up" data-pid="46549f96" style="transition-delay:0.3s"><a href="https://maps.app.goo.gl/xW5qGRgVBqY9JvF87" target="_blank" rel="noopener noreferrer" class="group block rounded-2xl overflow-hidden border border-[#0A66F7]/20 hover:border-[#0A66F7]/60 hover:shadow-[0_0_35px_rgba(10,102,247,0.3)] transition-all duration-300 bg-[#0D1526]"><div class="relative overflow-hidden aspect-video"><img src="https://res.cloudinary.com/dpl04z5so/image/upload/v1772737532/LOOGO_PICHULLE_MARROM_vlnwor.jpg" alt="Pichulle" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"><div class="absolute inset-0 bg-[#0A66F7]/0 group-hover:bg-[#0A66F7]/50 transition-all duration-300 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all duration-300"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></div></div><div class="px-5 py-4"><p class="font-semibold text-gray-200 group-hover:text-[#0A66F7] transition-all duration-300">Pichulle</p></div></a></div>
+        <div class="animate-fade-up" data-pid="62a33c92" style="transition-delay:0.4s"><a href="https://maps.app.goo.gl/LaqNe36tSXNCus8v5" target="_blank" rel="noopener noreferrer" class="group block rounded-2xl overflow-hidden border border-[#0A66F7]/20 hover:border-[#0A66F7]/60 hover:shadow-[0_0_35px_rgba(10,102,247,0.3)] transition-all duration-300 bg-[#0D1526]"><div class="relative overflow-hidden aspect-video"><img src="https://res.cloudinary.com/dpl04z5so/image/upload/v1772737159/Logo_Mais_Cor_uvqtb4.jpg" alt="+ Cor" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"><div class="absolute inset-0 bg-[#0A66F7]/0 group-hover:bg-[#0A66F7]/50 transition-all duration-300 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all duration-300"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></div></div><div class="px-5 py-4"><p class="font-semibold text-gray-200 group-hover:text-[#0A66F7] transition-all duration-300">+ Cor</p></div></a></div>
+        <div class="animate-fade-up" data-pid="25415206" style="transition-delay:0.5s"><a href="https://maps.app.goo.gl/dj8Wn94Fc3VFGMSx6?g_st=aw" target="_blank" rel="noopener noreferrer" class="group block rounded-2xl overflow-hidden border border-[#0A66F7]/20 hover:border-[#0A66F7]/60 hover:shadow-[0_0_35px_rgba(10,102,247,0.3)] transition-all duration-300 bg-[#0D1526]"><div class="relative overflow-hidden aspect-video"><img src="https://res.cloudinary.com/dpl04z5so/image/upload/v1772740610/logo_bianca_aarxhj.png" alt="Bi Avelar Studio" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"><div class="absolute inset-0 bg-[#0A66F7]/0 group-hover:bg-[#0A66F7]/50 transition-all duration-300 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all duration-300"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></div></div><div class="px-5 py-4"><p class="font-semibold text-gray-200 group-hover:text-[#0A66F7] transition-all duration-300">Bi Avelar Studio</p></div></a></div>
+        <div class="animate-fade-up" data-pid="734d7d6e" style="transition-delay:0.6s"><a href="https://maps.app.goo.gl/cEu8mvhC7CzoikSF8?g_st=aw" target="_blank" rel="noopener noreferrer" class="group block rounded-2xl overflow-hidden border border-[#0A66F7]/20 hover:border-[#0A66F7]/60 hover:shadow-[0_0_35px_rgba(10,102,247,0.3)] transition-all duration-300 bg-[#0D1526]"><div class="relative overflow-hidden aspect-video"><img src="https://res.cloudinary.com/dpl04z5so/image/upload/v1772741947/Logo_Oseias_k6gnml.jpg" alt="Avelar Barbearia" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"><div class="absolute inset-0 bg-[#0A66F7]/0 group-hover:bg-[#0A66F7]/50 transition-all duration-300 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all duration-300"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></div></div><div class="px-5 py-4"><p class="font-semibold text-gray-200 group-hover:text-[#0A66F7] transition-all duration-300">Avelar Barbearia</p></div></a></div>
+        <!-- PORTFOLIO_END -->
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato" class="relative py-28 px-6 overflow-hidden bg-[#060D1F] border-t border-[#0A66F7]/10">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#0A66F7]/10 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="max-w-5xl mx-auto relative">
+      <div class="text-center mb-16 animate-fade-up">
+        <span class="text-xs tracking-[0.3em] uppercase text-[#0A66F7] font-medium drop-shadow-[0_0_8px_rgba(10,102,247,0.8)]">Contato</span>
+        <h2 class="mt-4 text-3xl sm:text-4xl md:text-5xl font-bold text-white">Vamos <span class="text-[#0A66F7] drop-shadow-[0_0_20px_rgba(10,102,247,0.8)]">conversar?</span></h2>
+        <p class="mt-4 text-gray-400 max-w-lg mx-auto text-lg">Entre em contato e leve seus espaços para um novo nível de apresentação e resultados.</p>
+        <a href="https://www.instagram.com/aeronsolutions" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-2 text-[#0A66F7] hover:text-[#0852c4] hover:gap-3 transition-all duration-300 group">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+          <span class="text-sm font-medium">Siga-nos no Instagram</span>
+        </a>
+      </div>
+      <div class="max-w-xl mx-auto animate-fade-up">
+        <form id="contact-form" class="space-y-5" onsubmit="handleSubmit(event)">
+          <div class="relative"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute left-4 top-1/2 -translate-y-1/2 text-[#334155]"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><input id="f-nome" name="nome" required class="w-full pl-11 pr-4 py-4 bg-[#0D1526] border border-[#0A66F7]/20 text-white placeholder:text-gray-500 rounded-xl focus:outline-none focus:border-[#0A66F7] hover:border-[#0A66F7]/50 transition-all duration-200 focus:shadow-[0_0_15px_rgba(10,102,247,0.2)]" placeholder="Seu nome *"></div>
+          <div class="relative"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><input id="f-whatsapp" name="whatsapp" required class="w-full pl-11 pr-4 py-4 bg-[#0D1526] border border-[#0A66F7]/20 text-white placeholder:text-gray-500 rounded-xl focus:outline-none focus:border-[#0A66F7] hover:border-[#0A66F7]/50 transition-all duration-200 focus:shadow-[0_0_15px_rgba(10,102,247,0.2)]" placeholder="Seu WhatsApp *"></div>
+          <div class="relative"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><input id="f-email" name="email" type="email" required class="w-full pl-11 pr-4 py-4 bg-[#0D1526] border border-[#0A66F7]/20 text-white placeholder:text-gray-500 rounded-xl focus:outline-none focus:border-[#0A66F7] hover:border-[#0A66F7]/50 transition-all duration-200 focus:shadow-[0_0_15px_rgba(10,102,247,0.2)]" placeholder="Seu e-mail *"></div>
+          <div class="relative"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none"><path d="m6 9 6 6 6-6"/></svg><select id="f-servico" name="servico" required class="w-full pl-4 pr-11 py-4 bg-[#0D1526] border border-[#0A66F7]/20 text-gray-400 rounded-xl focus:outline-none focus:border-[#0A66F7] hover:border-[#0A66F7]/50 transition-all duration-200 appearance-none cursor-pointer"><option value="" disabled selected>Tipo de serviço *</option><option>Tour Virtual 360°</option><option>Google Street View</option><option>Vídeo 360°</option><option>Imagens com Drone</option><option>Orçamento personalizado</option></select></div>
+          <div class="relative"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute left-4 top-4 text-[#334155]"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><textarea id="f-mensagem" name="mensagem" class="w-full pl-11 pr-4 py-3 bg-[#0D1526] border border-[#0A66F7]/20 text-white placeholder:text-gray-500 rounded-xl focus:outline-none focus:border-[#0A66F7] hover:border-[#0A66F7]/50 transition-all duration-200 resize-none" placeholder="Descreva brevemente o local ou serviço desejado." rows="5"></textarea></div>
+          <button id="submit-btn" type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-[#00D084] to-[#00b870] text-white font-bold text-base shadow-[0_0_20px_rgba(0,208,132,0.3)] hover:shadow-[0_0_40px_rgba(0,208,132,0.6)] hover:scale-[1.02] hover:-translate-y-0.5 transition-all duration-300 border border-[#00D084]/40 flex items-center justify-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
+            Solicitar orçamento
+          </button>
+        </form>
+        <div id="form-success" class="hidden mt-6 p-5 rounded-xl bg-[#00D084]/10 border border-[#00D084]/30 text-[#00D084] text-center font-semibold">✓ Mensagem enviada com sucesso! Entraremos em contato em breve.</div>
+        <div id="form-error" class="hidden mt-6 p-5 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-center font-semibold">Erro ao enviar. Tente novamente ou entre em contato pelo WhatsApp.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-[#0A66F7]/20 bg-[#060D1F]">
+    <div class="max-w-7xl mx-auto px-6 py-16">
+      <div class="flex flex-col md:flex-row justify-between items-start gap-12">
+        <div class="max-w-sm">
+          <div class="mb-4"><img src="images/logo-aeron.png" alt="AERON Solutions" class="h-10 w-auto object-contain"></div>
+          <p class="text-gray-400 text-sm leading-relaxed">Transformamos espaços reais em experiências digitais imersivas. Tecnologia profissional para valorizar seus ambientes.</p>
+          <a href="https://www.instagram.com/aeronsolutions" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-2 text-[#0A66F7] hover:text-[#0852c4] hover:gap-3 transition-all duration-300 group">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            <span class="text-sm font-medium">@aeronsolutions</span>
+          </a>
+        </div>
+        <div class="flex flex-wrap gap-10 sm:gap-16">
+          <div>
+            <h4 class="text-xs tracking-[0.2em] uppercase text-[#0A66F7] font-semibold mb-4 drop-shadow-[0_0_6px_rgba(10,102,247,0.6)]">Navegação</h4>
+            <div class="flex flex-col gap-3">
+              <button onclick="scrollToSection('hero')" class="text-left text-sm text-gray-400 hover:text-[#0A66F7] hover:translate-x-1 transition-all duration-200">Início</button>
+              <button onclick="scrollToSection('servicos')" class="text-left text-sm text-gray-400 hover:text-[#0A66F7] hover:translate-x-1 transition-all duration-200">Serviços</button>
+              <button onclick="scrollToSection('solucoes')" class="text-left text-sm text-gray-400 hover:text-[#0A66F7] hover:translate-x-1 transition-all duration-200">Soluções</button>
+              <button onclick="scrollToSection('contato')" class="text-left text-sm text-gray-400 hover:text-[#0A66F7] hover:translate-x-1 transition-all duration-200">Contato</button>
+            </div>
+          </div>
+          <div>
+            <h4 class="text-xs tracking-[0.2em] uppercase text-[#0A66F7] font-semibold mb-4 drop-shadow-[0_0_6px_rgba(10,102,247,0.6)]">Serviços</h4>
+            <div class="flex flex-col gap-3">
+              <a href="servico/tour-imobiliario.html" class="text-sm text-gray-400 hover:text-gray-200 transition-colors">Tour Imobiliário</a>
+              <a href="servico/tour-comercial.html" class="text-sm text-gray-400 hover:text-gray-200 transition-colors">Tour Comercial</a>
+              <a href="servico/street-view.html" class="text-sm text-gray-400 hover:text-gray-200 transition-colors">Street View</a>
+              <a href="servico/imagens-aereas.html" class="text-sm text-gray-400 hover:text-gray-200 transition-colors">Imagens Aéreas</a>
+              <a href="servico/videos-360.html" class="text-sm text-gray-400 hover:text-gray-200 transition-colors">Vídeos 360°</a>
+              <a href="servico/fotos-360.html" class="text-sm text-gray-400 hover:text-gray-200 transition-colors">Fotos 360°</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-16 pt-8 border-t border-[#0A66F7]/10 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p class="text-xs text-gray-500">© 2026 AERON SOLUTIONS. Todos os direitos reservados.</p>
+        <p class="text-xs text-gray-500">Experiências digitais imersivas</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp -->
+  <a href="https://wa.me/5551999263252?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20AERON%20Solutions%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener noreferrer" class="wa-btn" style="position:fixed;bottom:24px;right:24px;z-index:9999;display:flex;align-items:center;gap:8px;background-color:rgb(37,211,102);color:#fff;font-weight:600;font-size:14px;padding:12px 20px;border-radius:50px;box-shadow:rgba(37,211,102,0.4) 0px 4px 20px;text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="white"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.827.737 5.476 2.027 7.785L0 32l8.43-2.01A15.937 15.937 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.27 13.27 0 0 1-6.77-1.853l-.484-.288-5.006 1.194 1.234-4.872-.317-.5A13.267 13.267 0 0 1 2.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.27-9.874c-.398-.199-2.354-1.161-2.72-1.294-.365-.133-.63-.199-.896.199-.265.398-1.028 1.294-1.26 1.56-.232.265-.464.298-.862.1-.398-.2-1.681-.619-3.203-1.977-1.184-1.056-1.983-2.361-2.215-2.759-.232-.398-.025-.613.174-.812.179-.178.398-.464.597-.696.199-.232.265-.398.398-.664.133-.265.066-.497-.033-.696-.1-.199-.896-2.161-1.228-2.959-.323-.775-.651-.67-.896-.682l-.763-.013c-.265 0-.696.1-1.061.497-.365.398-1.393 1.361-1.393 3.32 0 1.96 1.426 3.853 1.625 4.119.199.265 2.806 4.282 6.798 6.004.951.41 1.693.655 2.272.839.954.304 1.823.261 2.51.158.766-.114 2.354-.962 2.686-1.891.332-.93.332-1.727.232-1.893-.099-.165-.365-.265-.763-.464z"/></svg>
+    <span style="white-space:nowrap;">Fale conosco</span>
+  </a>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => { navbar.classList.toggle('nav-scrolled', window.scrollY > 60); });
+    function scrollToSection(id) { document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }); }
+    function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
+    const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in-view'); observer.unobserve(e.target); }}); }, { threshold: 0.12 });
+    document.querySelectorAll('.animate-fade-up,.animate-fade-left,.animate-fade-right').forEach(el => observer.observe(el));
+    async function handleSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submit-btn');
+      const originalHTML = btn.innerHTML;
+
+      // Loading
+      btn.disabled = true;
+      btn.innerHTML = '<svg class="animate-spin w-4 h-4" style="animation:spin .7s linear infinite" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" stroke-dasharray="40" stroke-dashoffset="10"/></svg> Enviando…';
+
+      const fd = new FormData();
+      fd.append('nome',     document.getElementById('f-nome').value);
+      fd.append('whatsapp', document.getElementById('f-whatsapp').value);
+      fd.append('email',    document.getElementById('f-email').value);
+      fd.append('servico',  document.getElementById('f-servico').value);
+      fd.append('mensagem', document.getElementById('f-mensagem').value);
+
+      try {
+        const r = await fetch('contato.php', { method: 'POST', body: fd });
+        const data = await r.json();
+        document.getElementById('form-success').classList.toggle('hidden', !data.ok);
+        document.getElementById('form-error').classList.toggle('hidden', data.ok);
+        if (data.ok) {
+          document.getElementById('contact-form').reset();
+          document.getElementById('form-success').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      } catch(err) {
+        document.getElementById('form-error').classList.remove('hidden');
+      }
+
+      btn.disabled = false;
+      btn.innerHTML = originalHTML;
+    }
+  </script>
+</body>
+</html>
+

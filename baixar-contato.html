@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Baixando contato AERON...</title>
+  <script>
+    window.onload = function() {
+      // Força download via elemento <a>
+      var a = document.createElement('a');
+      a.href = '/ContatoAERON.vcf';
+      a.download = 'ContatoAERON.vcf';
+      document.body.appendChild(a);
+      a.click();
+      // Redireciona para o site após 2 segundos
+      setTimeout(function() {
+        window.location.href = '/';
+      }, 2000);
+    }
+  </script>
+</head>
+<body style="font-family:sans-serif;background:#080F1E;color:white;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;text-align:center;">
+  <div>
+    <p style="font-size:18px;">📥 Baixando contato AERON...</p>
+    <p style="color:#0A66F7;font-size:14px;">Se o download não iniciar, <a href="/ContatoAERON.vcf" download style="color:#00D084;">clique aqui</a></p>
+  </div>
+</body>
+</html>
