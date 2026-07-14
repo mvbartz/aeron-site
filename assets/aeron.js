@@ -43,11 +43,13 @@
   if(grid_){
     const catName={tour:'Tour Virtual',google:'Google',landing:'Landing Pages'};
     const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    // miniatura: usa a imagem se houver; senao, screenshot automatico do link (ideal p/ landing pages)
+    const thumb=i=>i.image ? i.image : (i.link ? 'https://s.wordpress.com/mshots/v1/'+encodeURIComponent(i.link)+'?w=1000' : '');
     const fixed=grid_.dataset.cat||'';
     const emptyMsg=grid_.dataset.empty||'Em breve, novos trabalhos por aqui.';
     const CAP=parseInt(grid_.dataset.cap||'8',10);
     let items=[],filter=fixed||'all',expanded=false;
-    function card(i){return `<a class="pf-card" href="${esc(i.link)}" target="_blank" rel="noopener"><div class="im"><img src="${esc(i.image)}" alt="${esc(i.title)}" loading="lazy" onerror="this.style.opacity=.25"></div><div class="bd"><h3>${esc(i.title)}</h3><span class="cat ${esc(i.category)}">${catName[i.category]||esc(i.category)}</span></div></a>`;}
+    function card(i){return `<a class="pf-card" href="${esc(i.link)}" target="_blank" rel="noopener"><div class="im"><img src="${esc(thumb(i))}" alt="${esc(i.title)}" loading="lazy" onerror="this.style.opacity=.25"></div><div class="bd"><h3>${esc(i.title)}</h3><span class="cat ${esc(i.category)}">${catName[i.category]||esc(i.category)}</span></div></a>`;}
     function render(){
       const list=items.filter(i=>i.active!==false).sort((a,b)=>(a.order??0)-(b.order??0)).filter(i=>filter==='all'||i.category===filter);
       if(!list.length){grid_.innerHTML='<div class="pf-empty">'+emptyMsg+'</div>';return;}

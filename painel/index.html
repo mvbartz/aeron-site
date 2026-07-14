@@ -206,7 +206,7 @@
     L.innerHTML=items.map(i=>`
       <div class="row ${i.active?'':'inactive'}" draggable="true" data-id="${i.id}">
         <span class="grip" title="Arraste para reordenar"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="6" r="1.6"/><circle cx="15" cy="6" r="1.6"/><circle cx="9" cy="12" r="1.6"/><circle cx="15" cy="12" r="1.6"/><circle cx="9" cy="18" r="1.6"/><circle cx="15" cy="18" r="1.6"/></svg></span>
-        <img class="thumb" src="${i.image}" alt="" loading="lazy" onerror="this.style.opacity=.3">
+        <img class="thumb" src="${i.image||(i.link?'https://s.wordpress.com/mshots/v1/'+encodeURIComponent(i.link)+'?w=400':'')}" alt="" loading="lazy" onerror="this.style.opacity=.3">
         <div class="info"><h4>${esc(i.title)}</h4><a href="${i.link}" target="_blank" rel="noopener">${esc(i.link)}</a></div>
         <span class="badge ${i.category}">${catName(i.category)}</span>
         <div class="acts">
@@ -255,9 +255,10 @@
             </select></div>
           </div>
           <div class="field"><label>Link do projeto (tour, Google Maps ou site)</label><input id="f-link" value="${esc(it.link)}" placeholder="https://..."></div>
-          <div class="field"><label>Imagem (URL)</label>
-            <div class="imgrow"><input id="f-image" value="${esc(it.image)}" placeholder="https://res.cloudinary.com/..." oninput="prev()">
+          <div class="field"><label>Imagem (URL) — opcional</label>
+            <div class="imgrow"><input id="f-image" value="${esc(it.image)}" placeholder="Deixe em branco para gerar do link (ideal p/ Landing)" oninput="prev()">
               ${UPLOAD_PRESET?'<button class="btn btn-glass" type="button" onclick="uploadImg()">Enviar</button>':''}</div>
+            <p style="font-family:var(--mono);font-size:10px;color:var(--mist);margin:6px 0 0 2px;letter-spacing:.04em">Em branco: usamos um screenshot automático do link. Com URL: usamos a imagem.</p>
             <div class="preview"><div class="card"><div class="ph" id="pv-ph">Prévia</div><div class="cap" id="pv-cap">Título</div></div></div>
           </div>
           <div class="foot">
@@ -270,9 +271,10 @@
   }
   function closeModal(){$('#modalHost').innerHTML='';}
   function edit(i){openModal(i);}
-  function prev(){const img=$('#f-image')?.value,t=$('#f-title')?.value||'Título';
-    $('#pv-cap').textContent=t; $('#pv-ph').innerHTML=img?`<img src="${img}" onerror="this.parentNode.textContent='imagem não carrega'">`:'Prévia';}
-  document.addEventListener('input',e=>{if(e.target.id==='f-title')prev();});
+  function prev(){const img=$('#f-image')?.value.trim(),link=$('#f-link')?.value.trim(),t=$('#f-title')?.value||'Título';
+    const src=img||(link?'https://s.wordpress.com/mshots/v1/'+encodeURIComponent(link)+'?w=600':'');
+    $('#pv-cap').textContent=t; $('#pv-ph').innerHTML=src?`<img src="${src}" onerror="this.parentNode.textContent='sem imagem'">`:'Prévia';}
+  document.addEventListener('input',e=>{if(e.target.id==='f-title'||e.target.id==='f-link')prev();});
 
   async function uploadImg(){
     const inp=document.createElement('input');inp.type='file';inp.accept='image/*';
@@ -286,7 +288,7 @@
 
   async function save(){
     const p={id:$('#f-id').value,title:$('#f-title').value.trim(),category:$('#f-cat').value,link:$('#f-link').value.trim(),image:$('#f-image').value.trim()};
-    if(!p.title||!p.link||!p.image){toast('Preencha título, link e imagem.');return;}
+    if(!p.title||!p.link){toast('Preencha título e link.');return;}
     if(MODE==='demo'){ // atualiza local só pra visualizar
       if(p.id){const it=DATA.items.find(i=>i.id===p.id);Object.assign(it,p);}
       else DATA.items.unshift({...p,id:'novo-'+Date.now(),active:true,order:-1});

@@ -73,9 +73,10 @@ if ($action === 'save') {
     $link  = trim($_POST['link'] ?? '');
     $img   = trim($_POST['image'] ?? '');
 
-    if ($title==='' || $link==='' || $img==='') out(['ok'=>false,'msg'=>'Preencha título, link e imagem.']);
+    if ($title==='' || $link==='') out(['ok'=>false,'msg'=>'Preencha título e link.']);
     if (!in_array($cat, CATS, true)) out(['ok'=>false,'msg'=>'Categoria inválida.']);
-    if (!filter_var($link, FILTER_VALIDATE_URL) || !filter_var($img, FILTER_VALIDATE_URL)) out(['ok'=>false,'msg'=>'Link ou imagem com URL inválida.']);
+    if (!filter_var($link, FILTER_VALIDATE_URL)) out(['ok'=>false,'msg'=>'Link com URL inválida.']);
+    if ($img!=='' && !filter_var($img, FILTER_VALIDATE_URL)) out(['ok'=>false,'msg'=>'A imagem precisa ser uma URL válida (ou deixe em branco para gerar automático).']);
 
     $data = readData();
     if ($id !== '') {
