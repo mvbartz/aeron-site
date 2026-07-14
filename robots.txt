@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /admin/
+Disallow: /painel/
 
-Sitemap: https://www.aeronsolutions.com.br/sitemap.xml
+Sitemap: https://aeronsolutions.com.br/sitemap.xml

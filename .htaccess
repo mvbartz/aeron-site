@@ -11,13 +11,6 @@ Options -Indexes
   Header set Content-Type "text/vcard; charset=utf-8"
 </Files>
 
-# ── Forçar download do VCF (salvar contato) ──────────────────
-<Files "ContatoAERON.vcf">
-  AddType text/x-vcard .vcf
-  Header set Content-Disposition "attachment; filename=\"ContatoAERON.vcf\""
-  Header set Content-Type "text/vcard; charset=utf-8"
-</Files>
-
 # ── Forçar HTTPS ─────────────────────────────────────────────
 RewriteEngine On
 RewriteCond %{HTTPS} off
@@ -27,16 +20,34 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
 RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
 
-# ── Redirecionar páginas antigas para nova estrutura /servico/ ─
-RewriteRule ^servico-tour-imobiliario\.html$ /servico/tour-imobiliario.html [R=301,L]
-RewriteRule ^servico-tour-comercial\.html$   /servico/tour-comercial.html   [R=301,L]
-RewriteRule ^servico-street-view\.html$      /servico/street-view.html      [R=301,L]
-RewriteRule ^servico-imagens-aereas\.html$   /servico/imagens-aereas.html   [R=301,L]
-RewriteRule ^servico-videos-360\.html$       /servico/videos-360.html       [R=301,L]
-RewriteRule ^servico-fotos-360\.html$        /servico/fotos-360.html        [R=301,L]
+# ── Redirecionar site antigo (Tour Imobiliário/Comercial) para a nova página Tour Virtual ─
+RewriteRule ^servico-tour-imobiliario\.html$ /tour-virtual.html [R=301,L]
+RewriteRule ^servico-tour-comercial\.html$   /tour-virtual.html [R=301,L]
+RewriteRule ^servico/tour-imobiliario\.html$ /tour-virtual.html [R=301,L]
+RewriteRule ^servico/tour-comercial\.html$   /tour-virtual.html [R=301,L]
 
-# ── Proteger pasta admin ──────────────────────────────────────
-RewriteRule ^admin/$ /admin/index.html [L]
+# ── Street View antigo agora faz parte do Perfil no Google ───
+RewriteRule ^servico-street-view\.html$ /gbp.html [R=301,L]
+RewriteRule ^servico/street-view\.html$ /gbp.html [R=301,L]
+
+# ── Serviços descontinuados (aéreas, vídeos 360, fotos 360) → home ─
+RewriteRule ^servico-imagens-aereas\.html$ /index.html [R=301,L]
+RewriteRule ^servico-videos-360\.html$     /index.html [R=301,L]
+RewriteRule ^servico-fotos-360\.html$      /index.html [R=301,L]
+RewriteRule ^servico/imagens-aereas\.html$ /index.html [R=301,L]
+RewriteRule ^servico/videos-360\.html$     /index.html [R=301,L]
+RewriteRule ^servico/fotos-360\.html$      /index.html [R=301,L]
+
+# ── Formulário antigo removido → fala direto no WhatsApp ─────
+RewriteRule ^contato\.php$ https://wa.me/5551999263252 [R=301,L]
+
+# ── Painel antigo (admin/) removido → novo painel em /painel/ ─
+RewriteRule ^admin/?$ /painel/index.html [R=301,L]
+
+# ── Painel novo: nunca listar diretório, config.php nunca é servido publicamente ─
+<Files "config.php">
+  Require all denied
+</Files>
 
 # ── Páginas de erro personalizadas ───────────────────────────
 ErrorDocument 404 /404.html
