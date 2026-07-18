@@ -6,13 +6,22 @@
     },
     "items": [
         {
+            "id": "stopcar-centro-automotivo-3d94",
+            "title": "StopCar Centro Automotivo",
+            "category": "landing",
+            "image": "",
+            "link": "https://stopcar.aeronsolutions.com.br/",
+            "active": true,
+            "order": 0
+        },
+        {
             "id": "avelar-barbearia-vera-cruz-ee73",
             "title": "Avelar Barbearia - Vera Cruz",
             "category": "google",
             "image": "https://res.cloudinary.com/dpl04z5so/image/upload/v1772741947/Logo_Oseias_k6gnml.jpg",
             "link": "https://maps.app.goo.gl/SDCEtof6qvHs8WKE6",
             "active": true,
-            "order": 0
+            "order": 1
         },
         {
             "id": "marcenaria-maioli-c719",
@@ -21,7 +30,7 @@
             "image": "",
             "link": "https://marcenariamaioli.netlify.app/",
             "active": true,
-            "order": 1
+            "order": 2
         },
         {
             "id": "latic-nio-la-serrana-4e8e",
@@ -30,7 +39,7 @@
             "image": "",
             "link": "https://laticiniolaserrana.aeronsolutions.com.br/",
             "active": true,
-            "order": 2
+            "order": 3
         },
         {
             "id": "vanessa-eisermann-943d",
@@ -39,7 +48,7 @@
             "image": "",
             "link": "https://vanessaeisermann.aeronsolutions.com.br/",
             "active": true,
-            "order": 3
+            "order": 4
         },
         {
             "id": "eletroclima-energia-solar-fdeb",
@@ -48,7 +57,7 @@
             "image": "https://res.cloudinary.com/dpl04z5so/image/upload/v1784303097/Captura_de_tela_2026-07-17_124357_rjqc0x.png",
             "link": "https://maps.app.goo.gl/B8CbexqEzRpERq3E9",
             "active": true,
-            "order": 4
+            "order": 5
         },
         {
             "id": "avelar-barbearia-c14c",
@@ -57,7 +66,7 @@
             "image": "",
             "link": "https://avelarbarbearia.netlify.app/",
             "active": true,
-            "order": 5
+            "order": 6
         },
         {
             "id": "emp-rio-vida-fit-747b",
@@ -66,7 +75,7 @@
             "image": "",
             "link": "https://emporiovidafit.netlify.app/",
             "active": true,
-            "order": 6
+            "order": 7
         },
         {
             "id": "res-mgmz",
@@ -75,7 +84,7 @@
             "image": "https://res.cloudinary.com/dpl04z5so/image/upload/v1773442510/TOUR_VIRTUAL_IMOBILIARIO_zivyuw.png",
             "link": "https://my.matterport.com/show/?m=mGmZhfLmhS3",
             "active": true,
-            "order": 7
+            "order": 8
         },
         {
             "id": "cowork-4nmb",
@@ -84,7 +93,7 @@
             "image": "https://res.cloudinary.com/dpl04z5so/image/upload/v1773442510/TOUR_VIRTUAL_IMOBILIARIO_zivyuw.png",
             "link": "https://my.matterport.com/show/?m=4nmbNFHygV5",
             "active": true,
-            "order": 8
+            "order": 9
         },
         {
             "id": "mais-cor",
@@ -93,7 +102,7 @@
             "image": "https://res.cloudinary.com/dpl04z5so/image/upload/v1772737159/Logo_Mais_Cor_uvqtb4.jpg",
             "link": "https://maps.app.goo.gl/LaqNe36tSXNCus8v5",
             "active": true,
-            "order": 9
+            "order": 10
         },
         {
             "id": "emporio-vida-fit",
@@ -102,7 +111,7 @@
             "image": "https://res.cloudinary.com/dpl04z5so/image/upload/v1781041442/2_y32mye.jpg",
             "link": "https://maps.app.goo.gl/V1fGLaAMqWGFQYHX6",
             "active": true,
-            "order": 10
+            "order": 11
         },
         {
             "id": "avelar-barbearia",
@@ -111,7 +120,7 @@
             "image": "https://res.cloudinary.com/dpl04z5so/image/upload/v1772741947/Logo_Oseias_k6gnml.jpg",
             "link": "https://maps.app.goo.gl/cEu8mvhC7CzoikSF8",
             "active": true,
-            "order": 11
+            "order": 12
         },
         {
             "id": "pichulle",
@@ -120,7 +129,7 @@
             "image": "https://res.cloudinary.com/dpl04z5so/image/upload/v1772737532/LOOGO_PICHULLE_MARROM_vlnwor.jpg",
             "link": "https://maps.app.goo.gl/xW5qGRgVBqY9JvF87",
             "active": true,
-            "order": 12
+            "order": 13
         },
         {
             "id": "me-solucoes",
@@ -129,7 +138,7 @@
             "image": "https://res.cloudinary.com/dpl04z5so/image/upload/v1773402317/LOGO_ME_SOLU%C3%87%C3%95ES_kv2iuw.jpg",
             "link": "https://maps.app.goo.gl/Ao4vkSr3KvZXwhPJA",
             "active": true,
-            "order": 13
+            "order": 14
         },
         {
             "id": "bi-avelar-studio",
@@ -138,7 +147,7 @@
             "image": "https://res.cloudinary.com/dpl04z5so/image/upload/v1784044010/logo_bianca_i5przr.webp",
             "link": "https://maps.app.goo.gl/dj8Wn94Fc3VFGMSx6",
             "active": true,
-            "order": 14
+            "order": 15
         }
     ]
 }
