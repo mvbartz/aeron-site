@@ -24,6 +24,51 @@
             "order": 1
         },
         {
+            "id": "marcenaria-maioli-c719",
+            "title": "Marcenaria Maioli",
+            "category": "landing",
+            "image": "",
+            "link": "https://marcenariamaioli.netlify.app/",
+            "active": true,
+            "order": 2
+        },
+        {
+            "id": "latic-nio-la-serrana-4e8e",
+            "title": "Laticínio La Serrana",
+            "category": "landing",
+            "image": "",
+            "link": "https://laticiniolaserrana.aeronsolutions.com.br/",
+            "active": true,
+            "order": 3
+        },
+        {
+            "id": "vanessa-eisermann-943d",
+            "title": "Vanessa Eisermann",
+            "category": "landing",
+            "image": "",
+            "link": "https://vanessaeisermann.aeronsolutions.com.br/",
+            "active": true,
+            "order": 4
+        },
+        {
+            "id": "avelar-barbearia-c14c",
+            "title": "Avelar Barbearia",
+            "category": "landing",
+            "image": "",
+            "link": "https://avelarbarbearia.netlify.app/",
+            "active": true,
+            "order": 5
+        },
+        {
+            "id": "emp-rio-vida-fit-747b",
+            "title": "Empório Vida Fit",
+            "category": "landing",
+            "image": "",
+            "link": "https://emporiovidafit.netlify.app/",
+            "active": true,
+            "order": 6
+        },
+        {
             "id": "avelar-barbearia-vera-cruz-ee73",
             "title": "Avelar Barbearia - Vera Cruz",
             "category": "google",
@@ -33,33 +78,6 @@
             "order": 2
         },
         {
-            "id": "marcenaria-maioli-c719",
-            "title": "Marcenaria Maioli",
-            "category": "landing",
-            "image": "",
-            "link": "https://marcenariamaioli.netlify.app/",
-            "active": true,
-            "order": 3
-        },
-        {
-            "id": "latic-nio-la-serrana-4e8e",
-            "title": "Laticínio La Serrana",
-            "category": "landing",
-            "image": "",
-            "link": "https://laticiniolaserrana.aeronsolutions.com.br/",
-            "active": true,
-            "order": 4
-        },
-        {
-            "id": "vanessa-eisermann-943d",
-            "title": "Vanessa Eisermann",
-            "category": "landing",
-            "image": "",
-            "link": "https://vanessaeisermann.aeronsolutions.com.br/",
-            "active": true,
-            "order": 5
-        },
-        {
             "id": "eletroclima-energia-solar-fdeb",
             "title": "EletroClima Energia Solar",
             "category": "google",
@@ -67,24 +85,6 @@
             "link": "https://maps.app.goo.gl/B8CbexqEzRpERq3E9",
             "active": true,
             "order": 6
-        },
-        {
-            "id": "avelar-barbearia-c14c",
-            "title": "Avelar Barbearia",
-            "category": "landing",
-            "image": "",
-            "link": "https://avelarbarbearia.netlify.app/",
-            "active": true,
-            "order": 7
-        },
-        {
-            "id": "emp-rio-vida-fit-747b",
-            "title": "Empório Vida Fit",
-            "category": "landing",
-            "image": "",
-            "link": "https://emporiovidafit.netlify.app/",
-            "active": true,
-            "order": 8
         },
         {
             "id": "res-mgmz",
