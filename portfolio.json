@@ -15,6 +15,78 @@
             "order": 0
         },
         {
+            "id": "avelar-barbearia-vera-cruz-ee73",
+            "title": "Avelar Barbearia - Vera Cruz",
+            "category": "google",
+            "image": "https://res.cloudinary.com/dpl04z5so/image/upload/v1772741947/Logo_Oseias_k6gnml.jpg",
+            "link": "https://maps.app.goo.gl/SDCEtof6qvHs8WKE6",
+            "active": true,
+            "order": 1
+        },
+        {
+            "id": "eletroclima-energia-solar-fdeb",
+            "title": "EletroClima Energia Solar",
+            "category": "google",
+            "image": "https://res.cloudinary.com/dpl04z5so/image/upload/v1784303097/Captura_de_tela_2026-07-17_124357_rjqc0x.png",
+            "link": "https://maps.app.goo.gl/B8CbexqEzRpERq3E9",
+            "active": true,
+            "order": 2
+        },
+        {
+            "id": "mais-cor",
+            "title": "+ Cor",
+            "category": "google",
+            "image": "https://res.cloudinary.com/dpl04z5so/image/upload/v1772737159/Logo_Mais_Cor_uvqtb4.jpg",
+            "link": "https://maps.app.goo.gl/LaqNe36tSXNCus8v5",
+            "active": true,
+            "order": 3
+        },
+        {
+            "id": "emporio-vida-fit",
+            "title": "Empório Vida Fit",
+            "category": "google",
+            "image": "https://res.cloudinary.com/dpl04z5so/image/upload/v1781041442/2_y32mye.jpg",
+            "link": "https://maps.app.goo.gl/V1fGLaAMqWGFQYHX6",
+            "active": true,
+            "order": 4
+        },
+        {
+            "id": "avelar-barbearia",
+            "title": "Avelar Barbearia - Passo do Sobrado",
+            "category": "google",
+            "image": "https://res.cloudinary.com/dpl04z5so/image/upload/v1772741947/Logo_Oseias_k6gnml.jpg",
+            "link": "https://maps.app.goo.gl/cEu8mvhC7CzoikSF8",
+            "active": true,
+            "order": 5
+        },
+        {
+            "id": "pichulle",
+            "title": "Pichulle",
+            "category": "google",
+            "image": "https://res.cloudinary.com/dpl04z5so/image/upload/v1772737532/LOOGO_PICHULLE_MARROM_vlnwor.jpg",
+            "link": "https://maps.app.goo.gl/xW5qGRgVBqY9JvF87",
+            "active": true,
+            "order": 6
+        },
+        {
+            "id": "me-solucoes",
+            "title": "M&E Soluções",
+            "category": "google",
+            "image": "https://res.cloudinary.com/dpl04z5so/image/upload/v1773402317/LOGO_ME_SOLU%C3%87%C3%95ES_kv2iuw.jpg",
+            "link": "https://maps.app.goo.gl/Ao4vkSr3KvZXwhPJA",
+            "active": true,
+            "order": 7
+        },
+        {
+            "id": "bi-avelar-studio",
+            "title": "Bi Avelar Studio",
+            "category": "google",
+            "image": "https://res.cloudinary.com/dpl04z5so/image/upload/v1784044010/logo_bianca_i5przr.webp",
+            "link": "https://maps.app.goo.gl/dj8Wn94Fc3VFGMSx6",
+            "active": true,
+            "order": 8
+        },
+        {
             "id": "s-o-chico-veterin-ria-pet-shop-6828",
             "title": "São Chico Veterinária & Pet Shop",
             "category": "landing",
@@ -78,24 +150,6 @@
             "order": 7
         },
         {
-            "id": "avelar-barbearia-vera-cruz-ee73",
-            "title": "Avelar Barbearia - Vera Cruz",
-            "category": "google",
-            "image": "https://res.cloudinary.com/dpl04z5so/image/upload/v1772741947/Logo_Oseias_k6gnml.jpg",
-            "link": "https://maps.app.goo.gl/SDCEtof6qvHs8WKE6",
-            "active": true,
-            "order": 8
-        },
-        {
-            "id": "eletroclima-energia-solar-fdeb",
-            "title": "EletroClima Energia Solar",
-            "category": "google",
-            "image": "https://res.cloudinary.com/dpl04z5so/image/upload/v1784303097/Captura_de_tela_2026-07-17_124357_rjqc0x.png",
-            "link": "https://maps.app.goo.gl/B8CbexqEzRpERq3E9",
-            "active": true,
-            "order": 9
-        },
-        {
             "id": "res-mgmz",
             "title": "Residência",
             "category": "tour",
@@ -112,60 +166,6 @@
             "link": "https://my.matterport.com/show/?m=4nmbNFHygV5",
             "active": true,
             "order": 11
-        },
-        {
-            "id": "mais-cor",
-            "title": "+ Cor",
-            "category": "google",
-            "image": "https://res.cloudinary.com/dpl04z5so/image/upload/v1772737159/Logo_Mais_Cor_uvqtb4.jpg",
-            "link": "https://maps.app.goo.gl/LaqNe36tSXNCus8v5",
-            "active": true,
-            "order": 12
-        },
-        {
-            "id": "emporio-vida-fit",
-            "title": "Empório Vida Fit",
-            "category": "google",
-            "image": "https://res.cloudinary.com/dpl04z5so/image/upload/v1781041442/2_y32mye.jpg",
-            "link": "https://maps.app.goo.gl/V1fGLaAMqWGFQYHX6",
-            "active": true,
-            "order": 13
-        },
-        {
-            "id": "avelar-barbearia",
-            "title": "Avelar Barbearia - Passo do Sobrado",
-            "category": "google",
-            "image": "https://res.cloudinary.com/dpl04z5so/image/upload/v1772741947/Logo_Oseias_k6gnml.jpg",
-            "link": "https://maps.app.goo.gl/cEu8mvhC7CzoikSF8",
-            "active": true,
-            "order": 14
-        },
-        {
-            "id": "pichulle",
-            "title": "Pichulle",
-            "category": "google",
-            "image": "https://res.cloudinary.com/dpl04z5so/image/upload/v1772737532/LOOGO_PICHULLE_MARROM_vlnwor.jpg",
-            "link": "https://maps.app.goo.gl/xW5qGRgVBqY9JvF87",
-            "active": true,
-            "order": 15
-        },
-        {
-            "id": "me-solucoes",
-            "title": "M&E Soluções",
-            "category": "google",
-            "image": "https://res.cloudinary.com/dpl04z5so/image/upload/v1773402317/LOGO_ME_SOLU%C3%87%C3%95ES_kv2iuw.jpg",
-            "link": "https://maps.app.goo.gl/Ao4vkSr3KvZXwhPJA",
-            "active": true,
-            "order": 16
-        },
-        {
-            "id": "bi-avelar-studio",
-            "title": "Bi Avelar Studio",
-            "category": "google",
-            "image": "https://res.cloudinary.com/dpl04z5so/image/upload/v1784044010/logo_bianca_i5przr.webp",
-            "link": "https://maps.app.goo.gl/dj8Wn94Fc3VFGMSx6",
-            "active": true,
-            "order": 17
         }
     ]
 }
