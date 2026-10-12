@@ -20,7 +20,7 @@
             "category": "tour",
             "image": "",
             "link": "https://kinderhaus.aeronsolutions.com.br/tourvirtual/",
-            "active": true,
+            "active": false,
             "order": 1
         },
         {
