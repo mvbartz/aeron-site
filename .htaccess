@@ -31,12 +31,15 @@ RewriteRule ^servico-street-view\.html$ /gbp.html [R=301,L]
 RewriteRule ^servico/street-view\.html$ /gbp.html [R=301,L]
 
 # ── Serviços descontinuados (aéreas, vídeos 360, fotos 360) → home ─
-RewriteRule ^servico-imagens-aereas\.html$ /index.html [R=301,L]
-RewriteRule ^servico-videos-360\.html$     /index.html [R=301,L]
-RewriteRule ^servico-fotos-360\.html$      /index.html [R=301,L]
-RewriteRule ^servico/imagens-aereas\.html$ /index.html [R=301,L]
-RewriteRule ^servico/videos-360\.html$     /index.html [R=301,L]
-RewriteRule ^servico/fotos-360\.html$      /index.html [R=301,L]
+# /index.html vira / (endereço único da home)
+RewriteCond %{THE_REQUEST} \s/index\.html[\s?]
+RewriteRule ^index\.html$ / [R=301,L]
+RewriteRule ^servico-imagens-aereas\.html$ / [R=301,L]
+RewriteRule ^servico-videos-360\.html$     / [R=301,L]
+RewriteRule ^servico-fotos-360\.html$      / [R=301,L]
+RewriteRule ^servico/imagens-aereas\.html$ / [R=301,L]
+RewriteRule ^servico/videos-360\.html$     / [R=301,L]
+RewriteRule ^servico/fotos-360\.html$      / [R=301,L]
 
 # ── Formulário antigo removido → fala direto no WhatsApp ─────
 RewriteRule ^contato\.php$ https://wa.me/5551999263252 [R=301,L]
