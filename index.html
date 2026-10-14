@@ -21,7 +21,7 @@
 <link rel="icon" href="images/logo-aeron.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"LocalBusiness","name":"AERON Solutions",
 "description":"Tour Virtual 360° interativo e no Perfil do Google, e Landing Pages.",
@@ -88,147 +88,277 @@
   #mobmenu a{font-family:var(--mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mist);padding:14px 0;border-bottom:1px solid var(--line)}
   #mobmenu a:last-child{border:none;color:var(--orange)}
 
-  /* HERO */
+  /* HERO 360: ambiente navegável (WebGL leve) com pontos de serviço presos na cena */
   .hero{position:relative;height:100svh;min-height:600px;overflow:hidden;
     background:radial-gradient(120% 90% at 50% 42%, #16305c 0%, var(--navy) 45%, var(--navy-deep) 100%)}
-  .stage{position:absolute;inset:0;z-index:1;will-change:transform}
-  .layer{position:absolute;top:-12%;left:-20%;width:140%;height:124%;will-change:transform}
-  .layer svg{width:100%;height:100%;display:block;overflow:visible}
-  .grid-far path{fill:none;stroke:#7f9ec9;stroke-opacity:.16;stroke-width:1}
-  .grid-near path{fill:none;stroke:#a9c2e6;stroke-opacity:.30;stroke-width:1.2}
-  /* logo AERON gravada no globo (camada intermediária, sob a grade da frente) */
-  .glogo{position:absolute;inset:0;z-index:0;pointer-events:none;will-change:transform}
-  .glogo i{position:absolute;top:28%;left:50%;width:min(80%,560px);aspect-ratio:2.19/1;display:block;
+  .pano{position:absolute;inset:0;z-index:1;touch-action:pan-y;cursor:grab;will-change:transform,opacity;-webkit-user-select:none;user-select:none}
+  .pano.drag{cursor:grabbing}
+  .pano canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .hero.no-gl .pano{background:#0B1730 url(images/pano-hero.webp) 50% 44%/auto 160% no-repeat}
+  .hero.no-gl .pano canvas{display:none}
+  /* logo AERON na abertura: aparece sobre a grade e some quando o ambiente surge */
+  .glogo{position:absolute;inset:0;pointer-events:none;transition:opacity 1.2s ease}
+  .glogo i{position:absolute;top:30%;left:50%;width:min(80%,560px);aspect-ratio:2.19/1;display:block;
     transform:translate(-50%,-50%) perspective(1100px) rotateX(13deg);
     background:linear-gradient(178deg,#6f9fdc 0%,#345f9e 100%);
     -webkit-mask:url(images/logo-aeron.png) no-repeat;mask:url(images/logo-aeron.png) no-repeat;
     -webkit-mask-size:223% auto;mask-size:223% auto;-webkit-mask-position:left center;mask-position:left center;
-    opacity:.13;mix-blend-mode:screen;filter:blur(.5px)}
-  @media(max-width:600px){.glogo i{top:25%;width:90%;opacity:.12}}
-  @media(min-width:900px){.glogo i{top:34%;left:63%;width:min(52%,560px)}}
-  .glow{position:absolute;top:50%;left:50%;width:70vw;height:70vw;max-width:760px;max-height:760px;
-    transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle, rgba(41,168,224,.12) 0%, rgba(20,41,78,0) 62%);pointer-events:none;z-index:0}
-  .vignette{position:absolute;inset:0;z-index:2;pointer-events:none;
-    background:radial-gradient(120% 100% at 50% 45%, transparent 40%, rgba(11,23,48,.55) 78%, rgba(11,23,48,.9) 100%)}
-  .equator{position:absolute;top:50%;left:0;right:0;height:1px;transform:translateY(-50%);z-index:1;background:linear-gradient(90deg,transparent,rgba(41,168,224,.35),transparent);opacity:.5}
-  .spots{position:absolute;inset:0;z-index:6;will-change:transform;pointer-events:none}
-  .spot{position:absolute;left:var(--mx);top:var(--my);transform:translate(-50%,-50%);cursor:pointer;pointer-events:auto}
-  .spot .hit{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%}
-  .spot .ring{position:relative;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--paper);display:grid;place-items:center;background:rgba(242,101,34,.14);backdrop-filter:blur(2px);transition:.3s}
-  .spot .ring::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--orange)}
-  .spot .pulse{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:30px;height:30px;border-radius:50%;border:1.5px solid var(--orange);animation:pulse 2.6s ease-out infinite;pointer-events:none}
-  .spot.open .ring,.spot:hover .ring{background:var(--orange);transform:scale(1.08)}
-  /* pop-up do hotspot: painel claro (off-white) com texto navy e rótulo laranja */
-  .spot .tip{position:absolute;left:50%;top:calc(100% + 14px);bottom:auto;transform:translateX(-50%) translateY(-6px);
-    width:236px;max-width:74vw;padding:16px 18px;border-radius:14px;opacity:0;visibility:hidden;transition:.32s;pointer-events:none;
-    background:linear-gradient(160deg,#F6F1E7,#ECE4D5);border:1px solid rgba(11,23,48,.12);box-shadow:0 22px 50px -18px rgba(0,0,0,.55)}
-  .spot .tip .k{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#E4570A;font-weight:500}
-  .spot .tip h4{font-family:var(--disp);font-weight:700;font-size:1.05rem;margin:6px 0 5px;color:#0E1E3A}
-  .spot .tip p{font-size:.85rem;line-height:1.5;color:rgba(14,30,58,.72)}
-  .spot.open .tip{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
-  .spot .tip::after{content:"";position:absolute;bottom:100%;left:50%;transform:translateX(-50%);border:7px solid transparent;border-bottom-color:#F6F1E7}
-  /* no mobile, o balão flutuante vira um painel inferior com fundo escurecido */
-  @media(max-width:820px){.spot .tip{display:none}}
-  #hs-sheet{position:fixed;inset:0;z-index:80;display:flex;align-items:flex-end;justify-content:center;
-    padding:0 14px calc(16px + env(safe-area-inset-bottom));
-    background:rgba(6,11,24,0);opacity:0;pointer-events:none;transition:background .35s ease,opacity .35s ease}
-  #hs-sheet.show{background:rgba(6,11,24,.6);opacity:1;pointer-events:auto}
-  #hs-sheet .hs-inner{width:100%;max-width:520px;position:relative;transform:translateY(120%);transition:transform .42s cubic-bezier(.2,.7,.2,1);
-    background:linear-gradient(160deg,#F6F1E7,#ECE4D5);border:1px solid rgba(11,23,48,.12);border-radius:18px;padding:22px 22px 24px;box-shadow:0 -12px 46px -14px rgba(0,0,0,.5)}
-  #hs-sheet.show .hs-inner{transform:none}
-  #hs-sheet .k{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#E4570A;font-weight:500}
-  #hs-sheet h4{font-family:var(--disp);font-weight:700;font-size:1.25rem;margin:8px 0 7px;color:#0E1E3A}
-  #hs-sheet p{color:rgba(14,30,58,.75);font-size:.95rem;line-height:1.55;max-width:42ch}
-  #hs-sheet .close{position:absolute;top:14px;right:14px;width:30px;height:30px;border-radius:50%;border:1px solid rgba(11,23,48,.22);
-    background:none;color:#0E1E3A;cursor:pointer;display:grid;place-items:center}
-  #hs-sheet .close svg{width:15px;height:15px}
+    opacity:.26;mix-blend-mode:screen;filter:blur(.5px)}
+  @media(max-width:600px){.glogo i{top:25%;width:90%}}
+  @media(min-width:900px){.glogo i{top:40%;left:63%;width:min(52%,560px)}}
+  .hero.lit .glogo{opacity:0}
+  /* logo maior no topo (encolhe um pouco ao rolar a página) */
+  nav .brand .logo{height:38px;transition:height .4s ease}
+  nav.scrolled .brand .logo{height:30px}
+  @media(max-width:600px){nav .brand .logo{height:32px}nav.scrolled .brand .logo{height:28px}}
+  /* menu legível sobre a foto, sem véu por cima da imagem */
+  nav:not(.scrolled) .brand .logo{filter:drop-shadow(0 1px 1.5px rgba(0,0,0,.6)) drop-shadow(0 2px 12px rgba(0,0,0,.5))}
+  nav:not(.scrolled) .menu-btn{filter:drop-shadow(0 1px 8px rgba(0,0,0,.55))}
+  nav:not(.scrolled) .nav-right a.lk{color:var(--paper);text-shadow:0 1px 10px rgba(0,0,0,.65)}
+  nav:not(.scrolled) .nav-right .contact{background:rgba(11,23,48,.5);border-color:rgba(240,234,221,.3)}
+  /* pontos: posição calculada pelo JS a cada quadro (giram junto com o ambiente) */
+  .spots,.edges{position:absolute;inset:0;z-index:3;pointer-events:none}
+  .spot{position:absolute;left:0;top:0;width:0;height:0;padding:0;border:0;background:none;color:var(--paper);font:inherit;
+    cursor:pointer;pointer-events:auto;will-change:transform;transition:opacity .35s ease;-webkit-tap-highlight-color:transparent}
+  .spot::before{content:"";position:absolute;left:-24px;top:-24px;width:48px;height:48px;border-radius:50%}
+  .spot.off{opacity:0;pointer-events:none}
+  .spot .ring{position:absolute;left:-15px;top:-15px;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--paper);
+    display:grid;place-items:center;background:rgba(242,101,34,.22);box-shadow:0 2px 12px rgba(0,0,0,.35);transition:background .3s,transform .3s}
+  .spot .ring::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--orange);transition:background .3s}
+  .spot .pulse{position:absolute;left:50%;top:50%;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--orange);
+    transform:translate(-50%,-50%);animation:pulse 2.6s ease-out infinite;pointer-events:none}
+  /* rótulo do ponto: anotação de planta (linha fina + nome), sem caixinha e sem número */
+  .spot .lbl{position:absolute;left:18px;top:0;transform:translateY(-50%);display:flex;align-items:center;gap:10px;white-space:nowrap;
+    font-family:var(--sans);font-size:15px;font-weight:600;letter-spacing:.005em;color:#fff;
+    text-shadow:0 1px 2px rgba(0,0,0,.6),0 2px 16px rgba(0,0,0,.55)}
+  .spot .lbl::before{content:"";width:26px;height:1.5px;background:rgba(255,255,255,.9);box-shadow:0 1px 3px rgba(0,0,0,.45);transition:width .35s,background .35s}
+  .spot.flip .lbl{left:auto;right:18px;flex-direction:row-reverse}
+  .spot:hover .ring,.spot.on .ring{background:var(--orange);transform:scale(1.08)}
+  .spot.on .ring::before{background:#fff}
+  .spot.on .pulse{animation:none;opacity:0}
+  .spot:hover .lbl::before,.spot.on .lbl::before{width:38px;background:var(--orange)}
+  .spot:focus-visible{outline:none}
+  .spot:focus-visible .ring{outline:2px solid var(--orange);outline-offset:4px}
+  /* atalhos na borda para pontos fora da tela */
+  .edge{position:absolute;left:0;top:0;display:flex;align-items:center;gap:8px;padding:10px 4px;border:0;background:none;color:#fff;
+    font-family:var(--sans);font-size:14px;font-weight:600;white-space:nowrap;cursor:pointer;pointer-events:auto;will-change:transform;
+    text-shadow:0 1px 2px rgba(0,0,0,.6),0 2px 14px rgba(0,0,0,.55);transition:opacity .35s ease;-webkit-tap-highlight-color:transparent}
+  .edge.rgt{left:auto;right:0}
+  .edge svg{width:18px;height:18px;stroke:var(--orange);flex:none;filter:drop-shadow(0 1px 3px rgba(0,0,0,.5));transition:transform .3s}
+  .edge.lft .ar,.edge.rgt .al{display:none}
+  .edge.lft:hover svg{transform:translateX(-3px)}
+  .edge.rgt:hover svg{transform:translateX(3px)}
+  .edge.off{opacity:0;pointer-events:none}
+  /* aviso de giro: aparece depois da abertura e some na primeira interação */
+  .rot-hint{position:absolute;left:50%;top:50%;z-index:3;display:flex;align-items:center;gap:12px;padding:18px 30px;
+    background:radial-gradient(closest-side,rgba(0,0,0,.4),rgba(0,0,0,0));color:#fff;font-family:var(--sans);font-size:.95rem;font-weight:600;
+    white-space:nowrap;pointer-events:none;text-shadow:0 1px 2px rgba(0,0,0,.6),0 2px 14px rgba(0,0,0,.5);
+    transform:translate(-50%,-50%) scale(.94);opacity:0;transition:opacity .5s ease,transform .5s ease}
+  .rot-hint.show{opacity:1;transform:translate(-50%,-50%)}
+  .rot-hint .ic{position:relative;width:46px;height:24px;flex:none}
+  .rot-hint .hand{position:absolute;left:50%;top:1px;width:22px;height:22px;margin-left:-11px;animation:swipe 1.8s ease-in-out infinite}
+  .rot-hint .arr{position:absolute;top:50%;width:7px;height:7px;margin-top:-4px;border:solid var(--orange);border-width:0 0 1.6px 1.6px}
+  .rot-hint .arr.l{left:1px;transform:rotate(45deg)}
+  .rot-hint .arr.r{right:1px;transform:rotate(-135deg)}
+  @keyframes swipe{0%,100%{transform:translateX(-8px) rotate(-8deg)}50%{transform:translateX(8px) rotate(6deg)}}
+  /* card: menor, com botão de fechar (hero limpa) e troca de conteúdo no lugar */
   .hero-content{position:absolute;inset:0;z-index:4;display:flex;align-items:flex-end;padding:96px var(--shell) 30px;pointer-events:none}
-  .card{pointer-events:auto;width:100%;max-width:540px;padding:clamp(26px,5vw,40px);border-radius:22px;
-    background:linear-gradient(155deg,rgba(34,56,100,.46),rgba(11,23,48,.34));backdrop-filter:blur(20px) saturate(1.15);-webkit-backdrop-filter:blur(20px) saturate(1.15);
-    border:1px solid rgba(240,234,221,.18);box-shadow:0 40px 90px -34px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.09)}
+  .card{--cp:clamp(20px,3.2vw,30px);position:relative;pointer-events:auto;width:100%;max-width:440px;padding:var(--cp);border-radius:20px;
+    background:linear-gradient(155deg,rgba(17,33,64,.7),rgba(9,20,42,.6));backdrop-filter:blur(18px) saturate(1.15);-webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(240,234,221,.18);box-shadow:0 30px 70px -30px rgba(0,0,0,.75),inset 0 1px 0 rgba(255,255,255,.09)}
   @media(max-width:600px){.card{background:linear-gradient(155deg,rgba(19,38,74,.9),rgba(9,20,42,.86))}}
-  .card .kicker{display:flex;align-items:center;gap:10px;margin-bottom:18px}
-  .card .kicker .mk{width:8px;height:8px;background:var(--orange);transform:rotate(45deg);flex:none}
-  .card .kicker .slogan{font-family:var(--disp);font-weight:500;font-size:.94rem;color:var(--paper);letter-spacing:.005em}
-  .card h1{font-family:var(--disp);font-weight:700;font-size:clamp(1.8rem,5.4vw,2.9rem);line-height:1.04;letter-spacing:-.025em;margin-bottom:16px}
+  .card.resizing{transition:height .45s cubic-bezier(.2,.7,.2,1)!important;overflow:hidden}
+  .card .face{transition:opacity .4s ease,transform .5s cubic-bezier(.2,.7,.2,1),visibility .4s}
+  .card .face:not(.on){position:absolute;left:var(--cp);right:var(--cp);top:var(--cp);opacity:0;visibility:hidden;transform:translateY(10px);pointer-events:none}
+  .card .top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}
+  .card .kicker{display:flex;align-items:center;gap:10px;min-height:32px}
+  .card .kicker .mk,.card .top .k .mk{width:8px;height:8px;background:var(--orange);transform:rotate(45deg);flex:none}
+  .card .kicker .slogan{font-family:var(--disp);font-weight:500;font-size:.86rem;line-height:1.35;color:var(--paper);letter-spacing:.005em}
+  .card .top .k{display:flex;align-items:center;gap:10px;min-height:32px;font-family:var(--disp);font-weight:500;font-size:.94rem;color:var(--paper)}
+  .card .tools{display:flex;gap:8px;flex:none}
+  .card .ib{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:rgba(240,234,221,.05);color:var(--paper);cursor:pointer;display:grid;place-items:center;transition:border-color .25s,background .25s}
+  .card .ib:hover{border-color:var(--orange);background:rgba(242,101,34,.12)}
+  .card .ib svg{width:14px;height:14px}
+  .card h1,.card h2{font-family:var(--disp);font-weight:700;font-size:clamp(1.55rem,4.4vw,2.3rem);line-height:1.05;letter-spacing:-.025em;margin-bottom:12px}
+  .card h2{font-size:clamp(1.5rem,4vw,2.05rem)}
   .card h1 .stop{color:var(--orange)}
-  .card .sub{color:var(--mist);font-size:clamp(.98rem,2.4vw,1.08rem);line-height:1.6;margin-bottom:26px;max-width:44ch}
-  .card .actions{display:flex;flex-direction:column;gap:12px}
-  .card .btn{width:100%}
-  .drag-hint{position:absolute;left:50%;top:78px;bottom:auto;transform:translateX(-50%);z-index:4;display:flex;align-items:center;gap:9px;
-    font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--mist);transition:opacity .5s}
-  .drag-hint svg{width:22px;height:13px;stroke:var(--orange)}
+  .card .sub{color:var(--mist);font-size:clamp(.92rem,2.1vw,.98rem);line-height:1.55;margin-bottom:20px;max-width:42ch}
+  .card .pts{list-style:none;display:grid;gap:9px;margin:-4px 0 20px}
+  .card .pts li{display:flex;align-items:center;gap:11px;font-size:.92rem;color:var(--paper);opacity:.92}
+  .card .pts li::before{content:"";width:6px;height:6px;background:var(--orange);transform:rotate(45deg);flex:none}
+  .card .actions{display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;gap:10px}
+  .card .btn{width:auto;padding:13px 18px;font-size:11px;letter-spacing:.13em;border-radius:11px}
+  .card .nx{background:none;border:0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:12px 6px;white-space:nowrap;
+    font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mist);transition:color .25s}
+  .card .nx svg{width:14px;height:14px;stroke:var(--orange);transition:transform .3s}
+  /* hover só desloca a seta (sem mudar a largura, pra nada pular de linha) */
+  .card .nx:hover{color:var(--paper)}
+  .card .nx:hover svg{transform:translateX(4px)}
+  /* celular: card mais enxuto para sobrar mais ambiente navegável acima dele */
+  @media(max-width:600px){
+    .card .face.main .sub,.card .pts,.card .lg{display:none}
+    .card .face.main .btn{flex:1 1 0;padding:13px 10px}
+  }
+  /* hero limpa: card recolhido e botão discreto para reabrir */
+  .hero.clean .hero-content .card{opacity:0;visibility:hidden;transform:translateY(16px) scale(.98);pointer-events:none}
+  .reopen{position:absolute;z-index:4;left:var(--shell);bottom:28px;display:flex;align-items:center;gap:10px;padding:13px 18px;border-radius:12px;
+    border:1px solid rgba(240,234,221,.26);background:rgba(11,23,48,.74);color:var(--paper);font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;
+    cursor:pointer;opacity:0;visibility:hidden;transform:translateY(10px);box-shadow:0 12px 30px -14px rgba(0,0,0,.6);
+    transition:opacity .45s ease,transform .45s ease,visibility .45s,border-color .25s}
+  .reopen:hover{border-color:rgba(242,101,34,.6)}
+  .hero.clean .reopen{opacity:1;visibility:visible;transform:none}
+  @media(max-width:899px){.reopen{left:50%;bottom:22px;transform:translate(-50%,10px)}.hero.clean .reopen{transform:translate(-50%,0)}}
 
-  /* SECTIONS */
+  /* SEÇÕES: mesma linguagem do hero (cenas do ambiente, vidro, marcadores de ponto) */
+  .wrap{max-width:1560px}   /* conteúdo ocupa mais a largura em telas grandes */
   .band{position:relative;z-index:5;background:var(--navy-deep);padding:78px 0}
   .band.alt{background:linear-gradient(180deg,var(--navy-deep),#0c1a36)}
   .band-head{max-width:640px;margin-bottom:40px}
   .band-head p{color:var(--mist);margin-top:14px;font-size:1.05rem;line-height:1.6}
+  /* marcador de ponto (anel com centro laranja) no lugar dos losangos */
+  .eyebrow .mk,.mk-ring{width:12px;height:12px;border-radius:50%;transform:none;flex:none;
+    background:radial-gradient(circle,var(--orange) 0 2.2px,transparent 2.8px);border:1.5px solid rgba(240,234,221,.8)}
+  .reveal.in .eyebrow .mk{animation:ringin 1s cubic-bezier(.2,.7,.2,1) both .15s}
+  @keyframes ringin{0%{transform:scale(.3);opacity:0}55%{transform:scale(1.3);opacity:1;box-shadow:0 0 0 7px rgba(242,101,34,.22)}100%{transform:none;box-shadow:0 0 0 0 rgba(242,101,34,0)}}
 
-  /* solutions */
-  .sol-grid{display:grid;gap:16px}
-  .sol{position:relative;border:1px solid var(--line);border-radius:20px;padding:30px;overflow:hidden;
-    background:linear-gradient(160deg,rgba(27,57,107,.24),rgba(11,23,48,.1));transition:transform .4s,border-color .35s}
-  .sol:hover{transform:translateY(-5px);border-color:rgba(242,101,34,.4);box-shadow:0 22px 50px -30px rgba(242,101,34,.5)}
-  .sol .n{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--orange)}
-  .sol h3{font-family:var(--disp);font-weight:600;font-size:1.5rem;margin:14px 0 10px}
-  .sol p{color:var(--mist);font-size:.98rem;line-height:1.6;margin-bottom:20px}
-  .sol .glyph{position:absolute;right:-20px;top:-20px;width:120px;height:120px;opacity:.5;pointer-events:none}
-  .sol .glyph svg{width:100%;height:100%}
+  /* soluções: cada card mostra a cena do ponto correspondente no hero */
+  .scenes{display:grid;gap:16px}
+  .scene{--ch:460px;--bh:calc(var(--ch)*2.6);position:relative;height:var(--ch);border-radius:20px;overflow:hidden;isolation:isolate;
+    border:1px solid var(--line);display:flex;flex-direction:column;justify-content:flex-end;color:var(--paper);text-decoration:none;
+    transition:transform .5s cubic-bezier(.2,.7,.2,1),border-color .35s,box-shadow .5s}
+  .scene .bg{position:absolute;top:0;bottom:0;left:-14%;right:-14%;z-index:-1;background:#0B1730 url(images/pano-hero.webp) no-repeat;
+    background-size:auto var(--bh);background-position:calc(50% - var(--yaw)/180*var(--bh)) calc(50% + var(--pit)/180*var(--bh));
+    transform:scale(1.03);transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+  .scene .pin{position:absolute;left:50%;top:30%;width:0;height:0}
+  .scene .pin .ring{position:absolute;left:-15px;top:-15px;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--paper);
+    display:grid;place-items:center;background:rgba(242,101,34,.22);box-shadow:0 2px 12px rgba(0,0,0,.35);transition:background .35s,transform .35s}
+  .scene .pin .ring::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--orange);transition:background .35s}
+  .scene .pin .pulse{position:absolute;left:50%;top:50%;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--orange);
+    transform:translate(-50%,-50%);animation:pulse 2.6s ease-out infinite}
+  /* cards com imagem própria de cada serviço */
+  /* maquete 3D: aparece inteira (sem corte nas laterais), sobre o mesmo azul do fundo da imagem */
+  .scene.s-tour{background:#00132e}
+  .scene.s-tour .bg{left:0;right:0;background:#00132e url(images/card-tour.webp) 50% -14px/contain no-repeat;transform-origin:50% 30%;transform:none}
+  .scene.s-tour:hover .bg{transform:scale(1.05)}
+  .scene.s-tour.live .bg{animation:breathe 9s ease-in-out infinite alternate}
+  @keyframes breathe{from{transform:scale(1)}to{transform:scale(1.05)}}
+  .scene.s-google .bg{background:#0B1730 url(images/card-google.webp) 50% 25%/cover no-repeat}
+  .scene.s-landing .bg{background:#0B1730 url(images/card-landing.webp) 50% 30%/cover no-repeat}
+  .scene .info{display:block;margin:12px;padding:20px 20px 18px;border-radius:16px;border:1px solid rgba(240,234,221,.16);
+    background:linear-gradient(155deg,rgba(17,33,64,.74),rgba(9,20,42,.64));backdrop-filter:blur(14px) saturate(1.1);-webkit-backdrop-filter:blur(14px) saturate(1.1)}
+  .scene h3{font-family:var(--disp);font-weight:700;font-size:1.45rem;letter-spacing:-.02em;margin:10px 0 6px}
+  .scene p{color:var(--mist);font-size:.93rem;line-height:1.5;margin-bottom:14px}
+  .scene .go{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange)}
+  .scene .go svg{width:14px;height:14px;transition:transform .3s}
+  .scene:hover{transform:translateY(-6px);border-color:rgba(242,101,34,.45);box-shadow:0 26px 60px -30px rgba(242,101,34,.5)}
+  .scene:hover .bg{transform:translateX(-6%) scale(1.06)}
+  .scene:hover .pin .ring{background:var(--orange);transform:scale(1.1)}
+  .scene:hover .pin .ring::before{background:#fff}
+  .scene:hover .go svg{transform:translateX(4px)}
+  /* no celular a cena "respira" (olha em volta devagar) quando o card está na tela */
+  .scene.live .bg{animation:look 16s ease-in-out infinite alternate}
+  @keyframes look{from{transform:translateX(5%) scale(1.04)}to{transform:translateX(-5%) scale(1.04)}}
+  .scene-dots{display:none;justify-content:center;gap:8px;margin-top:16px}
+  .scene-dots button{width:8px;height:8px;padding:0;border:0;border-radius:50%;background:rgba(240,234,221,.25);cursor:pointer;transition:background .35s}
+  .scene-dots button.on{background:var(--orange)}
 
-  /* live tour */
-  .live-wrap{margin-top:8px}
-  .live-frame{position:relative;aspect-ratio:16/10;border:1px solid var(--line);overflow:hidden;background:var(--navy);border-radius:16px}
-  .live-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-  .live-frame .lz{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--mist)}
-  .live-cap{display:flex;justify-content:space-between;margin-top:12px}
+  /* tour ao vivo: vitrine com capa do ambiente real; o 3D só carrega no clique */
+  .showcase{position:relative;aspect-ratio:16/9;max-height:78vh;width:100%;border-radius:22px;overflow:hidden;isolation:isolate;border:1px solid var(--line);background:var(--navy)}
+  .showcase picture,.showcase .poster{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .showcase .poster{object-fit:cover;animation:kb 24s ease-in-out infinite alternate}
+  @keyframes kb{from{transform:scale(1.04) translate(0,0)}to{transform:scale(1.13) translate(-2%,-1.5%)}}
+  .showcase .shade{position:absolute;inset:0;background:radial-gradient(90% 80% at 50% 50%,rgba(0,0,0,0) 45%,rgba(0,0,0,.42) 100%);pointer-events:none}
+  .showcase .enter{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:16px;
+    background:none;border:0;padding:0;color:var(--paper);cursor:pointer;font:inherit}
+  .showcase .big{position:relative;width:76px;height:76px;border-radius:50%;border:2px solid var(--paper);display:grid;place-items:center;
+    background:rgba(242,101,34,.9);box-shadow:0 14px 40px -10px rgba(242,101,34,.7);transition:transform .35s}
+  .showcase .big svg{width:26px;height:26px;margin-left:4px;fill:#fff}
+  .showcase .big .pulse{position:absolute;left:50%;top:50%;width:76px;height:76px;border-radius:50%;border:2px solid var(--orange);
+    transform:translate(-50%,-50%);animation:pulse 2.6s ease-out infinite}
+  .showcase .lb{font-family:var(--sans);font-size:1rem;font-weight:600;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.6),0 2px 16px rgba(0,0,0,.55)}
+  .showcase .enter:hover .big{transform:scale(1.07)}
+  .showcase .tag{position:absolute;left:22px;bottom:20px;display:flex;align-items:center;gap:10px;font-family:var(--sans);font-size:.92rem;font-weight:500;
+    color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.6),0 2px 14px rgba(0,0,0,.55)}
+  .showcase iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .showcase.live picture,.showcase.live .shade,.showcase.live .enter,.showcase.live .tag{display:none}
+  .live-cap{display:flex;justify-content:space-between;gap:12px;margin-top:12px}
 
-  /* why / estudio */
-  .why-grid{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden}
-  .why-item{background:var(--navy-deep);padding:26px}
-  .why-item .n{font-family:var(--mono);font-size:11px;color:var(--orange);letter-spacing:.14em}
-  .why-item h4{font-family:var(--disp);font-weight:600;font-size:1.12rem;margin:12px 0 7px}
-  .why-item p{color:var(--mist);font-size:.93rem;line-height:1.55}
-
-  /* process */
-  .steps{display:grid;gap:2px}
-  .step{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start;padding:22px 0;border-top:1px solid var(--line)}
-  .step:last-child{border-bottom:1px solid var(--line)}
-  .step .num{font-family:var(--disp);font-weight:700;font-size:2rem;color:var(--navy-2);line-height:1;min-width:64px}
-  .step h4{font-family:var(--disp);font-weight:600;font-size:1.18rem;margin-bottom:6px}
-  .step p{color:var(--mist);font-size:.96rem;line-height:1.55;max-width:60ch}
-
-  /* portfolio live grid */
-  .pf-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:26px}
-  .pf-tab{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);background:none;border:1px solid var(--line);border-radius:100px;padding:9px 16px;cursor:pointer;transition:.2s}
-  .pf-tab.on{color:var(--orange);border-color:rgba(242,101,34,.5);background:rgba(242,101,34,.08)}
-  .pf-grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(190px,1fr))}
-  .pf-card{position:relative;border:1px solid var(--line);border-radius:13px;overflow:hidden;background:var(--navy);transition:transform .35s,border-color .35s;text-decoration:none;display:block}
-  .pf-card:hover{transform:translateY(-4px);border-color:rgba(242,101,34,.45);box-shadow:0 18px 44px -28px rgba(242,101,34,.55)}
-  .pf-card .im{aspect-ratio:16/10;overflow:hidden;background:var(--navy-2)}
-  .pf-card .im img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
-  .pf-card:hover .im img{transform:scale(1.06)}
-  .pf-card .bd{padding:11px 13px;display:flex;align-items:center;justify-content:space-between;gap:8px}
-  .pf-card .bd h3{font-family:var(--disp);font-weight:700;font-size:.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .pf-card .cat{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:100px;border:1px solid var(--line);flex:none}
-  .pf-card .cat.tour{color:var(--azure);border-color:rgba(41,168,224,.4)}
-  .pf-card .cat.google{color:var(--orange);border-color:rgba(242,101,34,.4)}
-  .pf-card .cat.landing{color:#7ee0a8;border-color:rgba(126,224,168,.4)}
+  /* portfólio: capas padronizadas e entrada em cascata */
+  .pf-tabs{display:flex;gap:26px;margin-bottom:26px;border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}
+  .pf-tabs::-webkit-scrollbar{display:none}
+  .pf-tab{position:relative;flex:none;font-family:var(--sans);font-size:.98rem;font-weight:500;color:var(--mist);background:none;border:0;padding:0 0 12px;cursor:pointer;transition:color .25s}
+  .pf-tab::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+  .pf-tab:hover,.pf-tab.on{color:var(--paper)}
+  .pf-tab.on::after{transform:scaleX(1)}
+  .pf-grid{display:grid;gap:12px;grid-template-columns:repeat(2,1fr)}
+  .pf-card{position:relative;display:block;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--navy);text-decoration:none;
+    opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .6s cubic-bezier(.2,.7,.2,1),border-color .35s,box-shadow .35s}
+  .pf-card.on{opacity:1;transform:none}
+  .pf-card.on:hover{transform:translateY(-4px);border-color:rgba(242,101,34,.45);box-shadow:0 18px 44px -28px rgba(242,101,34,.55)}
+  .pf-card .im{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--navy-2)}
+  .pf-card .im img{position:relative;width:100%;height:100%;object-fit:cover;transition:transform .6s}
+  .pf-card .im .blur{position:absolute;inset:-12%;background-size:cover;background-position:center;filter:blur(18px) saturate(1.15);opacity:0}
+  .pf-card.fit .im img{object-fit:contain;padding:12%}
+  .pf-card.fit .im .blur{opacity:.55}
+  .pf-card:hover .im img{transform:scale(1.05)}
+  .pf-card .bd{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:11px 12px}
+  .pf-card .bd .t{min-width:0}
+  .pf-card .kind{display:block;font-size:.8rem;color:var(--mist);margin-top:2px}
+  .pf-card .bd h3{font-family:var(--disp);font-weight:700;font-size:.92rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .pf-empty{color:var(--mist);border:1px dashed var(--line);border-radius:16px;padding:40px;text-align:center;grid-column:1/-1}
-  .pf-more{grid-column:1/-1;display:flex;justify-content:center;margin-top:6px}
-  .pf-more button{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper);background:rgba(240,234,221,.05);border:1px solid var(--line);border-radius:100px;padding:12px 24px;cursor:pointer;transition:.25s}
+  .pf-more{grid-column:1/-1;display:flex;justify-content:center;margin-top:8px}
+  .pf-more button{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper);background:rgba(240,234,221,.05);
+    border:1px solid var(--line);border-radius:12px;padding:13px 24px;cursor:pointer;transition:.25s}
   .pf-more button:hover{border-color:var(--orange);color:var(--orange)}
 
-  /* portfolio */
-  .port-grid{display:grid;gap:16px}
-  .port{position:relative;min-height:280px;border-radius:20px;overflow:hidden;border:1px solid var(--line);display:flex;flex-direction:column;justify-content:flex-end;padding:30px;transition:.4s}
-  .port:hover{transform:translateY(-5px);border-color:rgba(242,101,34,.45)}
-  .port .bg{position:absolute;inset:0;z-index:0;transition:transform .6s}
-  .port:hover .bg{transform:scale(1.05)}
-  .port .ov{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(11,23,48,.1),rgba(11,23,48,.88))}
-  .port .ct{position:relative;z-index:2}
-  .port h3{font-family:var(--disp);font-weight:700;font-size:1.5rem;margin:10px 0 8px}
-  .port p{color:#c7d2e6;font-size:.95rem;margin-bottom:18px;max-width:40ch}
+  /* diferenciais: 4 itens curtos */
+  .why4{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .why4 .it{position:relative;padding:22px 18px 20px;border-radius:18px;border:1px solid var(--line);
+    background:linear-gradient(160deg,rgba(27,57,107,.24),rgba(11,23,48,.1));transition:border-color .35s,transform .45s cubic-bezier(.2,.7,.2,1)}
+  .why4 .mk-ring{display:block;transition:background .35s,border-color .35s,box-shadow .35s}
+  .why4 h3{font-family:var(--disp);font-weight:600;font-size:1.05rem;line-height:1.25;margin:16px 0 6px}
+  .why4 p{color:var(--mist);font-size:.9rem;line-height:1.5}
+  .why4 .it:hover{border-color:rgba(242,101,34,.4);transform:translateY(-4px)}
+  .why4 .it:hover .mk-ring{box-shadow:0 0 0 6px rgba(242,101,34,.15);border-color:var(--orange)}
+  .why4.reveal .it{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .7s cubic-bezier(.2,.7,.2,1),border-color .35s}
+  .why4.reveal.in .it{opacity:1;transform:none}
+  .why4.reveal.in .it:nth-child(2){transition-delay:.08s}.why4.reveal.in .it:nth-child(3){transition-delay:.16s}.why4.reveal.in .it:nth-child(4){transition-delay:.24s}
+  .why4.reveal.in .it:hover{transform:translateY(-4px);transition-delay:0s}
+
+  /* como funciona: percurso com linha que se preenche na rolagem */
+  .path{--p:0;position:relative;display:grid;gap:30px;padding-left:40px}
+  .path::before{content:"";position:absolute;left:11px;top:10px;bottom:10px;border-left:1.5px dashed rgba(240,234,221,.22)}
+  .path .fill{position:absolute;left:10px;top:10px;width:3.5px;height:calc(100% - 20px);border-radius:3px;
+    background:linear-gradient(180deg,var(--orange),#ff9d62);transform-origin:top;transform:scaleY(var(--p))}
+  .path .st{position:relative}
+  .path .dot{position:absolute;left:-40px;top:0;width:24px;height:24px;border-radius:50%;border:1.5px solid rgba(240,234,221,.45);
+    background:var(--navy-deep);display:grid;place-items:center;transition:border-color .4s,box-shadow .4s}
+  .path .dot::before{content:"";width:6px;height:6px;border-radius:50%;background:rgba(240,234,221,.35);transition:background .4s}
+  .path .st.on .dot{border-color:var(--orange);box-shadow:0 0 0 6px rgba(242,101,34,.14)}
+  .path .st.on .dot::before{background:var(--orange)}
+  .path h3{font-family:var(--disp);font-weight:600;font-size:1.15rem;line-height:1.5rem;margin:0 0 6px}
+  .path p{color:var(--mist);font-size:.95rem;line-height:1.55;max-width:46ch}
+
+  /* contato: o ambiente volta ao fundo, girando devagar */
+  .cta-sec{position:relative;z-index:5;overflow:hidden;isolation:isolate;padding:110px 0;background:var(--navy-deep)}
+  .cta-pano{position:absolute;inset:0;z-index:-1;overflow:hidden}
+  .cta-pano i{position:absolute;left:0;top:50%;display:block;height:150%;aspect-ratio:4/1;
+    background:url(images/pano-hero.webp) repeat-x 0 50%/auto 100%;transform:translate(0,-50%);animation:panx 150s linear infinite;will-change:transform}
+  @keyframes panx{to{transform:translate(-50%,-50%)}}
+  .cta-card{position:relative;max-width:620px;margin:0 auto;text-align:center;padding:clamp(28px,5vw,46px);border-radius:24px;
+    background:linear-gradient(155deg,rgba(17,33,64,.76),rgba(9,20,42,.68));backdrop-filter:blur(18px) saturate(1.15);-webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(240,234,221,.18);box-shadow:0 40px 90px -34px rgba(0,0,0,.75),inset 0 1px 0 rgba(255,255,255,.09)}
+  .cta-card .eyebrow{justify-content:center}
+  .cta-card h2{font-family:var(--disp);font-weight:700;font-size:clamp(1.7rem,5vw,2.6rem);letter-spacing:-.02em;line-height:1.06;margin:16px auto 12px;max-width:20ch}
+  .cta-card p{color:var(--mist);font-size:1.02rem;line-height:1.6;max-width:44ch;margin:0 auto 26px}
+  .cta-card .actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+
+  /* WhatsApp flutuante (celular) */
+  .wa-float{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:70;width:54px;height:54px;border-radius:50%;
+    display:grid;place-items:center;background:var(--orange);color:#1a0e06;box-shadow:0 14px 34px -10px rgba(242,101,34,.65);
+    opacity:0;pointer-events:none;transform:translateY(24px) scale(.85);transition:opacity .4s ease,transform .5s cubic-bezier(.2,.7,.2,1)}
+  .wa-float.show{opacity:1;pointer-events:auto;transform:none}
+  .wa-float svg{width:26px;height:26px}
 
   /* faq */
   .faq-list{max-width:820px}
@@ -244,15 +374,6 @@
   .qa .ans{max-height:0;overflow:hidden;transition:max-height .4s ease}
   .qa .ans p{color:var(--mist);line-height:1.7;padding-bottom:20px}
 
-  /* cta */
-  .cta-box{position:relative;border:1px solid rgba(242,101,34,.28);border-radius:24px;padding:48px 28px;overflow:hidden;
-    background:radial-gradient(120% 140% at 18% 0%, #16305c 0, var(--navy) 60%)}
-  .cta-box h2{font-family:var(--disp);font-weight:700;font-size:clamp(1.7rem,5vw,2.7rem);letter-spacing:-.02em;line-height:1.05;max-width:22ch;margin-bottom:14px}
-  .cta-box p{color:var(--mist);font-size:1.05rem;max-width:46ch;margin-bottom:28px}
-  .cta-box .actions{display:flex;flex-direction:column;gap:12px}
-  .cta-box .btn{width:100%}
-  .cta-glow{position:absolute;right:-100px;top:-100px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(242,101,34,.22),transparent 70%);pointer-events:none}
-
   /* footer */
   footer{border-top:1px solid var(--line);padding:52px 0 34px;background:#0a1428}
   .foot-grid{display:grid;gap:30px}
@@ -264,13 +385,23 @@
   .foot-bottom{border-top:1px solid var(--line);margin-top:40px;padding-top:24px;display:flex;flex-direction:column;gap:8px;color:var(--mist);font-size:.82rem}
 
   @keyframes pulse{0%{transform:translate(-50%,-50%) scale(1);opacity:.7}100%{transform:translate(-50%,-50%) scale(2.4);opacity:0}}
-
+  @media(max-width:899px){
+    /* soluções vira carrossel deslizável, com o próximo card aparecendo na borda */
+    .scenes{grid-auto-flow:column;grid-auto-columns:min(80%,340px);overflow-x:auto;scroll-snap-type:x mandatory;
+      margin:0 calc(var(--shell)*-1);padding:4px var(--shell) 6px;scroll-padding:0 var(--shell);scrollbar-width:none;-webkit-overflow-scrolling:touch}
+    .scenes::-webkit-scrollbar{display:none}
+    .scene{--ch:420px;scroll-snap-align:center}
+    .scene:hover{transform:none}
+    .scene-dots{display:flex}
+  }
+  @media(max-width:600px){
+    .showcase{aspect-ratio:4/5}
+    .live-cap .mono:last-child{display:none}
+    .band{padding:64px 0}
+    .band-head{margin-bottom:28px}
+  }
   @media(min-width:600px){
-    .card .actions{flex-direction:row}.card .btn{width:auto}
-    .cta-box .actions{flex-direction:row}.cta-box .btn{width:auto}
-    .sol-grid{grid-template-columns:repeat(3,1fr)}
-    .why-grid{grid-template-columns:repeat(2,1fr)}
-    .port-grid{grid-template-columns:1fr 1fr}
+    .pf-grid{grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
     .foot-grid{grid-template-columns:1.6fr 1fr 1fr}
     .foot-bottom{flex-direction:row;justify-content:space-between}
   }
@@ -280,36 +411,43 @@
     .nav-right a.lk:hover{color:var(--paper)}
     .nav-right .contact{display:inline-flex}
     .hero-content{align-items:center}
-    .spot{left:var(--x);top:var(--y)}
-    .drag-hint{top:auto;bottom:22px}
     .band{padding:104px 0}
-    .why-grid{grid-template-columns:repeat(3,1fr)}
-    .step .num{font-size:2.4rem;min-width:88px}
+    .scenes{grid-template-columns:repeat(3,1fr);gap:18px}
+    .why4{grid-template-columns:repeat(4,1fr);gap:16px}
+    .path{grid-template-columns:repeat(4,1fr);gap:28px;padding:48px 0 0}
+    .path::before{left:12px;right:12px;top:11px;bottom:auto;border-left:0;border-top:1.5px dashed rgba(240,234,221,.22)}
+    .path .fill{left:12px;top:10px;width:calc(100% - 24px);height:3.5px;background:linear-gradient(90deg,var(--orange),#ff9d62);transform-origin:left;transform:scaleX(var(--p))}
+    .path .dot{left:0;top:-48px}
+    .wa-float{display:none}
   }
-  /* intro (abertura estilo tour): globo primeiro, depois hotspots e card */
-  #stage{transition:transform 1.6s cubic-bezier(.2,.7,.2,1),opacity 1.6s ease}
-  .glogo i{transition:opacity 1.4s ease}
-  .hero-content .card{transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
-  .spots .spot{transition:opacity .7s ease,transform .65s cubic-bezier(.2,.7,.2,1)}
-  .drag-hint{transition:opacity .7s ease}
-  body.intro #stage{transform:scale(1.08)!important;opacity:.82!important;filter:none!important}
-  body.intro .glogo i{opacity:.26!important}
+  @media(min-width:1200px){
+    .pf-grid{grid-template-columns:repeat(4,1fr);gap:16px}
+    .scene{--ch:500px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .showcase .poster,.cta-pano i,.scene.live .bg,.scene.s-tour.live .bg,.scene .pin .pulse,.showcase .big .pulse{animation:none}
+    .reveal.in .eyebrow .mk{animation:none}
+  }
+
+  /* abertura estilo tour: grade e logo, o ambiente materializa, depois card e pontos */
+  .hero-content .card{transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1),visibility 1s}
+  .spots,.edges{transition:opacity .8s ease}
   body.intro .hero-content .card{opacity:0!important;transform:translateY(42px) scale(.985)!important}
-  body.intro .spots .spot{opacity:0;transform:translate(-50%,-50%) scale(.55)}
-  body.intro .drag-hint{opacity:0!important}
-  @media(prefers-reduced-motion:reduce){.spot .pulse{animation:none}.reveal{opacity:1;transform:none;filter:none}
-    body.intro #stage,body.intro .card,body.intro .spot,body.intro .drag-hint{opacity:1!important;transform:none!important}}
+  body.intro .spots,body.intro .edges,body.intro .rot-hint{opacity:0!important}
+  @media(prefers-reduced-motion:reduce){.spot .pulse,.rot-hint .hand{animation:none}.reveal{opacity:1;transform:none;filter:none}
+    body.intro .card{opacity:1!important;transform:none!important}
+    body.intro .spots,body.intro .edges{opacity:1!important}}
 </style>
 </head>
 <body class="intro">
 
 <nav id="nav">
-  <a href="#" class="brand"><img src="images/logo-aeron.png" alt="AERON Solutions" class="logo"></a>
+  <a href="#" class="brand"><img src="images/logo-aeron.png" alt="AERON Solutions" class="logo" width="2047" height="420"></a>
   <div class="nav-right">
     <a href="#solucoes" class="lk">Soluções</a>
     <a href="#tour" class="lk">Tour</a>
-    <a href="#diferenciais" class="lk">Diferenciais</a>
     <a href="#portfolio" class="lk">Portfólio</a>
+    <a href="#diferenciais" class="lk">Diferenciais</a>
     <a href="#contato" class="contact">Contato</a>
   </div>
   <button class="menu-btn" onclick="document.getElementById('mobmenu').classList.toggle('open')" aria-label="Menu">
@@ -317,49 +455,67 @@
   </button>
 </nav>
 <div id="mobmenu">
-  <a href="#solucoes">Soluções</a><a href="#tour">Tour Virtual</a><a href="#diferenciais">Diferenciais</a><a href="#portfolio">Portfólio</a><a href="#contato">Contato</a>
+  <a href="#solucoes">Soluções</a><a href="#tour">Tour Virtual</a><a href="#portfolio">Portfólio</a><a href="#diferenciais">Diferenciais</a><a href="#contato">Contato</a>
 </div>
 
 <!-- HERO -->
 <header class="hero" id="hero">
-  <div class="stage" id="stage">
-    <div class="glow" id="glow"></div>
-    <div class="layer grid-far" id="gridFar"><svg viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice"><path id="pFar"/></svg></div>
+  <div class="pano" id="pano">
+    <canvas id="panoCv" aria-hidden="true"></canvas>
     <div class="glogo" id="glogo"><i></i></div>
-    <div class="layer grid-near" id="gridNear"><svg viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice"><path id="pNear"/></svg></div>
-    <div class="equator" id="equator"></div>
   </div>
   <div class="spots" id="spots">
-    <div class="spot" style="--x:44%;--y:16%;--mx:24%;--my:18%" tabindex="0" role="button" aria-label="Tour Virtual">
-      <span class="hit"></span><span class="pulse"></span><span class="ring"></span>
-      <div class="tip"><span class="k">01 · Tour Virtual</span><h4>Entre em 360°</h4><p>Seu espaço navegável de qualquer lugar, a qualquer hora.</p></div>
-    </div>
-    <div class="spot" style="--x:80%;--y:22%;--mx:76%;--my:16%" tabindex="0" role="button" aria-label="Google Business">
-      <span class="hit"></span><span class="pulse"></span><span class="ring"></span>
-      <div class="tip"><span class="k">02 · Google</span><h4>Apareça no mapa</h4><p>Presença estratégica onde seu cliente procura.</p></div>
-    </div>
-    <div class="spot" style="--x:68%;--y:60%;--mx:50%;--my:26%" tabindex="0" role="button" aria-label="Landing Pages">
-      <span class="hit"></span><span class="pulse"></span><span class="ring"></span>
-      <div class="tip"><span class="k">03 · Landing Pages</span><h4>Converta acessos</h4><p>Páginas rápidas que viram oportunidades.</p></div>
-    </div>
+    <button class="spot off" type="button" data-svc="tour" aria-label="Tour Virtual: ver detalhes"><span class="ring"><span class="pulse"></span></span><span class="lbl">Tour Virtual</span></button>
+    <button class="spot off" type="button" data-svc="google" aria-label="Perfil no Google: ver detalhes"><span class="ring"><span class="pulse"></span></span><span class="lbl">Google</span></button>
+    <button class="spot off" type="button" data-svc="landing" aria-label="Landing Pages: ver detalhes"><span class="ring"><span class="pulse"></span></span><span class="lbl">Landing Pages</span></button>
   </div>
-  <div class="vignette"></div>
+  <div class="edges" id="edges"><div class="rot-hint" id="hint" aria-hidden="true"><span class="ic"><i class="arr l"></i><svg class="hand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 14a8 8 0 0 1-8 8"/><path d="M18 11v-1a2 2 0 0 0-2-2a2 2 0 0 0-2 2"/><path d="M14 10V9a2 2 0 0 0-2-2a2 2 0 0 0-2 2v1"/><path d="M10 9.5V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v10"/><path d="M18 11a2 2 0 1 1 4 0v3a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg><i class="arr r"></i></span>Arraste para girar em 360°</div></div>
   <div class="hero-content">
     <div class="card" id="card">
-      <div class="kicker"><span class="mk"></span><span class="slogan">Transformamos espaços reais em experiências digitais</span></div>
-      <h1>Mais <span class="stop">visibilidade</span> para seu imóvel. Mais <span class="stop">oportunidades</span> para seu negócio.</h1>
-      <p class="sub">Tour Virtual, presença estratégica no Google e Landing Pages criadas para transformar acessos em oportunidades.</p>
-      <div class="actions">
-        <a class="btn btn-solid" href="#solucoes">Explorar soluções
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="btn btn-glass" href="https://wa.me/5551999263252?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener">Falar pelo WhatsApp
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 .9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .5l-.7 1c-.2.2-.3.4-.1.7.9 1.6 2 2.2 3.4 2.8.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.6-.1l1.8.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg></a>
+      <div class="face main on" data-face="main">
+          <div class="top"><div class="kicker"><span class="slogan">Transformamos espaços reais em experiências digitais</span></div><div class="tools"><button class="ib cls" type="button" aria-label="Fechar e ver só o ambiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div></div>
+          <h1>Mais <span class="stop">visibilidade</span> para seu imóvel. Mais <span class="stop">oportunidades</span> para seu negócio.</h1>
+          <p class="sub">Tour Virtual, presença estratégica no Google e Landing Pages criadas para transformar acessos em oportunidades.</p>
+          <div class="actions">
+            <a class="btn btn-solid" href="#solucoes"><span><span class="lg">Explorar </span>soluções</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="btn btn-glass" href="https://wa.me/5551999263252?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener">WhatsApp
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 .9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .5l-.7 1c-.2.2-.3.4-.1.7.9 1.6 2 2.2 3.4 2.8.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.6-.1l1.8.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg></a>
+          </div>
+      </div>
+      <div class="face svc" data-face="tour" inert>
+        <div class="top"><span class="k">Tour Virtual</span><div class="tools"><button class="ib back" type="button" aria-label="Voltar ao início"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><button class="ib cls" type="button" aria-label="Fechar e ver só o ambiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div></div>
+        <h2>Entre em 360°</h2>
+        <p class="sub">Igual a este ambiente: seu cliente gira, explora e conhece o espaço antes de visitar. No seu site ou direto no Google.</p>
+        <ul class="pts"><li>Interativo no seu site</li><li>Direto no Google Maps</li><li>No celular e no computador</li></ul>
+        <div class="actions">
+          <a class="btn btn-solid" href="tour-virtual.html" aria-label="Saiba mais sobre o Tour Virtual">Saiba mais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <button class="nx" type="button" data-go="google"><span>Próximo<span class="lg">: Google</span></span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+      <div class="face svc" data-face="google" inert>
+        <div class="top"><span class="k">Perfil no Google</span><div class="tools"><button class="ib back" type="button" aria-label="Voltar ao início"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><button class="ib cls" type="button" aria-label="Fechar e ver só o ambiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div></div>
+        <h2>Apareça no mapa</h2>
+        <p class="sub">Perfil da Empresa no Google estruturado e otimizado, pra você aparecer melhor e ser escolhido no Maps e na Busca.</p>
+        <ul class="pts"><li>Perfil completo e otimizado</li><li>Fotos, horários e serviços em dia</li><li>Mais presença no Maps e na Busca</li></ul>
+        <div class="actions">
+          <a class="btn btn-solid" href="gbp.html" aria-label="Saiba mais sobre o Perfil no Google">Saiba mais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <button class="nx" type="button" data-go="landing"><span>Próximo<span class="lg">: Landing Pages</span></span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+      <div class="face svc" data-face="landing" inert>
+        <div class="top"><span class="k">Landing Pages</span><div class="tools"><button class="ib back" type="button" aria-label="Voltar ao início"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><button class="ib cls" type="button" aria-label="Fechar e ver só o ambiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div></div>
+        <h2>Converta acessos</h2>
+        <p class="sub">Páginas rápidas e diretas, feitas com um objetivo só: transformar acessos em oportunidades reais.</p>
+        <ul class="pts"><li>Leve e rápida no celular</li><li>Contato direto pelo WhatsApp</li><li>Texto e design pensados pra converter</li></ul>
+        <div class="actions">
+          <a class="btn btn-solid" href="landing-pages.html" aria-label="Saiba mais sobre as Landing Pages">Saiba mais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <button class="nx" type="button" data-go="tour"><span>Próximo<span class="lg">: Tour Virtual</span></span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </div>
       </div>
     </div>
   </div>
-  <div class="drag-hint" id="hint">
-    <svg viewBox="0 0 24 13" fill="none" stroke-width="2" stroke-linecap="round"><path d="M7 3L2 6.5l5 3.5M17 3l5 3.5-5 3.5M2 6.5h20"/></svg>Arraste para girar o espaço
-  </div>
+  <button class="reopen" id="reopen" type="button">Ver informações</button>
 </header>
 
 <!-- SOLUÇÕES -->
@@ -370,33 +526,33 @@
       <h2 class="sec-h">Três formas de fazer sua empresa ser encontrada e escolhida<span class="stop">.</span></h2>
       <p>Foco no que traz cliente. Sem excesso, sem enrolação.</p>
     </div>
-    <div class="sol-grid">
-      <article class="sol reveal">
-        <div class="glyph"><svg viewBox="0 0 100 100" fill="none" stroke="#F26522" stroke-opacity=".55" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="50" cy="52" r="20"/>
-          <line x1="50" y1="32" x2="50" y2="72"/>
-          <ellipse cx="50" cy="52" rx="8.5" ry="20"/>
-          <ellipse cx="50" cy="49" rx="22" ry="8" transform="rotate(-17 50 49)"/>
-          <path d="M70.5 39 l4.6 -1.2 -1.3 4.5" fill="#F26522" fill-opacity=".55" stroke="none"/>
-          <text x="50" y="27" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#F26522" fill-opacity=".7" stroke="none">360°</text>
-        </svg></div>
-        <span class="n">01</span><h3>Tour Virtual</h3>
-        <p>Seu espaço em 360°, navegável. Em dois formatos: o tour interativo imersivo e o tour que entra no seu Perfil do Google.</p>
-        <a class="lnk" href="tour-virtual.html">Conhecer o Tour Virtual <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      </article>
-      <article class="sol reveal">
-        <div class="glyph"><svg viewBox="0 0 100 100" fill="none" stroke="#F26522" stroke-opacity=".5" stroke-width="1.5"><path d="M50 20c11 0 20 9 20 20 0 15-20 32-20 32S30 55 30 40c0-11 9-20 20-20Z"/><circle cx="50" cy="40" r="7"/></svg></div>
-        <span class="n">02</span><h3>Perfil no Google</h3>
-        <p>Estruturação e otimização do seu Perfil da Empresa no Google, pra você aparecer melhor e ser escolhido no Maps e na Busca.</p>
-        <a class="lnk" href="gbp.html">Conhecer o serviço <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      </article>
-      <article class="sol reveal">
-        <div class="glyph"><svg viewBox="0 0 100 100" fill="none" stroke="#F26522" stroke-opacity=".5" stroke-width="1.5"><rect x="26" y="24" width="48" height="52" rx="4"/><path d="M26 38h48M36 50h28M36 60h20"/></svg></div>
-        <span class="n">03</span><h3>Landing Pages</h3>
-        <p>Páginas rápidas e diretas, feitas com um objetivo só: transformar acessos em oportunidades reais.</p>
-        <a class="lnk" href="landing-pages.html">Ver portfólio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      </article>
+    <div class="scenes reveal" id="scenes">
+      <a class="scene s-tour" href="tour-virtual.html">
+        <span class="bg" aria-hidden="true"></span>
+        <div class="info">
+          <h3>Tour Virtual</h3>
+          <p>Seu espaço em 360°, navegável no seu site e direto no Google.</p>
+          <span class="go">Conhecer o Tour Virtual <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+      <a class="scene s-google" href="gbp.html">
+        <span class="bg" aria-hidden="true"></span>
+        <div class="info">
+          <h3>Perfil no Google</h3>
+          <p>Perfil estruturado e otimizado pra aparecer e ser escolhido no Maps.</p>
+          <span class="go">Conhecer o serviço <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+      <a class="scene s-landing" href="landing-pages.html">
+        <span class="bg" aria-hidden="true"></span>
+        <div class="info">
+          <h3>Landing Pages</h3>
+          <p>Páginas rápidas, feitas pra transformar acesso em contato.</p>
+          <span class="go">Conhecer as Landing Pages <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
     </div>
+    <div class="scene-dots" id="sceneDots"></div>
   </div>
 </section>
 
@@ -406,46 +562,18 @@
     <div class="band-head reveal">
       <span class="eyebrow"><span class="mk"></span>Tour ao vivo</span>
       <h2 class="sec-h">Não imagine. Entre<span class="stop">.</span></h2>
-      <p>Isto é um ambiente real, navegável em 360°. Arraste, aproxime e percorra cada canto como se estivesse lá dentro.</p>
+      <p>Um imóvel real, navegável em 360°. Entre e percorra cada ambiente como se estivesse lá.</p>
     </div>
-    <div class="live-wrap reveal">
-      <div class="live-frame" id="liveFrame"><div class="lz" id="lz">Carregando o tour…</div></div>
-      <div class="live-cap"><span class="mono">Ambiente navegável · 360°</span><span class="mono">Arraste para explorar</span></div>
+    <div class="showcase reveal" id="showcase">
+      <picture>
+        <source media="(max-width:600px)" srcset="https://my.matterport.com/api/v1/player/models/mGmZhfLmhS3/thumb?width=880&amp;height=1100">
+        <img class="poster" src="https://my.matterport.com/api/v1/player/models/mGmZhfLmhS3/thumb?width=1280&amp;height=720" alt="Ambiente real do tour navegável" loading="lazy" decoding="async">
+      </picture>
+      <span class="shade" aria-hidden="true"></span>
+      <button class="enter" type="button"><span class="big"><span class="pulse"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.8v14.4c0 .8.9 1.3 1.6.9l11-7.2c.6-.4.6-1.4 0-1.8l-11-7.2C7.9 3.5 7 4 7 4.8Z"/></svg></span><span class="lb">Entrar no tour</span></button>
+      <span class="tag"><span class="mk-ring"></span>Residência · ambiente real</span>
     </div>
-  </div>
-</section>
-
-<!-- DIFERENCIAIS -->
-<section class="band" id="diferenciais">
-  <div class="wrap">
-    <div class="band-head reveal">
-      <span class="eyebrow"><span class="mk"></span>Diferenciais</span>
-      <h2 class="sec-h">Por que empresas escolhem a AERON<span class="stop">.</span></h2>
-    </div>
-    <div class="why-grid reveal">
-      <div class="why-item"><span class="n">01</span><h4>Feito à mão</h4><p>Cada projeto é único, pensado para a identidade do seu negócio. Nada de template pronto.</p></div>
-      <div class="why-item"><span class="n">02</span><h4>360° de verdade</h4><p>Navegação fluida e realista, que não trava mesmo em espaços com muitos ambientes.</p></div>
-      <div class="why-item"><span class="n">03</span><h4>Integrado ao Google</h4><p>Seu tour e seu perfil conectados ao Maps e à Busca, onde o cliente já está procurando.</p></div>
-      <div class="why-item"><span class="n">04</span><h4>Rápido</h4><p>Páginas leves que carregam num piscar. A experiência não faz o cliente esperar.</p></div>
-      <div class="why-item"><span class="n">05</span><h4>Direto</h4><p>Você fala com quem executa o projeto, sem intermediário e sem ruído no caminho.</p></div>
-      <div class="why-item"><span class="n">06</span><h4>Aqui do lado</h4><p>Captura presencial em Santa Cruz do Sul e região, com atendimento próximo.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESSO -->
-<section class="band alt" id="processo">
-  <div class="wrap">
-    <div class="band-head reveal">
-      <span class="eyebrow"><span class="mk"></span>Como funciona</span>
-      <h2 class="sec-h">Do primeiro contato à entrega<span class="stop">.</span></h2>
-    </div>
-    <div class="steps">
-      <div class="step reveal"><span class="num">01</span><div><h4>Contato</h4><p>A gente conversa e entende o espaço, o público e o objetivo do seu negócio.</p></div></div>
-      <div class="step reveal"><span class="num">02</span><div><h4>Planejamento</h4><p>Definimos o roteiro de captura e quais diferenciais merecem destaque.</p></div></div>
-      <div class="step reveal"><span class="num">03</span><div><h4>Captura</h4><p>Vamos até o local com equipamento profissional para registrar tudo em alta resolução.</p></div></div>
-      <div class="step reveal"><span class="num">04</span><div><h4>Entrega</h4><p>Seu tour publicado, integrado ao Google e pronto para divulgar.</p></div></div>
-    </div>
+    <div class="live-cap"><span class="mono">Ambiente navegável · 360°</span><span class="mono">Arraste para explorar</span></div>
   </div>
 </section>
 
@@ -455,7 +583,7 @@
     <div class="band-head reveal">
       <span class="eyebrow"><span class="mk"></span>Portfólio</span>
       <h2 class="sec-h">Trabalhos que já estão no ar<span class="stop">.</span></h2>
-      <p>Tours e presença no Google já entregues. Esta vitrine é atualizada direto pelo nosso painel.</p>
+      <p>Projetos reais de clientes. Toque em um para ver ao vivo.</p>
     </div>
     <div class="pf-tabs reveal" id="pfTabs">
       <button class="pf-tab on" data-cat="all">Todos</button>
@@ -463,7 +591,40 @@
       <button class="pf-tab" data-cat="google">Google</button>
       <button class="pf-tab" data-cat="landing">Landing Pages</button>
     </div>
-    <div class="pf-grid reveal" id="pfGrid"></div>
+    <div class="pf-grid" id="pfGrid"></div>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section class="band alt" id="diferenciais">
+  <div class="wrap">
+    <div class="band-head reveal">
+      <span class="eyebrow"><span class="mk"></span>Diferenciais</span>
+      <h2 class="sec-h">Por que empresas escolhem a AERON<span class="stop">.</span></h2>
+    </div>
+    <div class="why4 reveal">
+      <div class="it"><span class="mk-ring"></span><h3>Feito sob medida</h3><p>Cada projeto pensado pra identidade do seu negócio.</p></div>
+      <div class="it"><span class="mk-ring"></span><h3>Integrado ao Google</h3><p>Tour e perfil conectados ao Maps e à Busca.</p></div>
+      <div class="it"><span class="mk-ring"></span><h3>Leve e rápido</h3><p>Abre rápido no celular, sem fazer o cliente esperar.</p></div>
+      <div class="it"><span class="mk-ring"></span><h3>Atendimento direto</h3><p>Você fala com quem executa, sem intermediário.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESSO -->
+<section class="band" id="processo">
+  <div class="wrap">
+    <div class="band-head reveal">
+      <span class="eyebrow"><span class="mk"></span>Como funciona</span>
+      <h2 class="sec-h">Do primeiro contato à entrega<span class="stop">.</span></h2>
+    </div>
+    <div class="path" id="path">
+      <span class="fill" aria-hidden="true"></span>
+      <div class="st"><span class="dot" aria-hidden="true"></span><h3>Contato</h3><p>A gente conversa e entende o espaço, o público e o objetivo do seu negócio.</p></div>
+      <div class="st"><span class="dot" aria-hidden="true"></span><h3>Planejamento</h3><p>Definimos o roteiro e o que merece destaque.</p></div>
+      <div class="st"><span class="dot" aria-hidden="true"></span><h3>Captura</h3><p>Registramos tudo no local, com equipamento profissional.</p></div>
+      <div class="st"><span class="dot" aria-hidden="true"></span><h3>Entrega</h3><p>Tudo publicado, integrado ao Google e pronto pra divulgar.</p></div>
+    </div>
   </div>
 </section>
 
@@ -485,17 +646,18 @@
 </section>
 
 <!-- CONTATO -->
-<section class="band" id="contato">
+<section class="cta-sec" id="contato">
+  <div class="cta-pano" aria-hidden="true"><i></i></div>
   <div class="wrap">
-    <div class="cta-box reveal">
-      <div class="cta-glow"></div>
+    <div class="cta-card reveal">
       <span class="eyebrow"><span class="mk"></span>Vamos conversar</span>
-      <h2 style="margin-top:16px">Sua próxima venda pode começar com um tour.</h2>
+      <h2>Sua próxima venda pode começar com um tour.</h2>
       <p>Conta pra gente sobre o seu espaço ou projeto. A resposta é rápida e sem compromisso.</p>
       <div class="actions">
         <a class="btn btn-solid" href="https://wa.me/5551999263252?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener">Falar pelo WhatsApp
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 .9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .5l-.7 1c-.2.2-.3.4-.1.7.9 1.6 2 2.2 3.4 2.8.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.6-.1l1.8.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg></a>
-        <a class="btn btn-glass" href="https://wa.me/5551999263252?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener">Solicitar orçamento</a>
+        <a class="btn btn-glass" href="https://www.instagram.com/aeronsolutions/" target="_blank" rel="noopener">Instagram
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg></a>
       </div>
     </div>
   </div>
@@ -506,10 +668,10 @@
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <a href="#" class="brand"><img src="images/logo-aeron.png" alt="AERON Solutions" class="logo"></a>
+        <a href="#" class="brand"><img src="images/logo-aeron.png" alt="AERON Solutions" class="logo" width="2047" height="420"></a>
         <p>Transformamos espaços reais em experiências digitais. Tour Virtual, presença no Google e Landing Pages, em Santa Cruz do Sul, RS.</p>
       </div>
-      <div><h5>Soluções</h5><ul><li><a href="tour-virtual.html">Tour Virtual</a></li><li><a href="google-business.html">Google</a></li><li><a href="landing-pages.html">Landing Pages</a></li></ul></div>
+      <div><h5>Soluções</h5><ul><li><a href="tour-virtual.html">Tour Virtual</a></li><li><a href="gbp.html">Google</a></li><li><a href="landing-pages.html">Landing Pages</a></li></ul></div>
       <div><h5>Contato</h5><ul><li><a href="https://wa.me/5551999263252?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener">WhatsApp</a></li><li><a href="https://www.instagram.com/aeronsolutions/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://wa.me/5551999263252?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener">Orçamento</a></li></ul></div>
     </div>
     <div class="foot-bottom">
@@ -519,85 +681,310 @@
   </div>
 </footer>
 
-<div id="hs-sheet"><div class="hs-inner"><button class="close" aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button><div class="hs-body"></div></div></div>
+<a class="wa-float" id="waFloat" href="https://wa.me/5551999263252?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener" aria-label="Falar pelo WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 .9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .5l-.7 1c-.2.2-.3.4-.1.7.9 1.6 2 2.2 3.4 2.8.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.6-.1l1.8.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg></a>
 
 <script>
   const nav=document.getElementById('nav'), mob=document.getElementById('mobmenu');
   addEventListener('scroll',onScroll,{passive:true});
   mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mob.classList.remove('open')));
 
-  /* sphere grid */
-  function grid(w,h,lats,lons,latSpan,latBow,lonBow){
-    const cx=w/2, cy=h/2; let d='';
-    for(let j=-lats;j<=lats;j++){const t=j/lats;const y=cy+t*h*latSpan;const bow=t*h*latBow;d+=`M0 ${y.toFixed(1)} Q ${cx} ${(y+bow).toFixed(1)} ${w} ${y.toFixed(1)} `;}
-    for(let i=0;i<=lons;i++){const x=(i/lons)*w;const bow=(x-cx)*lonBow;d+=`M${x.toFixed(1)} 0 Q ${(x+bow).toFixed(1)} ${cy} ${x.toFixed(1)} ${h} `;}
-    return d;
-  }
-  document.getElementById('pFar').setAttribute('d',grid(1600,1000,7,20,0.46,0.16,0.21));
-  document.getElementById('pNear').setAttribute('d',grid(1600,1000,4,10,0.40,0.12,0.17));
+  /* HERO 360: ambiente navegável em WebGL (sem biblioteca), pontos presos na cena e card que troca de conteúdo */
+  (function(){
+    const hero=document.getElementById('hero'),panoEl=document.getElementById('pano'),cv=document.getElementById('panoCv'),
+          cardEl=document.getElementById('card'),edgesEl=document.getElementById('edges'),hint=document.getElementById('hint'),reopenBtn=document.getElementById('reopen');
+    const D=Math.PI/180,TAU=Math.PI*2,reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isMob=()=>innerWidth<900;
+    const isClean=()=>hero.classList.contains('clean');
+    const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+    const wrapA=a=>{a=(a+Math.PI)%TAU;if(a<0)a+=TAU;return a-Math.PI;};
+    const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+    const AUTO=2.4*D/1000,P_MIN=-24*D,P_MAX=20*D;   // giro automático (rad/ms) e limite de inclinação
 
-  /* parallax (event-driven, no idle loop) */
-  const gridFar=document.getElementById('gridFar'),gridNear=document.getElementById('gridNear'),spots=document.getElementById('spots'),
-        glow=document.getElementById('glow'),card=document.getElementById('card'),equator=document.getElementById('equator'),hero=document.getElementById('hero'),hint=document.getElementById('hint'),glogo=document.getElementById('glogo');
-  let pointer={x:0,y:0},cur={x:0,y:0},pan=0,curPan=0,dragging=false,lastX=0,raf=null;
-  function schedule(){if(!raf)raf=requestAnimationFrame(tick);}
-  function tick(){
-    cur.x+=(pointer.x-cur.x)*0.08;cur.y+=(pointer.y-cur.y)*0.08;curPan+=(pan-curPan)*0.10;
-    const fx=cur.x,fy=cur.y,p=curPan;
-    gridFar.style.transform=`translate(${p*0.30+fx*10}px,${fy*8}px)`;
-    if(glogo)glogo.style.transform=`translate(${p*0.42+fx*15}px,${fy*11}px)`;
-    gridNear.style.transform=`translate(${p*0.62+fx*22}px,${fy*16}px)`;
-    spots.style.transform=`translate(${p*0.62+fx*22}px,${fy*16}px)`;
-    glow.style.transform=`translate(calc(-50% + ${fx*14}px),calc(-50% + ${fy*10}px))`;
-    equator.style.transform=`translateY(calc(-50% + ${fy*6}px))`;
-    card.style.transform=`translate(${fx*-7}px,${fy*-5}px)`;
-    if(Math.abs(pointer.x-cur.x)>.002||Math.abs(pointer.y-cur.y)>.002||Math.abs(pan-curPan)>.05)raf=requestAnimationFrame(tick);else raf=null;
-  }
-  hero.addEventListener('pointermove',e=>{if(e.pointerType==='mouse'&&!dragging){const r=hero.getBoundingClientRect();pointer.x=((e.clientX-r.left)/r.width-.5)*2;pointer.y=((e.clientY-r.top)/r.height-.5)*2;schedule();}});
-  hero.addEventListener('pointerleave',()=>{if(!dragging){pointer.x=0;pointer.y=0;schedule();}});
-  hero.addEventListener('pointerdown',e=>{if(e.target.closest('.spot'))return;dragging=true;lastX=e.clientX;if(hint)hint.style.opacity=0;});
-  addEventListener('pointermove',e=>{if(!dragging)return;pan=Math.max(-150,Math.min(150,pan+(e.clientX-lastX)*0.6));lastX=e.clientX;schedule();});
-  addEventListener('pointerup',()=>dragging=false);
+    /* pontos no panorama: yaw 0 = centro da imagem (positivo para a direita), pitch positivo acima do horizonte */
+    const SP=[{id:'tour',yaw:-2,pitch:12,lbl:'Tour Virtual'},{id:'google',yaw:-105,pitch:10,lbl:'Google'},{id:'landing',yaw:103,pitch:-5,lbl:'Landing Pages'}];
 
-  /* hotspots: desktop = balão flutuante; mobile = painel inferior seguro */
-  const sheet=document.getElementById('hs-sheet'), sheetBody=sheet.querySelector('.hs-body');
-  const isMobile=()=>matchMedia('(max-width:820px)').matches;
-  function closeAll(){document.querySelectorAll('.spot.open').forEach(o=>o.classList.remove('open'));sheet.classList.remove('show');}
-  function openSheet(s){const tip=s.querySelector('.tip');sheetBody.innerHTML=tip?tip.innerHTML:'';sheet.classList.add('show');}
-  document.querySelectorAll('.spot').forEach(s=>{
-    const act=()=>{const wasOpen=s.classList.contains('open');closeAll();if(!wasOpen){s.classList.add('open');if(isMobile())openSheet(s);}};
-    s.addEventListener('click',ev=>{ev.stopPropagation();act();});
-    s.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();act();}});
-  });
-  sheet.querySelector('.close').addEventListener('click',e=>{e.stopPropagation();closeAll();});
-  sheet.querySelector('.hs-inner').addEventListener('click',e=>e.stopPropagation());
-  sheet.addEventListener('click',closeAll);   // toque no fundo escurecido fecha
-  document.addEventListener('click',closeAll);
+    let gl=null,U={},tex=null,img=null,has=0,rev=0,revA=null;
+    let W=1,H=1,dpr=1,focal=600,zoom=1,basePitch=-3*D,reg={l:0,r:1,t:0,b:1};
+    let yaw=0,pitch=0,vel=0,anim=null,zA=null,drag=false,visible=true,raf=0,last=0,intro=true,autoOn=false,idleUntil=0,wakeT=0,rotGone=false;
 
-  /* scroll: hero recedes + reveals + close tips */
+    const VS='attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}';
+    const FS=['#ifdef GL_FRAGMENT_PRECISION_HIGH','precision highp float;','#else','precision mediump float;','#endif',
+      'uniform sampler2D t;uniform vec2 res;uniform float yaw,pit,foc,rev,has;',
+      'const float PI=3.14159265;',
+      'void main(){',
+      ' vec2 p=gl_FragCoord.xy-.5*res;',
+      ' vec3 d=normalize(vec3(p,foc));',
+      ' float cp=cos(pit),sp=sin(pit),cy=cos(yaw),sy=sin(yaw);',
+      ' d=vec3(d.x,d.y*cp+d.z*sp,-d.y*sp+d.z*cp);',
+      ' d=vec3(d.x*cy+d.z*sy,d.y,-d.x*sy+d.z*cy);',
+      ' float lon=atan(d.x,d.z),lat=asin(clamp(d.y,-1.,1.));',
+      ' vec2 q=gl_FragCoord.xy/res;',
+      ' float r=length((q-vec2(.5,.55))*vec2(res.x/res.y,1.));',
+      ' vec3 bg=mix(vec3(.086,.188,.361),vec3(.043,.090,.188),smoothstep(0.,1.1,r));',
+      ' float st=PI/12.,px=1.4/foc;',
+      ' float g1=abs(fract(lon/st+.5)-.5)*st*cos(lat),g2=abs(fract(lat/st+.5)-.5)*st;',
+      ' float g=max(1.-smoothstep(0.,px,g1),1.-smoothstep(0.,px,g2));',
+      ' vec3 base=bg+vec3(.6,.72,.9)*g*.28;',
+      ' vec3 c=texture2D(t,vec2(lon/(2.*PI)+.5,.5-lat/PI)).rgb;',
+      ' float f=rev*1.4-.2;',
+      ' float m=has*(1.-smoothstep(f-.2,f,q.x));',
+      ' float sw=has*exp(-pow((q.x-f)*26.,2.))*(1.-smoothstep(.85,1.,rev));',
+      ' gl_FragColor=vec4(mix(base,c,m)+vec3(.16,.66,.88)*sw*.45,1.);',
+      '}'].join('\n');
+
+    function initGL(){
+      try{gl=cv.getContext('webgl',{alpha:false,antialias:false,depth:false,stencil:false,powerPreference:'low-power'});}catch(_){gl=null;}
+      if(!gl)return false;
+      try{
+        const sh=(k,src)=>{const s=gl.createShader(k);gl.shaderSource(s,src);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw new Error(gl.getShaderInfoLog(s));return s;};
+        const pr=gl.createProgram();gl.attachShader(pr,sh(gl.VERTEX_SHADER,VS));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,FS));gl.linkProgram(pr);
+        if(!gl.getProgramParameter(pr,gl.LINK_STATUS))throw new Error(gl.getProgramInfoLog(pr));
+        gl.useProgram(pr);
+        gl.bindBuffer(gl.ARRAY_BUFFER,gl.createBuffer());gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
+        const a=gl.getAttribLocation(pr,'a');gl.enableVertexAttribArray(a);gl.vertexAttribPointer(a,2,gl.FLOAT,false,0,0);
+        ['t','res','yaw','pit','foc','rev','has'].forEach(n=>U[n]=gl.getUniformLocation(pr,n));
+        tex=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,tex);
+        gl.texImage2D(gl.TEXTURE_2D,0,gl.RGB,1,1,0,gl.RGB,gl.UNSIGNED_BYTE,new Uint8Array([11,23,48]));
+        gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.REPEAT);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
+        gl.uniform1i(U.t,0);
+        if(has)upload();
+        return true;
+      }catch(err){console.warn('hero360',err);gl=null;return false;}
+    }
+    function upload(){if(!gl||!img)return;gl.bindTexture(gl.TEXTURE_2D,tex);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGB,gl.RGB,gl.UNSIGNED_BYTE,img);}
+    function draw(){
+      gl.uniform2f(U.res,cv.width,cv.height);gl.uniform1f(U.yaw,yaw);gl.uniform1f(U.pit,pitch);gl.uniform1f(U.foc,focal*zoom*dpr);
+      gl.uniform1f(U.rev,rev);gl.uniform1f(U.has,has);gl.drawArrays(gl.TRIANGLES,0,3);
+    }
+
+    /* área livre para os pontos: à direita do card no desktop, acima do card no celular, tela toda com a hero limpa */
+    function placeHint(){if(hint){hint.style.left=((reg.l+reg.r)/2).toFixed(1)+'px';hint.style.top=(reg.t+(reg.b-reg.t)*(isMob()?.74:.7)).toFixed(1)+'px';}}
+    function measure(){
+      const nb=74;
+      if(isClean())reg=isMob()?{l:12,r:W-12,t:nb,b:H-84}:{l:24,r:W-24,t:nb+6,b:H-90};
+      else{const cl=cardEl.offsetLeft,ct=cardEl.offsetTop,cw=cardEl.offsetWidth;
+        reg=isMob()?{l:12,r:W-12,t:nb,b:Math.max(nb+110,ct-12)}:{l:cl+cw+28,r:W-20,t:nb+6,b:H-64};}
+      // no celular a câmera inclina e leva o horizonte para o meio da faixa livre
+      basePitch=isMob()?clamp(4*D-Math.atan((H/2-(reg.t+reg.b)/2)/focal),-34*D,0):-3*D;
+      placeHint();
+    }
+    function retarget(){
+      if(!isMob()||!gl)return;
+      if(anim)anim.p1=basePitch;else anim={y0:yaw,p0:pitch,y1:yaw,p1:basePitch,t0:performance.now(),dur:reduce?1:650};
+      req();
+    }
+    function resize(){
+      W=hero.clientWidth||innerWidth;H=hero.clientHeight||innerHeight;dpr=Math.min(window.devicePixelRatio||1,1.5);
+      cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);if(gl)gl.viewport(0,0,cv.width,cv.height);
+      const hf=(W>=1400?110:W>=1100?105:100)*D/2;   // telas largas abrem mais o campo de visão (menos zoom na foto)
+      focal=clamp((W/2)/Math.tan(hf),(H/2)/Math.tan(47.5*D),(H/2)/Math.tan(30*D));
+      measure();pitch=isMob()?basePitch:clamp(pitch,P_MIN,P_MAX);
+      if(!gl)fallbackSpots();
+      req();
+    }
+    function proj(yw,pt){
+      const cp=Math.cos(pt),x0=cp*Math.sin(yw),y0=Math.sin(pt),z0=cp*Math.cos(yw);
+      const cy=Math.cos(yaw),sy=Math.sin(yaw),x1=x0*cy-z0*sy,z1=x0*sy+z0*cy;
+      const c2=Math.cos(pitch),s2=Math.sin(pitch),y2=y0*c2-z1*s2,z2=y0*s2+z1*c2;
+      if(z2<.08)return null;
+      const f=focal*zoom;return{x:W/2+x1/z2*f,y:H/2-y2/z2*f};
+    }
+    function setVis(s,v){if(s.vis===v)return;s.vis=v;s.el.classList.toggle('off',!v);s.edge.classList.toggle('off',v);s.el.tabIndex=v?0:-1;s.edge.tabIndex=v?-1:0;}
+    function place(){
+      const L=[],R=[];
+      for(const s of SP){
+        const p=proj(s.yaw*D,s.pitch*D),inR=!!p&&p.x>reg.l+18&&p.x<reg.r-18&&p.y>reg.t+18&&p.y<reg.b-18;
+        setVis(s,inR);
+        if(inR){
+          s.el.style.transform='translate3d('+p.x.toFixed(1)+'px,'+p.y.toFixed(1)+'px,0)';
+          const fl=p.x>reg.r-200;if(fl!==s.fl){s.fl=fl;s.el.classList.toggle('flip',fl);}
+        }else(wrapA(s.yaw*D-yaw)<0?L:R).push(s);
+      }
+      const mid=(reg.t+reg.b)/2-20;
+      L.forEach((s,i)=>{if(s.side!=='l'){s.side='l';s.edge.classList.add('lft');s.edge.classList.remove('rgt');}
+        s.edge.style.transform='translate3d('+reg.l+'px,'+(mid+(i-(L.length-1)/2)*50).toFixed(1)+'px,0)';});
+      R.forEach((s,i)=>{if(s.side!=='r'){s.side='r';s.edge.classList.add('rgt');s.edge.classList.remove('lft');}
+        s.edge.style.transform='translate3d('+(reg.r-W)+'px,'+(mid+(i-(R.length-1)/2)*50).toFixed(1)+'px,0)';});
+    }
+    function fallbackSpots(){   // sem WebGL: foto parada e pontos em posições fixas
+      const P={tour:[[70,38],[30,24]],google:[[86,26],[72,18]],landing:[[78,58],[55,34]]},m=isMob()?1:0;
+      SP.forEach(s=>{const q=P[s.id][m];s.el.style.transform='translate3d('+(W*q[0]/100)+'px,'+(H*q[1]/100)+'px,0)';s.el.classList.remove('off');s.el.tabIndex=0;});
+    }
+
+    /* laço de desenho: só roda enquanto algo se move e o hero está visível */
+    function frame(ts){
+      raf=0;const dt=last?Math.min(48,ts-last):16;last=ts;let more=false;
+      if(revA){const k=clamp((ts-revA.t0)/revA.dur,0,1);rev=k;if(k>=1)revA=null;more=true;}
+      if(zA){const k=clamp((ts-zA.t0)/zA.dur,0,1);zoom=zA.z0+(zA.z1-zA.z0)*ease(k);if(k>=1)zA=null;more=true;}
+      if(anim){const k=clamp((ts-anim.t0)/anim.dur,0,1),e=ease(k);
+        yaw=anim.y0+(anim.y1-anim.y0)*e;pitch=anim.p0+(anim.p1-anim.p0)*e;if(k>=1)anim=null;more=true;}
+      else if(!drag){
+        if(intro&&!reduce){yaw+=AUTO*1.6*dt;more=true;}
+        else if(Math.abs(vel)>3e-6){yaw+=vel*dt;vel*=Math.pow(.945,dt/16);more=true;}
+        else if(autoOn&&!reduce){
+          if(ts>=idleUntil){yaw+=AUTO*dt;more=true;}
+          else if(idleUntil<1e12){clearTimeout(wakeT);wakeT=setTimeout(req,idleUntil-ts+30);}
+        }
+      }
+      if(gl){draw();place();}
+      if(more&&visible&&gl)req();else last=0;
+    }
+    function req(){if(!raf&&visible)raf=requestAnimationFrame(frame);}
+    const idleMs=ms=>(cur==='main'||isClean())?performance.now()+ms:1e12;
+
+    /* aviso de giro: some na primeira interação */
+    function hideHint(){if(rotGone)return;rotGone=true;if(hint)hint.classList.remove('show');}
+
+    /* arrastar: mouse gira e inclina; no toque só gira (arrastar na vertical continua rolando a página) */
+    let pid=null,lx=0,ly=0,lt=0;
+    panoEl.addEventListener('pointerdown',e=>{
+      if(e.button>0)return;drag=true;pid=e.pointerId;lx=e.clientX;ly=e.clientY;lt=e.timeStamp;vel=0;anim=null;
+      panoEl.classList.add('drag');hideHint();idleUntil=idleMs(7000);
+      if(e.pointerType==='mouse'){try{panoEl.setPointerCapture(pid);}catch(_){}}
+    });
+    panoEl.addEventListener('pointermove',e=>{
+      if(!drag||e.pointerId!==pid)return;
+      const dx=e.clientX-lx,dy=e.clientY-ly,dt=Math.max(1,e.timeStamp-lt),f=focal*zoom;
+      lx=e.clientX;ly=e.clientY;lt=e.timeStamp;
+      yaw-=dx/f;if(e.pointerType==='mouse'&&!isMob())pitch=clamp(pitch+dy/f,P_MIN,P_MAX);
+      vel=vel*.6+(-dx/f/dt)*.4;req();
+    });
+    function endDrag(e){
+      if(!drag||(e&&e.pointerId!==pid))return;drag=false;panoEl.classList.remove('drag');
+      if(e&&e.timeStamp-lt>90)vel=0;   // soltou parado: sem inércia
+      idleUntil=idleMs(6000);req();
+    }
+    panoEl.addEventListener('pointerup',endDrag);
+    panoEl.addEventListener('pointercancel',e=>{vel=0;endDrag(e);});
+    panoEl.addEventListener('lostpointercapture',endDrag);
+
+    /* card: troca de conteúdo no lugar, com a altura acompanhando cada conteúdo */
+    const faces={};cardEl.querySelectorAll('.face').forEach(f=>faces[f.dataset.face]=f);
+    let cur='main',rzCard=0,cleanT=0;
+    function swap(id){
+      faces[cur].classList.remove('on');faces[cur].inert=true;faces[id].classList.add('on');faces[id].inert=false;cur=id;
+      SP.forEach(s=>s.el.classList.toggle('on',s.id===id&&!isClean()));
+    }
+    function show(id){
+      if(id===cur)return;
+      const h0=cardEl.offsetHeight;
+      clearTimeout(rzCard);cardEl.classList.remove('resizing');cardEl.style.height='';
+      swap(id);const h1=cardEl.offsetHeight;
+      measure();retarget();
+      if(!reduce&&!isClean()&&Math.abs(h1-h0)>2){
+        cardEl.style.height=h0+'px';void cardEl.offsetHeight;
+        cardEl.classList.add('resizing');cardEl.style.height=h1+'px';
+        rzCard=setTimeout(()=>{cardEl.style.height='';cardEl.classList.remove('resizing');},480);
+      }
+    }
+    function aim(s){
+      const f=focal*zoom,fx=isMob()?W/2:(reg.l+reg.r)/2,fy=isMob()?reg.t+(reg.b-reg.t)*.45:H*.4;
+      const ty=s.yaw*D-Math.atan((fx-W/2)/f),tp=isMob()?pitch:clamp(s.pitch*D-Math.atan((H/2-fy)/f),P_MIN,P_MAX),dy=wrapA(ty-yaw);
+      anim={y0:yaw,p0:pitch,y1:yaw+dy,p1:tp,t0:performance.now(),dur:reduce?1:650+Math.abs(dy)/Math.PI*650};
+      vel=0;req();
+    }
+    /* hero limpa: fecha o card e deixa só o ambiente; o botão "Ver informações" reabre */
+    function setClean(on,kbd){
+      if(isClean()===on)return;
+      hideHint();hero.classList.toggle('clean',on);clearTimeout(cleanT);
+      if(on){
+        SP.forEach(s=>s.el.classList.remove('on'));
+        cleanT=setTimeout(()=>{if(isClean()&&cur!=='main')swap('main');},650);
+        idleUntil=performance.now()+2500;
+        if(kbd)reopenBtn.focus({preventScroll:true});
+      }else{
+        SP.forEach(s=>s.el.classList.toggle('on',s.id===cur));
+        idleUntil=idleMs(6000);
+        if(kbd){const b=faces[cur].querySelector('.ib');if(b)b.focus({preventScroll:true});}
+      }
+      measure();retarget();req();
+    }
+    function openSvc(s,kbd){
+      hideHint();if(isClean())setClean(false);
+      idleUntil=1e12;aim(s);show(s.id);
+      if(kbd){const b=faces[s.id].querySelector('.ib');if(b)b.focus({preventScroll:true});}
+    }
+    function closeSvc(kbd){
+      const prev=SP.find(s=>s.id===cur);show('main');idleUntil=performance.now()+4000;req();
+      if(kbd&&prev)(prev.vis?prev.el:prev.edge).focus({preventScroll:true});
+    }
+    SP.forEach(s=>{
+      s.el=document.querySelector('.spot[data-svc="'+s.id+'"]');s.el.tabIndex=-1;
+      const b=document.createElement('button');b.type='button';b.className='edge off';b.tabIndex=-1;b.setAttribute('aria-label','Ir para '+s.lbl);
+      b.innerHTML='<svg class="al" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg><span>'+s.lbl+'</span><svg class="ar" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round"><path d="M9 5l7 7-7 7"/></svg>';
+      edgesEl.appendChild(b);s.edge=b;
+      s.el.addEventListener('click',e=>openSvc(s,e.detail===0));
+      b.addEventListener('click',e=>openSvc(s,e.detail===0));
+    });
+    cardEl.querySelectorAll('.ib.cls').forEach(b=>b.addEventListener('click',e=>setClean(true,e.detail===0)));
+    cardEl.querySelectorAll('.ib.back').forEach(b=>b.addEventListener('click',e=>closeSvc(e.detail===0)));
+    cardEl.querySelectorAll('.face.svc .nx').forEach(n=>n.addEventListener('click',e=>{const s=SP.find(z=>z.id===n.dataset.go);if(s)openSvc(s,e.detail===0);}));
+    reopenBtn.addEventListener('click',e=>setClean(false,e.detail===0));
+    addEventListener('keydown',e=>{
+      if(e.key!=='Escape'||!visible||intro)return;
+      if(cur!=='main'&&!isClean())closeSvc(true);else if(!isClean())setClean(true,true);
+    });
+
+    /* abertura: a grade gira enquanto a foto carrega; depois o ambiente materializa e card e pontos entram */
+    const glOK=initGL();
+    if(!glOK)hero.classList.add('no-gl');
+    else{cv.addEventListener('webglcontextlost',e=>{e.preventDefault();gl=null;});cv.addEventListener('webglcontextrestored',()=>{initGL();resize();});}
+    resize();
+    const homeYaw=()=>{const fx=isMob()?W/2:(reg.l+reg.r)/2;return SP[0].yaw*D-Math.atan((fx-W/2)/focal);};
+    yaw=homeYaw()-(reduce?0:40*D);pitch=basePitch;zoom=reduce?1:1.12;
+    img=new Image();img.decoding='async';img.src='images/pano-hero.webp';
+    const ready=(img.decode?img.decode():new Promise((ok,no)=>{img.onload=ok;img.onerror=no;})).then(()=>{
+      has=1;upload();if(!intro){rev=0;revA={t0:performance.now(),dur:1500};setTimeout(loadHi,1800);}req();return true;
+    },()=>false);
+    // depois da abertura, troca em segundo plano por uma versão mais nítida: 8K em telas grandes de computador, 4K nas demais
+    function loadHi(){
+      if(!gl)return;
+      const c=navigator.connection,slow=!!c&&(c.saveData||/2g|3g/.test(c.effectiveType||''));
+      const max=gl.getParameter(gl.MAX_TEXTURE_SIZE);
+      if(slow||Math.max(W,H)*dpr<1100||max<4096)return;
+      const src=(!isMob()&&W*dpr>=1600&&max>=8192)?'images/pano-hero-8k.webp':'images/pano-hero-4k.webp';
+      const hi=new Image();hi.decoding='async';hi.src=src;
+      (hi.decode?hi.decode():new Promise((ok,no)=>{hi.onload=ok;hi.onerror=no;})).then(()=>{
+        const prev=img;gl.getError();img=hi;upload();
+        if(gl.getError()!==gl.NO_ERROR){img=prev;upload();}   // sem memória de vídeo suficiente: mantém a anterior
+        req();
+      },()=>{});
+    }
+    let done=false;
+    function finish(){
+      if(done)return;done=true;intro=false;
+      const now=performance.now(),hy=homeYaw();
+      if(reduce){rev=1;zoom=1;yaw=hy;}
+      else{if(has)revA={t0:now,dur:1700};zA={z0:zoom,z1:1,t0:now,dur:2200};anim={y0:yaw,p0:pitch,y1:yaw+wrapA(hy-yaw),p1:pitch,t0:now,dur:2200};}
+      hero.classList.add('lit');
+      setTimeout(()=>document.body.classList.remove('intro'),reduce?0:700);
+      setTimeout(()=>{if(!rotGone&&hint)hint.classList.add('show');},reduce?0:1700);
+      setTimeout(()=>{['spots','edges'].forEach(id=>document.getElementById(id).style.transition='none');cardEl.style.transitionDuration='.55s';onScroll();
+        autoOn=true;if(cur==='main'&&!isClean())idleUntil=performance.now()+2500;req();
+        if(has)setTimeout(loadHi,300);},reduce?50:2400);
+      req();
+    }
+    Promise.all([ready,new Promise(r=>setTimeout(r,reduce?0:1300))]).then(finish);
+    setTimeout(finish,4200);   // segurança: se a foto demorar, abre com a grade e a foto entra depois
+    new IntersectionObserver(es=>{visible=es[es.length-1].isIntersecting;if(visible)req();}).observe(hero);
+    let rzT=0;addEventListener('resize',()=>{clearTimeout(rzT);rzT=setTimeout(resize,100);});
+    if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{measure();req();});
+    req();
+  })();
+
+  /* scroll: hero recua suave + revelações */
   function onScroll(){
     nav.classList.toggle('scrolled',scrollY>24);
     if(document.body.classList.contains('intro'))return;
-    const h=innerHeight,p=Math.min(1,scrollY/h);
-    document.getElementById('stage').style.opacity=(1-p*1.15).toFixed(3);
-    document.getElementById('stage').style.transform=`scale(${1+p*0.12})`;
-    document.getElementById('stage').style.filter=`blur(${(p*6).toFixed(1)}px)`;
+    const p=Math.min(1,scrollY/innerHeight),o=(1-p*1.3).toFixed(3),pe=document.getElementById('pano');
+    pe.style.opacity=(1-p*1.1).toFixed(3);pe.style.transform='scale('+(1+p*.08).toFixed(4)+')';
     document.querySelector('.hero-content').style.opacity=(1-p*1.4).toFixed(3);
-    document.getElementById('spots').style.opacity=(1-p*1.3).toFixed(3);
-    if(p>0.05)document.querySelectorAll('.spot.open').forEach(o=>o.classList.remove('open'));
+    document.getElementById('spots').style.opacity=o;document.getElementById('edges').style.opacity=o;
   }
+
   const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}}),{threshold:.16});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-  /* real tour appears when its section nears */
-  const lf=document.getElementById('liveFrame');
-  new IntersectionObserver((es,ob)=>{es.forEach(en=>{if(en.isIntersecting){
-    const f=document.createElement('iframe');
-    f.src="https://my.matterport.com/show/?m=mGmZhfLmhS3&play=1&qs=1&title=0&brand=0";
-    f.title="Tour virtual navegável em 360°";f.loading="lazy";f.allowFullscreen=true;
-    f.setAttribute('allow','xr-spatial-tracking; gyroscope; accelerometer; fullscreen');
-    lf.appendChild(f);const l=document.getElementById('lz');if(l)setTimeout(()=>l.remove(),1200);ob.disconnect();
-  }});},{rootMargin:'300px'}).observe(lf);
 
   /* faq */
   function tog(btn){const qa=btn.parentElement,ans=qa.querySelector('.ans'),open=qa.classList.contains('open');
@@ -610,45 +997,92 @@
     const grid=document.getElementById('pfGrid'); if(!grid) return;
     const CAP=8;
     let items=[], filter='all', expanded=false;
-    const catName={tour:'Tour Virtual',google:'Google',landing:'Landing Pages'};
+    const catName={tour:'Tour Virtual',google:'Google',landing:'Landing Page'};
     const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     const thumb=i=>i.image ? i.image : (i.link ? 'https://s.wordpress.com/mshots/v1/'+encodeURIComponent(i.link)+'?w=1000' : '');
-    const card=i=>`<a class="pf-card" href="${esc(i.link)}" target="_blank" rel="noopener"><div class="im"><img src="${esc(thumb(i))}" alt="${esc(i.title)}" loading="lazy" onerror="this.style.opacity=.25"></div><div class="bd"><h3>${esc(i.title)}</h3><span class="cat ${esc(i.category)}">${catName[i.category]||esc(i.category)}</span></div></a>`;
+    const card=(i,k)=>{const t=esc(thumb(i));return `<a class="pf-card" style="transition-delay:${Math.min(k,8)*60}ms" href="${esc(i.link)}" target="_blank" rel="noopener"><div class="im"><span class="blur" style="background-image:url('${t}')"></span><img src="${t}" alt="${esc(i.title)}" loading="lazy" onload="pfFit(this)" onerror="this.style.opacity=.25"></div><div class="bd"><div class="t"><h3>${esc(i.title)}</h3><span class="kind">${catName[i.category]||esc(i.category)}</span></div></div></a>`;};
+    // logos quase quadrados entram inteiros, sobre um fundo desfocado da própria imagem
+    window.pfFit=img=>{const r=img.naturalWidth/(img.naturalHeight||1);if(r>.8&&r<1.25)img.closest('.pf-card').classList.add('fit');};
+    const active=()=>items.filter(i=>i.active!==false).sort((a,b)=>(a.order??0)-(b.order??0));
     function render(){
-      const list=items.filter(i=>i.active!==false).sort((a,b)=>(a.order??0)-(b.order??0)).filter(i=>filter==='all'||i.category===filter);
+      const list=active().filter(i=>filter==='all'||i.category===filter);
       if(!list.length){grid.innerHTML='<div class="pf-empty">Em breve, novos trabalhos por aqui.</div>';return;}
       const shown=expanded?list:list.slice(0,CAP);
-      grid.innerHTML=shown.map(card).join('') + (list.length>CAP&&!expanded ? `<div class="pf-more"><button>Ver mais (${list.length-CAP})</button></div>` : '');
+      grid.innerHTML=shown.map(card).join('') + (list.length>CAP&&!expanded ? `<div class="pf-more"><button>Ver todos os trabalhos</button></div>` : '');
       const mb=grid.querySelector('.pf-more button'); if(mb) mb.onclick=()=>{expanded=true;render();};
+      show();
     }
+    // os cards entram em cascata quando a grade chega na tela
+    let seen=false;
+    function show(){if(!seen)return;requestAnimationFrame(()=>requestAnimationFrame(()=>grid.querySelectorAll('.pf-card:not(.on)').forEach(c=>c.classList.add('on'))));}
+    new IntersectionObserver((es,ob)=>{if(es[0].isIntersecting){seen=true;show();ob.disconnect();}},{threshold:.1}).observe(grid);
     fetch('portfolio.json').then(r=>r.json()).then(d=>{items=d.items||[];render();}).catch(()=>{grid.innerHTML='<div class="pf-empty">Não foi possível carregar o portfólio agora.</div>';});
     document.querySelectorAll('.pf-tab').forEach(t=>t.onclick=()=>{document.querySelectorAll('.pf-tab').forEach(x=>x.classList.remove('on'));t.classList.add('on');filter=t.dataset.cat;expanded=false;render();});
   })();
 
-  /* abertura estilo tour: globo primeiro, depois hotspots e card */
+  /* SEÇÕES: movimento sutil, sempre respeitando quem prefere menos movimento */
   (function(){
     const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const stageEl=document.getElementById('stage'),cardEl=document.getElementById('card');
-    if(reduce){document.body.classList.remove('intro');return;}
-    // globo vivo durante a abertura: leve deriva panorâmica pra não parecer travado
-    let drifting=true, dt0=null;
-    function drift(ts){ if(!drifting)return; if(dt0===null)dt0=ts; pan=38*Math.sin((ts-dt0)/1000); schedule(); requestAnimationFrame(drift); }
-    requestAnimationFrame(drift);
-    function reveal(){
-      if(!document.body.classList.contains('intro'))return;
-      drifting=false; pan=0; schedule();       // para a deriva e volta ao centro
-      document.querySelectorAll('.spot').forEach((s,i)=>s.style.transitionDelay=(260+i*150)+'ms');
-      document.body.classList.remove('intro');
-      setTimeout(()=>{                         // fim da abertura: remove transições p/ scroll e parallax ficarem leves
-        document.querySelectorAll('.spot').forEach(s=>s.style.transitionDelay='');
-        if(cardEl)cardEl.style.transition='none';
-        if(stageEl)stageEl.style.transition='none';
-        onScroll();
-      },1800);
+
+    // soluções: no celular vira carrossel com pontos de paginação e a cena "respira" quando aparece
+    const sc=document.getElementById('scenes'),dots=document.getElementById('sceneDots');
+    if(sc){
+      const cards=[...sc.querySelectorAll('.scene')];
+      if(dots){
+        dots.innerHTML=cards.map((c,i)=>'<button type="button" aria-label="Ver card '+(i+1)+'"></button>').join('');
+        const ds=[...dots.children];
+        const upd=()=>{const mid=sc.scrollLeft+sc.clientWidth/2;let k=0,best=1e9;
+          cards.forEach((el,i)=>{const d=Math.abs(el.offsetLeft+el.offsetWidth/2-mid);if(d<best){best=d;k=i;}});
+          ds.forEach((d,i)=>d.classList.toggle('on',i===k));};
+        let tk=false;sc.addEventListener('scroll',()=>{if(!tk){tk=true;requestAnimationFrame(()=>{tk=false;upd();});}},{passive:true});
+        ds.forEach((d,i)=>d.addEventListener('click',()=>sc.scrollTo({left:cards[i].offsetLeft-(sc.clientWidth-cards[i].offsetWidth)/2,behavior:reduce?'auto':'smooth'})));
+        upd();
+      }
+      if(!reduce){const io=new IntersectionObserver(es=>es.forEach(en=>en.target.classList.toggle('live',en.isIntersecting&&innerWidth<900)),{threshold:.6});cards.forEach(c=>io.observe(c));}
     }
-    if(document.readyState==='complete') setTimeout(reveal,1500);
-    else addEventListener('load',()=>setTimeout(reveal,1300));
-    setTimeout(reveal,4600); // failsafe se load demorar
+
+    // tour ao vivo: a capa tem movimento e o 3D só carrega quando a pessoa pede
+    const shw=document.getElementById('showcase');
+    if(shw){
+      shw.querySelector('.enter').addEventListener('click',()=>{
+        if(shw.classList.contains('live'))return;
+        const f=document.createElement('iframe');
+        f.src='https://my.matterport.com/show/?m=mGmZhfLmhS3&play=1&qs=1&title=0&brand=0';
+        f.title='Tour virtual navegável em 360°';f.allowFullscreen=true;
+        f.setAttribute('allow','xr-spatial-tracking; gyroscope; accelerometer; fullscreen');
+        shw.appendChild(f);shw.classList.add('live');
+      });
+      const pst=shw.querySelector('.poster');
+      if(pst&&!reduce)new IntersectionObserver(es=>{pst.style.animationPlayState=es[0].isIntersecting?'running':'paused';}).observe(shw);
+    }
+
+    // como funciona: a linha do percurso se preenche com a rolagem e acende cada etapa
+    const path=document.getElementById('path');
+    if(path){
+      const steps=[...path.querySelectorAll('.st')];
+      let tk=false;
+      const upd=()=>{tk=false;
+        const r=path.getBoundingClientRect(),vh=innerHeight,horiz=innerWidth>=900;
+        let p=reduce?1:horiz?(vh*.85-r.top)/(vh*.55):(vh*.7-r.top)/r.height;
+        p=Math.max(0,Math.min(1,p));
+        path.style.setProperty('--p',p.toFixed(3));
+        const len=horiz?path.offsetWidth-24:path.offsetHeight-20;
+        steps.forEach(s=>{const at=horiz?s.offsetLeft:s.offsetTop;s.classList.toggle('on',p*len>=at-2);});
+      };
+      addEventListener('scroll',()=>{if(!tk){tk=true;requestAnimationFrame(upd);}},{passive:true});
+      addEventListener('resize',upd);upd();
+    }
+
+    // contato: o ambiente gira devagar ao fundo, só enquanto a seção está na tela
+    const cp=document.querySelector('.cta-pano i');
+    if(cp&&!reduce)new IntersectionObserver(es=>{cp.style.animationPlayState=es[0].isIntersecting?'running':'paused';}).observe(cp.parentElement);
+
+    // WhatsApp flutuante (celular): aparece depois do hero e some quando o contato chega na tela
+    const wa=document.getElementById('waFloat'),ct=document.getElementById('contato');
+    if(wa){
+      const tog=()=>{const past=ct?ct.getBoundingClientRect().top<innerHeight*.9:false;wa.classList.toggle('show',scrollY>innerHeight*.85&&!past);};
+      addEventListener('scroll',tog,{passive:true});addEventListener('resize',tog);tog();
+    }
   })();
 
   onScroll();

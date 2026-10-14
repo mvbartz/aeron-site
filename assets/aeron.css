@@ -28,7 +28,7 @@ img,svg,iframe{display:block;max-width:100%}
 /* NAV */
 nav{position:fixed;inset:0 0 auto 0;z-index:60;display:flex;align-items:center;justify-content:space-between;padding:16px var(--shell);transition:background .4s,padding .4s;border-bottom:1px solid transparent}
 nav.scrolled{background:rgba(11,23,48,.8);backdrop-filter:blur(12px);border-bottom-color:var(--line);padding:12px var(--shell)}
-.brand{display:flex;align-items:center}.brand .logo{height:26px;width:auto;display:block}
+.brand{display:flex;align-items:center}.brand .logo{height:26px;width:auto;display:block}nav .brand .logo{height:38px;transition:height .4s ease}nav.scrolled .brand .logo{height:30px}@media(max-width:600px){nav .brand .logo{height:32px}nav.scrolled .brand .logo{height:28px}}
 footer .brand .logo{height:30px}
 .nav-right{display:flex;align-items:center;gap:26px}
 .nav-right a.lk{display:none}
