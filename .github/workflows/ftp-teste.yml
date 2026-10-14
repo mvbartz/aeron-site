@@ -1,0 +1,17 @@
+name: Testar conexão FTP (só leitura)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  testar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Listar pastas do FTP (não altera nada)
+        env:
+          H: ${{ secrets.FTP_SERVER }}
+          U: ${{ secrets.FTP_USERNAME }}
+          P: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          sudo apt-get -qq install -y lftp > /dev/null
+          lftp -u "$U,$P" -e "set ftp:ssl-allow no; pwd; echo '--- raiz'; ls; echo '--- public_html?'; ls public_html | head -40; echo '--- domains?'; ls domains | head -20; bye" "$H"
