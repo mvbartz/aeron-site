@@ -3,3 +3,8 @@
 files.zip
 .gh_config
 painel/config.php
+
+# Pastas subidas à mão direto na Hostinger (fora do Git): ignoradas pra a implantação não apagar
+demonstracao/
+duasmeninasgarden/
+okodontoesaude/
