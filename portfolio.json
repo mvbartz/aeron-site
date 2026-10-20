@@ -42,13 +42,22 @@
             "order": 3
         },
         {
+            "id": "stopcar-centro-automotivo-3d94",
+            "title": "StopCar Centro Automotivo",
+            "category": "landing",
+            "image": "",
+            "link": "https://stopcar.aeronsolutions.com.br/",
+            "active": true,
+            "order": 4
+        },
+        {
             "id": "s-o-chico-veterin-ria-pet-shop-1dc1",
             "title": "São Chico Veterinária & Pet Shop",
             "category": "google",
             "image": "https://res.cloudinary.com/dpl04z5so/image/upload/v1786889989/saochico_dhwjs1.jpg",
             "link": "https://maps.app.goo.gl/8TiLEBgQT9JMRZ9k6",
             "active": true,
-            "order": 4
+            "order": 5
         },
         {
             "id": "avelar-barbearia-vera-cruz-ee73",
@@ -57,7 +66,7 @@
             "image": "https://res.cloudinary.com/dpl04z5so/image/upload/v1772741947/Logo_Oseias_k6gnml.jpg",
             "link": "https://maps.app.goo.gl/SDCEtof6qvHs8WKE6",
             "active": true,
-            "order": 5
+            "order": 6
         },
         {
             "id": "eletroclima-energia-solar-fdeb",
@@ -66,7 +75,7 @@
             "image": "https://res.cloudinary.com/dpl04z5so/image/upload/v1784303097/Captura_de_tela_2026-07-17_124357_rjqc0x.png",
             "link": "https://maps.app.goo.gl/B8CbexqEzRpERq3E9",
             "active": true,
-            "order": 6
+            "order": 7
         },
         {
             "id": "mais-cor",
@@ -74,15 +83,6 @@
             "category": "google",
             "image": "https://res.cloudinary.com/dpl04z5so/image/upload/v1772737159/Logo_Mais_Cor_uvqtb4.jpg",
             "link": "https://maps.app.goo.gl/LaqNe36tSXNCus8v5",
-            "active": true,
-            "order": 7
-        },
-        {
-            "id": "stopcar-centro-automotivo-3d94",
-            "title": "StopCar Centro Automotivo",
-            "category": "landing",
-            "image": "",
-            "link": "https://stopcar.aeronsolutions.com.br/",
             "active": true,
             "order": 8
         },
