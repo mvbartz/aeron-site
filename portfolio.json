@@ -6,22 +6,13 @@
     },
     "items": [
         {
-            "id": "eletroclima-6ea8",
-            "title": "EletroClima",
-            "category": "landing",
-            "image": "",
-            "link": "https://eletroclima.aeronsolutions.com.br/",
-            "active": true,
-            "order": 0
-        },
-        {
             "id": "air-clean-5d99",
             "title": "Air Clean",
             "category": "landing",
             "image": "",
             "link": "https://airclean.aeronsolutions.com.br",
             "active": true,
-            "order": 1
+            "order": 0
         },
         {
             "id": "exata-engenharia-e-per-cias-bd48",
@@ -30,7 +21,7 @@
             "image": "",
             "link": "https://exata.aeronsolutions.com.br/",
             "active": true,
-            "order": 2
+            "order": 1
         },
         {
             "id": "stopcar-centro-automotivo-3d94",
@@ -38,6 +29,15 @@
             "category": "landing",
             "image": "",
             "link": "https://stopcar.aeronsolutions.com.br/",
+            "active": true,
+            "order": 2
+        },
+        {
+            "id": "eletroclima-6ea8",
+            "title": "EletroClima",
+            "category": "landing",
+            "image": "",
+            "link": "https://eletroclima.aeronsolutions.com.br/",
             "active": true,
             "order": 3
         },
