@@ -33,13 +33,22 @@
             "order": 2
         },
         {
+            "id": "latic-nio-la-serrana-4e8e",
+            "title": "Laticínio La Serrana",
+            "category": "landing",
+            "image": "",
+            "link": "https://laticiniolaserrana.aeronsolutions.com.br/",
+            "active": true,
+            "order": 3
+        },
+        {
             "id": "kinder-haus-eda8",
             "title": "Kinder Haus",
             "category": "landing",
             "image": "",
             "link": "https://kinderhaus.aeronsolutions.com.br",
             "active": true,
-            "order": 3
+            "order": 4
         },
         {
             "id": "marcenaria-maioli-c719",
@@ -48,7 +57,7 @@
             "image": "",
             "link": "https://marcenariamaioli.netlify.app/",
             "active": true,
-            "order": 4
+            "order": 5
         },
         {
             "id": "s-o-chico-veterin-ria-pet-shop-6828",
@@ -56,15 +65,6 @@
             "category": "landing",
             "image": "",
             "link": "https://saochicovetpet.netlify.app/",
-            "active": true,
-            "order": 5
-        },
-        {
-            "id": "latic-nio-la-serrana-4e8e",
-            "title": "Laticínio La Serrana",
-            "category": "landing",
-            "image": "",
-            "link": "https://laticiniolaserrana.aeronsolutions.com.br/",
             "active": true,
             "order": 6
         },
