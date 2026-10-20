@@ -78,13 +78,22 @@
             "order": 7
         },
         {
+            "id": "stopcar-centro-automotivo-3d94",
+            "title": "StopCar Centro Automotivo",
+            "category": "landing",
+            "image": "",
+            "link": "https://stopcar.aeronsolutions.com.br/",
+            "active": true,
+            "order": 8
+        },
+        {
             "id": "emporio-vida-fit",
             "title": "Empório Vida Fit",
             "category": "google",
             "image": "https://res.cloudinary.com/dpl04z5so/image/upload/v1781041442/2_y32mye.jpg",
             "link": "https://maps.app.goo.gl/V1fGLaAMqWGFQYHX6",
             "active": true,
-            "order": 8
+            "order": 9
         },
         {
             "id": "avelar-barbearia",
@@ -93,7 +102,7 @@
             "image": "https://res.cloudinary.com/dpl04z5so/image/upload/v1772741947/Logo_Oseias_k6gnml.jpg",
             "link": "https://maps.app.goo.gl/cEu8mvhC7CzoikSF8",
             "active": true,
-            "order": 9
+            "order": 10
         },
         {
             "id": "pichulle",
@@ -102,7 +111,7 @@
             "image": "https://res.cloudinary.com/dpl04z5so/image/upload/v1772737532/LOOGO_PICHULLE_MARROM_vlnwor.jpg",
             "link": "https://maps.app.goo.gl/xW5qGRgVBqY9JvF87",
             "active": true,
-            "order": 10
+            "order": 11
         },
         {
             "id": "me-solucoes",
@@ -111,7 +120,7 @@
             "image": "https://res.cloudinary.com/dpl04z5so/image/upload/v1773402317/LOGO_ME_SOLU%C3%87%C3%95ES_kv2iuw.jpg",
             "link": "https://maps.app.goo.gl/Ao4vkSr3KvZXwhPJA",
             "active": true,
-            "order": 11
+            "order": 12
         },
         {
             "id": "bi-avelar-studio",
@@ -120,7 +129,7 @@
             "image": "https://res.cloudinary.com/dpl04z5so/image/upload/v1784044010/logo_bianca_i5przr.webp",
             "link": "https://maps.app.goo.gl/dj8Wn94Fc3VFGMSx6",
             "active": true,
-            "order": 12
+            "order": 13
         },
         {
             "id": "s-o-chico-veterin-ria-pet-shop-6828",
@@ -128,15 +137,6 @@
             "category": "landing",
             "image": "",
             "link": "https://saochicovetpet.netlify.app/",
-            "active": true,
-            "order": 13
-        },
-        {
-            "id": "stopcar-centro-automotivo-3d94",
-            "title": "StopCar Centro Automotivo",
-            "category": "landing",
-            "image": "",
-            "link": "https://stopcar.aeronsolutions.com.br/",
             "active": true,
             "order": 14
         },
