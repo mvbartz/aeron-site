@@ -24,20 +24,20 @@
             "order": 1
         },
         {
-            "id": "kinder-haus-eda8",
-            "title": "Kinder Haus",
-            "category": "landing",
-            "image": "",
-            "link": "https://kinderhaus.aeronsolutions.com.br",
-            "active": true,
-            "order": 2
-        },
-        {
             "id": "stopcar-centro-automotivo-3d94",
             "title": "StopCar Centro Automotivo",
             "category": "landing",
             "image": "",
             "link": "https://stopcar.aeronsolutions.com.br/",
+            "active": true,
+            "order": 2
+        },
+        {
+            "id": "kinder-haus-eda8",
+            "title": "Kinder Haus",
+            "category": "landing",
+            "image": "",
+            "link": "https://kinderhaus.aeronsolutions.com.br",
             "active": true,
             "order": 3
         },
