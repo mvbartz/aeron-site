@@ -1000,9 +1000,12 @@
     let items=[], filter='all', expanded=false;
     const catName={tour:'Tour Virtual',google:'Google',landing:'Landing Page'};
     const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-    const thumb=i=>i.image ? i.image : (i.link ? 'https://s.wordpress.com/mshots/v1/'+encodeURIComponent(i.link)+'?w=1000' : '');
-    const card=(i,k)=>{const t=esc(thumb(i));return `<a class="pf-card" style="transition-delay:${Math.min(k,8)*60}ms" href="${esc(i.link)}" target="_blank" rel="noopener"><div class="im"><span class="blur" style="background-image:url('${t}')"></span><img src="${t}" alt="${esc(i.title)}" loading="lazy" onload="pfFit(this)" onerror="this.style.opacity=.25"></div><div class="bd"><div class="t"><h3>${esc(i.title)}</h3><span class="kind">${catName[i.category]||esc(i.category)}</span></div></div></a>`;};
+    const shot=i=>i.link ? 'https://s.wordpress.com/mshots/v1/'+encodeURIComponent(i.link)+'?w=1000' : '';
+    // miniatura própria (capturada depois das animações); a captura automática fica de reserva
+    const thumb=i=>i.image ? i.image : 'images/portfolio/'+i.id+'.webp';
+    const card=(i,k)=>{const t=esc(thumb(i));return `<a class="pf-card" style="transition-delay:${Math.min(k,8)*60}ms" href="${esc(i.link)}" target="_blank" rel="noopener"><div class="im"><span class="blur" style="background-image:url('${t}')"></span><img src="${t}" alt="${esc(i.title)}" loading="lazy" data-fb="${i.image?'':esc(shot(i))}" onload="pfFit(this)" onerror="pfFb(this)"></div><div class="bd"><div class="t"><h3>${esc(i.title)}</h3><span class="kind">${catName[i.category]||esc(i.category)}</span></div></div></a>`;};
     // logos quase quadrados entram inteiros, sobre um fundo desfocado da própria imagem
+    window.pfFb=img=>{const fb=img.dataset.fb;if(!fb){img.style.opacity=.25;return;}img.dataset.fb='';img.src=fb;const b=img.parentNode.querySelector('.blur');if(b)b.style.backgroundImage=`url('${fb}')`;};
     window.pfFit=img=>{const r=img.naturalWidth/(img.naturalHeight||1);if(r>.8&&r<1.25)img.closest('.pf-card').classList.add('fit');};
     const active=()=>items.filter(i=>i.active!==false).sort((a,b)=>(a.order??0)-(b.order??0));
     function render(){
@@ -1017,7 +1020,7 @@
     let seen=false;
     function show(){if(!seen)return;requestAnimationFrame(()=>requestAnimationFrame(()=>grid.querySelectorAll('.pf-card:not(.on)').forEach(c=>c.classList.add('on'))));}
     new IntersectionObserver((es,ob)=>{if(es[0].isIntersecting){seen=true;show();ob.disconnect();}},{threshold:.1}).observe(grid);
-    fetch('portfolio.json').then(r=>r.json()).then(d=>{items=d.items||[];render();}).catch(()=>{grid.innerHTML='<div class="pf-empty">Não foi possível carregar o portfólio agora.</div>';});
+    fetch('portfolio.json',{cache:'no-cache'}).then(r=>r.json()).then(d=>{items=d.items||[];render();}).catch(()=>{grid.innerHTML='<div class="pf-empty">Não foi possível carregar o portfólio agora.</div>';});
     document.querySelectorAll('.pf-tab').forEach(t=>t.onclick=()=>{document.querySelectorAll('.pf-tab').forEach(x=>x.classList.remove('on'));t.classList.add('on');filter=t.dataset.cat;expanded=false;render();});
   })();
 

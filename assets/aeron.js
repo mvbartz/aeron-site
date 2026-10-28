@@ -44,12 +44,14 @@
     const catName={tour:'Tour Virtual',google:'Google',landing:'Landing Pages'};
     const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     // miniatura: usa a imagem se houver; senao, screenshot automatico do link (ideal p/ landing pages)
-    const thumb=i=>i.image ? i.image : (i.link ? 'https://s.wordpress.com/mshots/v1/'+encodeURIComponent(i.link)+'?w=1000' : '');
+    const shot=i=>i.link ? 'https://s.wordpress.com/mshots/v1/'+encodeURIComponent(i.link)+'?w=1000' : '';
+    // miniatura própria (capturada depois das animações); a captura automática fica de reserva
+    const thumb=i=>i.image ? i.image : 'images/portfolio/'+i.id+'.webp';
     const fixed=grid_.dataset.cat||'';
     const emptyMsg=grid_.dataset.empty||'Em breve, novos trabalhos por aqui.';
     const CAP=parseInt(grid_.dataset.cap||'8',10);
     let items=[],filter=fixed||'all',expanded=false;
-    function card(i){return `<a class="pf-card" href="${esc(i.link)}" target="_blank" rel="noopener"><div class="im"><img src="${esc(thumb(i))}" alt="${esc(i.title)}" loading="lazy" onerror="this.style.opacity=.25"></div><div class="bd"><h3>${esc(i.title)}</h3><span class="cat ${esc(i.category)}">${catName[i.category]||esc(i.category)}</span></div></a>`;}
+    function card(i){return `<a class="pf-card" href="${esc(i.link)}" target="_blank" rel="noopener"><div class="im"><img src="${esc(thumb(i))}" alt="${esc(i.title)}" loading="lazy" data-fb="${i.image?'':esc(shot(i))}" onerror="if(this.dataset.fb){this.src=this.dataset.fb;this.dataset.fb=''}else{this.style.opacity=.25}"></div><div class="bd"><h3>${esc(i.title)}</h3><span class="cat ${esc(i.category)}">${catName[i.category]||esc(i.category)}</span></div></a>`;}
     function render(){
       const list=items.filter(i=>i.active!==false).sort((a,b)=>(a.order??0)-(b.order??0)).filter(i=>filter==='all'||i.category===filter);
       if(!list.length){grid_.innerHTML='<div class="pf-empty">'+emptyMsg+'</div>';return;}
@@ -57,7 +59,7 @@
       grid_.innerHTML=shown.map(card).join('') + (list.length>CAP&&!expanded ? `<div class="pf-more"><button>Ver mais (${list.length-CAP})</button></div>` : '');
       const mb=grid_.querySelector('.pf-more button'); if(mb) mb.onclick=()=>{expanded=true;render();};
     }
-    fetch('portfolio.json').then(r=>r.json()).then(d=>{items=d.items||[];render();}).catch(()=>{grid_.innerHTML='<div class="pf-empty">Não foi possível carregar o portfólio agora.</div>';});
+    fetch('portfolio.json',{cache:'no-cache'}).then(r=>r.json()).then(d=>{items=d.items||[];render();}).catch(()=>{grid_.innerHTML='<div class="pf-empty">Não foi possível carregar o portfólio agora.</div>';});
     document.querySelectorAll('.pf-tab').forEach(t=>t.onclick=()=>{document.querySelectorAll('.pf-tab').forEach(x=>x.classList.remove('on'));t.classList.add('on');filter=t.dataset.cat;expanded=false;render();});
   }
 })();

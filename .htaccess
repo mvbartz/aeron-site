@@ -71,6 +71,13 @@ ErrorDocument 404 /404.html
   ExpiresByType text/html        "access plus 1 hour"
 </IfModule>
 
+# ── Portfólio: o painel altera a qualquer hora, o navegador sempre confere ─
+<Files "portfolio.json">
+  <IfModule mod_headers.c>
+    Header set Cache-Control "no-cache"
+  </IfModule>
+</Files>
+
 # ── Compressão Gzip ───────────────────────────────────────────
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/css text/javascript
